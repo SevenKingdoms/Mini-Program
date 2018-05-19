@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    motto: '欢迎使用快点点餐小程序',
+    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -12,7 +12,7 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../restaurantDetails/restaurantDetails'
     })
   },
   onLoad: function () {

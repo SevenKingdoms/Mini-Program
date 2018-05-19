@@ -1,12 +1,15 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/restaurantDetails/restaurantDetails"
   ],
   "window":{
     "backgroundTextStyle":"light",
+    "backgroundColor":"#eeeeee",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "快点",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black",
+    "navigationStyle":"default"
   }
 }
