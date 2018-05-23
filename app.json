@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/merchantDetails/merchantDetails"
+    "pages/merchantDetails/merchantDetails",
+    "pages/merchantList/merchantList"
   ],
   "window":{
     "backgroundTextStyle":"light",
