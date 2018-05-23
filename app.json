@@ -2,7 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/restaurantDetails/restaurantDetails"
+    "pages/merchantDetails/merchantDetails"
   ],
   "window":{
     "backgroundTextStyle":"light",

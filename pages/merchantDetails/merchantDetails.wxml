@@ -18,7 +18,7 @@
         </view>
     </view>
 </view>
-<view class="enterDishes">
+<view class="enterMenu">
     <button bindtap="bindViewTap" type="primary" size="mini" plain="true" >进入菜单</button>
 </view>
   

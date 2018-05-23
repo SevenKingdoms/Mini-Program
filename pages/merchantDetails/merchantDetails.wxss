@@ -48,7 +48,7 @@
     margin-top: 100rpx;
 }
 
-.enterDishes {
+.enterMenu {
     text-align: right;
     margin-top: 200rpx;
 }
