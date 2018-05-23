@@ -1,0 +1,9 @@
+<!--restaurantList.wxml-->
+<view class="container">
+  <view class="restaurant-list" >
+    <view class="restaurant-item" wx:for="{{[1, 2, 3, 4]}}" wx:for-item="idx">
+      <view class="choseRestaurant" bindtap="choseRestaurant">商家{{idx}}</view>
+    </view>
+  </view>
+  <button class="nextPage">下一页</button>
+</view>

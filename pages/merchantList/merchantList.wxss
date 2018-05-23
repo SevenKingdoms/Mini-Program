@@ -1,0 +1,23 @@
+/**restaurantList.wxss**/
+.restaurant-list {
+  position: relative;
+  margin-top: -90px;
+  width: 90%;
+  height: 500px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.restaurant-item {
+  width: 100%;
+  height: 25%;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+}
+
+
+.nextPage {
+  margin-left: 70%;
+  margin-top: 20%;
+}
