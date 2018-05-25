@@ -1,0 +1,43 @@
+<!--orderList.wxml-->
+<view class="top-tab flexItem flex-tab">
+  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
+    {{itemName}}
+  </view>
+</view>
+
+<view class="tab_con flexItem rowStyle {{currentNavtab==0 ? 'list_active0' : ''}} {{currentNavtab==1 ? 'list_active1' : ''}} {{currentNavtab==2 ? 'list_active2' : ''}} {{currentNavtab==3 ? 'list_active3' : ''}} {{currentNavtab==4 ? 'list_active4' : ''}}">
+  <view class="view1 width20" bindtouchstart="catchtouchstart" bindtouchend="catchtouchend">
+    <scroll-view class="tableview" scroll-y="true" wx:if="{{hasData}}" wx:for="{{moneyInfo}}" wx:for-item="info">
+      <view class="flexItem rowStyle tableViewCellHeader marginTop10" catchtap="goDeatailEvent">
+        <label class="color54 contSize12">订单编号：{{orderNum}}-1</label>
+      </view>
+      <view class="flexItem rowStyle personInfo" catchtap="goDeatailEvent">
+        <view class="flexItem rowStyle marginLeft12 centers">
+          <label class="color54 fontSize12">{{nickName}}</label>
+        </view>
+        <view class="flexItem rowStyle marginRight12 centers" catchtap="callEvent">
+          <label class="color54 fontSize12">{{ phoneNum}}</label>
+        </view>
+      </view>
+      <view class="flexItem columnStyle tableViewCell" catchtap="goDeatailEvent">
+        <view class="flexItem rowStyle mmarginBottom10 cellStyle">
+          <label class="color54 fontSize12">预约时间</label>
+          <label class="fontSize14">{{apointmentTime}}</label>
+        </view>
+        <view class="flexItem rowStyle mmarginBottom10 cellStyle">
+          <label class="color54 fontSize12">预约人数</label>
+          <label class="color54 fontSize12">{{appointmentNum}} 人</label>
+        </view>
+        <view class="flexItem rowStyle mmarginBottom10 cellStyle">
+          <label class="color54 fontSize12">下单时间</label>
+          <label class="color54 fontSize12">{{orderTime}}</label>
+        </view>
+      </view>
+      <view class="flexItem rowStyle centers orderStatus" catchtap="goDeatailEvent">
+        <label class="statusText fontSize14">{{ statusText[0] }}</label>
+    </view>
+    </scroll-view>
+  </view>
+
+
+</view>

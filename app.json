@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/merchantDetails/merchantDetails",
-    "pages/merchantList/merchantList"
+    "pages/merchantList/merchantList",
+    "pages/orderList/orderList",
+    "pages/orderList/orderDeatail/orderDeatail"
   ],
   "window":{
     "backgroundTextStyle":"light",
