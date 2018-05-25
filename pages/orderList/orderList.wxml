@@ -21,12 +21,12 @@
       </view>
       <view class="flexItem columnStyle tableViewCell" catchtap="goDeatailEvent">
         <view class="flexItem rowStyle mmarginBottom10 cellStyle">
-          <label class="color54 fontSize12">预约时间</label>
-          <label class="fontSize14">{{apointmentTime}}</label>
+          <label class="color54 fontSize12">桌号</label>
+          <label class="fontSize14">{{tableNum}}</label>
         </view>
         <view class="flexItem rowStyle mmarginBottom10 cellStyle">
-          <label class="color54 fontSize12">预约人数</label>
-          <label class="color54 fontSize12">{{appointmentNum}} 人</label>
+          <label class="color54 fontSize12">用餐人数</label>
+          <label class="color54 fontSize12">{{dineNum}} 人</label>
         </view>
         <view class="flexItem rowStyle mmarginBottom10 cellStyle">
           <label class="color54 fontSize12">下单时间</label>

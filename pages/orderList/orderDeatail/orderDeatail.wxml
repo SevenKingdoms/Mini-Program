@@ -6,7 +6,7 @@
         <label class="color54 fontSize12">订单编号: {{orderNum}}-1</label>
     </view>
 
-    <view class="flexItem rowStyle personInof">
+    <view class="flexItem rowStyle personInfo">
         <view class="flexItem rowStyle marginLeft12 centers">
             <label class="color54 fontSize12">{{nickName}}</label>
         </view>
@@ -19,13 +19,13 @@
 
     <view class="heightAndWidth flexItem columnStyle tableViewCell">
         <view class="flexItem rowStyle marginBottom cellStyle marginRight12 marginLeft12">
-            <label class="color54 fontSize12">预约时间</label>
-            <label class="fontSize14">{{appointmentTime}}</label>
+            <label class="color54 fontSize12">桌号</label>
+            <label class="fontSize14">{{tableNum}}</label>
         </view>
 
         <view class="flexItem rowStyle marginBottom10 cellStyle marginRight12 marginLeft12">
-            <label class="color54 fontSize12">预约人数</label>
-            <label class="color54 fontSize12">{{appointmentNum}}</label>
+            <label class="color54 fontSize12">用餐人数</label>
+            <label class="color54 fontSize12">{{dineNum}}</label>
         </view>
 
         <view class="flexItem rowStyle marginBottom10 cellStyle marginRight12 marginLeft12">
@@ -34,7 +34,7 @@
         </view>
     </view>
 
-    <view class="flexItem rowStyle center orderStatus">
+    <view class="flexItem rowStyle centers orderStatus">
         <image class="statusImage" src="{{statusImage[0]}}"></image>
         <label class="statusText fontSize14">{{statusText[0]}}</label>
     </view>

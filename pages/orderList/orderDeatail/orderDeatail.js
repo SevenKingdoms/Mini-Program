@@ -1,8 +1,8 @@
 Page({
     data: {
         orderNum: 123456789,
-        appointmentNum: 5,
-        appointmentTime: '2017-2-16 11:42',
+        dineNum: 5,
+        tableNum: 3,
         orderTime: '2017-1-16 11:42',
         hasData: true,
         navTab: ["全部", "已支付", "待支付", "已完成", "待处理"],
