@@ -1,10 +1,13 @@
 {
   "pages":[
-    "pages/menu/menu",
     "pages/index/index",
     "pages/logs/logs",
     "pages/merchantDetails/merchantDetails",
-    "pages/userCenter/userCenter"
+    "pages/menu/menu",
+    "pages/userCenter/userCenter",
+    "pages/merchantList/merchantList",
+    "pages/orderList/orderList",
+    "pages/orderList/orderDeatail/orderDeatail"
   ],
   "window":{
     "backgroundTextStyle":"light",
