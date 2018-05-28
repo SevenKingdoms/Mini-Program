@@ -1,0 +1,15 @@
+<!--pages/payment/payment.wxml-->
+<view>
+  <text class='center'>结算确认</text>
+</view>
+
+<view style='margin-top:10px'>
+    <view>桌号：3</view>
+    <view>鸡排1份</view>
+    <view>汉堡1份</view>
+    <view>总额：56元</view>
+</view>
+
+<view style='margin-top:10px'>
+  <button>提交订单</button>
+</view>
