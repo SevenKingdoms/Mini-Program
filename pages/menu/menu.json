@@ -1,0 +1,6 @@
+{
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "菜单",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+}

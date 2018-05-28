@@ -1,0 +1,6 @@
+{
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "商家详情",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+}

@@ -1,0 +1,64 @@
+/**foods.wxss**/
+
+.menu {
+    display: flex;
+    width: 650rpx;
+    height: 1005rpx;
+    flex-direction: column;
+    align-content: center;
+    background: orange;
+    border-radius: 30rpx;
+    box-sizing: border-box;
+}
+
+.foodItem {
+    display: flex;
+    /* height: 300rpx; */
+    height: 335rpx;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    border-top: 2rpx solid gold;
+}
+
+.foodText {
+    display: flex;
+    width: 250rpx;
+    padding: 10%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foodImage {
+    width: 200rpx;
+    height: 200rpx;
+    margin-top: 8%;
+    border-radius:50%;
+}
+
+.tag {
+    background: gold;
+    height: 150rpx;
+    width: 80rpx;
+    margin-top: 100rpx;
+    padding-left: 10rpx;
+    writing-mode: vertical-lr;
+    font-size: xx-small;
+}
+
+.pay {
+    position: fixed;
+    right: 0rpx;
+    bottom: 30rpx;
+}
+
+.basket{
+    position: fixed;
+    width: 110rpx;
+    height: 110rpx;
+    bottom: 30rpx;
+    left: 10rpx;  
+    border: 2rpx solid orange;
+    border-radius: 50%;
+    box-shadow: 0rpx 0rpx 30rpx grey;
+}

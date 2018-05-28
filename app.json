@@ -1,8 +1,10 @@
 {
   "pages":[
+    "pages/menu/menu",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/merchantDetails/merchantDetails"
+    "pages/merchantDetails/merchantDetails",
+    "pages/userCenter/userCenter"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -1,0 +1,25 @@
+/**merchantDetails.wxss**/
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100rpx;
+    box-sizing: border-box;
+}
+
+.userinfo-image {
+    width: 200rpx;
+    height: 200rpx;
+    border: 2rpx solid orange;
+    border-radius:50%;
+}
+
+.userinfo-name {
+    display: flex;
+    margin-top: 100rpx;
+    margin-left: 10%;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: smaller;
+}

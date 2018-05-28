@@ -1,19 +1,20 @@
-<!--restaurantDetails.wxml-->
+<!--merchantDetails.wxml-->
+
 <view class="container">
-    <view class="userinfo">
-        <image class="userinfo-image" src="{{icon}}" background-size="cover"></image>
-        <view class="userinfo-name">{{name}}</view>
-        <view class="userinfo-address">地址：{{address}}</view>
+    <view class="merchantinfo">
+        <image class="merchantinfo-image" src="{{merchant.icon}}" background-size="cover"></image>
+        <view style="font-weight: 900; font-size: larger">{{merchant.name}}</view>
+        <view style="font-size: x-small">地址：{{merchant.address}}</view>
     </view>
     <view class="announcement">
         <view>--公告--</view>
-        <view style="font-size: x-small" wx:for="{{announcement}}" wx:for-item="item">
+        <view style="font-size: x-small" wx:for="{{merchant.announcement}}" wx:for-item="item">
             {{item}}
         </view>
     </view>
     <view class="onsales">
         <view>--特价--</view>
-        <view style="font-size: x-small" wx:for="{{onsales}}" wx:for-item="item">
+        <view style="font-size: x-small" wx:for="{{merchant.onsales}}" wx:for-item="item">
             {{item}}
         </view>
     </view>

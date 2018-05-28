@@ -1,4 +1,4 @@
-/**restaurantDetails.wxss**/
+/**merchantDetails.wxss**/
 
 .container {
     display: flex;
@@ -10,28 +10,18 @@
     box-sizing: border-box;
 }
 
-.userinfo {
+.merchantinfo {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20rpx;
 }
 
-.userinfo-image {
+.merchantinfo-image {
     width: 128rpx;
     height: 128rpx;
     margin: 20rpx;
-    border-radius: 50%;
-}
-
-.userinfo-name {
-    /* color: #aaa; */
-    font-weight: 900;
-    font-size: larger;
-}
-
-.userinfo-address {
-    font-size: x-small;
+    border-radius:50%;
 }
 
 .announcement {
@@ -49,26 +39,7 @@
 }
 
 .enterMenu {
-    text-align: right;
-    margin-top: 200rpx;
+    position: fixed;
+    right: 0rpx;
+    bottom: 100rpx;
 }
-
-/* .usermotto {
-    margin-top: 200px;
-} */
-/* .userinfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-  
-.userinfo-avatar {
-    width: 128rpx;
-    height: 128rpx;
-    margin: 20rpx;
-    border-radius: 50%;
-}
-  
-.userinfo-nickname {
-    color: #aaa;
-} */
