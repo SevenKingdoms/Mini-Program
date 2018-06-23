@@ -6,7 +6,7 @@ Page({
         orderTime: '2017-1-16 11:42',
         hasData: true,
         navTab: ["全部", "已支付", "待支付", "已完成", "待处理"],
-        moneyInfo: [,,,,,,,],
+        moneyInfo: [100,100,100,100,100,100,100,100],
         nickName: '薄凉竟是德',
         phoneNum: '12345678910',
         url: '',

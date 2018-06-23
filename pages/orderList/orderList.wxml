@@ -9,33 +9,43 @@
   <view class="view1 width20" bindtouchstart="catchtouchstart" bindtouchend="catchtouchend">
     <scroll-view class="tableview" scroll-y="true" wx:if="{{hasData}}" wx:for="{{moneyInfo}}" wx:for-item="info">
       <view class="flexItem rowStyle tableViewCellHeader marginTop10" catchtap="goDeatailEvent">
-        <label class="color54 contSize12">订单编号：{{orderNum}}-1</label>
+        <image class="orderImage marginLeft12" src="../icon/dingdan.png"></image>
+        <label class="color54 fontSize12">订单编号：{{ orderNum }}-1</label>
       </view>
       <view class="flexItem rowStyle personInfo" catchtap="goDeatailEvent">
         <view class="flexItem rowStyle marginLeft12 centers">
           <label class="color54 fontSize12">{{nickName}}</label>
         </view>
         <view class="flexItem rowStyle marginRight12 centers" catchtap="callEvent">
+            <image class="call" src="../icon/call.png"></image>
           <label class="color54 fontSize12">{{ phoneNum}}</label>
         </view>
       </view>
       <view class="flexItem columnStyle tableViewCell" catchtap="goDeatailEvent">
-        <view class="flexItem rowStyle mmarginBottom10 cellStyle">
+        <view class="flexItem rowStyle marginBottom10 cellStyle">
           <label class="color54 fontSize12">桌号</label>
-          <label class="fontSize14">{{tableNum}}</label>
+          <label class="color54 fontSize14">{{tableNum}}</label>
         </view>
-        <view class="flexItem rowStyle mmarginBottom10 cellStyle">
+        <view class="flexItem rowStyle marginBottom10 cellStyle">
           <label class="color54 fontSize12">用餐人数</label>
           <label class="color54 fontSize12">{{dineNum}} 人</label>
         </view>
-        <view class="flexItem rowStyle mmarginBottom10 cellStyle">
+        <view class="flexItem rowStyle marginBottom10 cellStyle">
           <label class="color54 fontSize12">下单时间</label>
           <label class="color54 fontSize12">{{orderTime}}</label>
         </view>
       </view>
-      <view class="flexItem rowStyle centers orderStatus" catchtap="goDeatailEvent">
+
+      <view class="flexItem rowStyle moneyInfo" catchtap="goDeatailEvent">
+        <view class="flexItem rowStyle marginLeft12 centers">
+            <label class="color54 fontSize12">订单金额: </label>
+            <label class="color7321 fontSize14">{{info}} 元</label>
+        </view>
+      </view>
+
+      <view class="flexItem rowStyle orderStatus centers" catchtap="goDeatailEvent">
         <label class="statusText fontSize14">{{ statusText[0] }}</label>
-    </view>
+      </view>
     </scroll-view>
   </view>
 
