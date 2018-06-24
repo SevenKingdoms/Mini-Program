@@ -5,6 +5,7 @@ Page({
         user: {
             nick_name: "快点",
             avatar: "../../assets/icon/avatar.jpg",
+            id: 101,
             tel: "13719175459"
         }
     },

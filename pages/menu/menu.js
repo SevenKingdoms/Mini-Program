@@ -1,4 +1,4 @@
-//foods.js
+//menu.js
 
 Page({
     data: {

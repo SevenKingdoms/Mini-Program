@@ -1,20 +1,41 @@
 {
   "pages":[
+    "pages/merchantList/merchantList",
     "pages/index/index",
     "pages/logs/logs",
     "pages/merchantDetails/merchantDetails",
     "pages/menu/menu",
     "pages/userCenter/userCenter",
-    "pages/merchantList/merchantList",
     "pages/orderList/orderList",
     "pages/orderList/orderDeatail/orderDeatail"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "backgroundColor":"#eeeeee",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationStyle":"default",
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#45C7C9",
+    "navigationBarTextStyle":"white",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black",
-    "navigationStyle":"default"
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/merchantList/merchantList",
+        "text": "附近",
+        "iconPath": "assets/icon/nearby.png",
+        "selectedIconPath": "assets/icon/nearby.png"
+      }, {
+        "pagePath": "pages/menu/menu",
+        "text": "菜单",
+        "iconPath": "assets/icon/menu.png",
+        "selectedIconPath": "assets/icon/menu.png"
+      }, {
+        "pagePath": "pages/userCenter/userCenter",
+        "text": "我",
+        "iconPath": "assets/icon/me.png",
+        "selectedIconPath": "assets/icon/me.png"
+      }
+    ],
+    "selectedColor": "#45C7C9"
   }
 }

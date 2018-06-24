@@ -8,17 +8,17 @@
     box-sizing: border-box;
 }
 
-.userinfo-image {
+.userinfo .image {
     width: 200rpx;
     height: 200rpx;
-    border: 2rpx solid orange;
+    border: 2rpx solid #45c7c9;
     border-radius:50%;
 }
 
-.userinfo-name {
+.userinfo .information {
     display: flex;
     margin-top: 100rpx;
-    margin-left: 10%;
+    margin-left: 75rpx;
     flex-direction: column;
     align-items: flex-start;
     font-size: smaller;

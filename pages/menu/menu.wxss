@@ -1,64 +1,155 @@
-/**foods.wxss**/
-
-.menu {
-    display: flex;
-    width: 650rpx;
-    height: 1005rpx;
-    flex-direction: column;
-    align-content: center;
-    background: orange;
-    border-radius: 30rpx;
-    box-sizing: border-box;
+/**menu.wxss**/
+page {
+    height: 100%;
+    overflow: hidden;
 }
 
-.foodItem {
+.page {
+    height: 100%;
+    overflow: hidden;
+}
+
+.header {
+    height: 156rpx;
+    background-color: #45c7c9;
+}
+
+.header .img {
+    position: absolute;
+    width: 124rpx;
+    height: 124rpx;
+    margin-left: 20rpx;
+    margin-top: 16rpx;
+}
+
+.header .stage {
+    position: absolute;
+    height: 40rpx;
+    width: 106rpx;
+    margin-top: 28rpx;
+    margin-left: 162rpx;
+    line-height: 40rpx;
+    font-size: x-small;
+    text-align: center;
+    vertical-align: middle;
+    color: #259b24;
+    border: 3rpx solid;
+    border-radius: 10rpx;
+}
+
+.header .opentime {
+    position: absolute;
+    height: 46rpx;
+    margin-left: 174rpx;
+    margin-top: 90rpx;
+    color: white;
+    font-size: 30rpx;
+}
+
+.header .search {
+    width: 36rpx;
+    height: 36rpx;
+    margin-left: 690rpx;
+    margin-top: 40rpx;
+}
+
+.container {
     display: flex;
-    /* height: 300rpx; */
-    height: 335rpx;
     flex-direction: row;
-    justify-content: space-around;
-    align-content: center;
-    border-top: 2rpx solid gold;
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 100rpx;
 }
 
-.foodText {
-    display: flex;
-    width: 250rpx;
-    padding: 10%;
-    flex-direction: column;
-    align-items: center;
+.classify-container {
+    width: 226rpx;
+    height: 100%;
+    background: rgba(247, 247, 247, 1);
 }
 
-.foodImage {
-    width: 200rpx;
+.classify-container .classify {
+    padding: 40rpx 0rpx;
+    text-align: center;
+    font-size: smaller;
+}
+
+.classify-container .classify.active {
+    background: rgba(230, 230, 230, 1);
+    color: #45c7c9;
+}
+
+.foods-container {
+    height: 100%;
+}
+
+.foods-container .title {
+    color: #646464;
+    font-size: 30rpx;
+    padding: 10rpx 25rpx;
+    background: #f7f7f7;
+}
+
+.foods-container .foods {
     height: 200rpx;
-    margin-top: 8%;
-    border-radius:50%;
 }
 
-.tag {
-    background: gold;
-    height: 150rpx;
-    width: 80rpx;
-    margin-top: 100rpx;
-    padding-left: 10rpx;
-    writing-mode: vertical-lr;
-    font-size: xx-small;
+.foods-container .foods .img {
+    position: absolute;
+    width: 160rpx;
+    height: 160rpx;
+    margin-left: 20rpx;
+    margin-top: 20rpx;
 }
 
-.pay {
-    position: fixed;
-    right: 0rpx;
-    bottom: 30rpx;
+.foods-container .foods .name {
+    position: absolute;
+    height: 46rpx;
+    margin-left: 200rpx;
+    margin-top: 15rpx;
+    font-size: smaller;
 }
 
-.basket{
-    position: fixed;
-    width: 110rpx;
-    height: 110rpx;
-    bottom: 30rpx;
-    left: 10rpx;  
-    border: 2rpx solid orange;
+.foods-container .foods .introduction {
+    position: absolute;
+    height: 40rpx;
+    margin-left: 210rpx;
+    margin-top: 66rpx;
+    font-size: 25rpx;
+    color: #757575;
+}
+
+.foods-container .foods .sale {
+    position: absolute;
+    height: 40rpx;
+    margin-left: 200rpx;
+    margin-top: 115rpx;
+    font-size: 25rpx;
+    color: #757575;
+}
+
+.foods-container .foods .price {
+    position: absolute;
+    height: 45rpx;
+    margin-left: 200rpx;
+    margin-top: 155rpx;
+    font-size: 30rpx;
+    color: red;
+}
+
+.foods-container .foods .addButton {
+    position: absolute;
+    width: 60rpx;
+    height: 60rpx;
+    margin-left: 480rpx;
+    margin-top: 140rpx;
+    background: #45c7c9;
     border-radius: 50%;
-    box-shadow: 0rpx 0rpx 30rpx grey;
 }
+
+.foods-container .foods .addButton image {
+    pointer-events: none;
+    width: 24rpx;
+    height: 24rpx;
+    margin-left: 18rpx;
+}
+

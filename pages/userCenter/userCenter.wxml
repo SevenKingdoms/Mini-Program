@@ -2,9 +2,10 @@
 
 
 <view class="userinfo">
-    <image class="userinfo-image" src="{{user.avatar}}" background-size="cover"></image>
-    <view class="userinfo-name">
+    <image class="image" src="{{user.avatar}}" background-size="cover"></image>
+    <view class="information">
         <view>昵称：{{user.nick_name}}</view>
+        <view style="margin-top: 30rpx">ID：{{user.id}}</view>
         <view style="margin-top: 30rpx">电话：{{user.tel}}</view>
     </view>
 </view>

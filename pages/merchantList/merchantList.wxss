@@ -1,23 +1,132 @@
-/**restaurantList.wxss**/
-.restaurant-list {
-  position: relative;
-  margin-top: -90px;
-  width: 90%;
-  height: 500px;
-  border-style: solid;
-  border-width: 1px;
+/**merchantList.wxss**/
+.page {
+  overflow: hidden;
 }
 
-.restaurant-item {
+.position {
+  background-color: #45C7C9;
+  display: flex;
+  flex-direction: row;
+  height: 94rpx;
   width: 100%;
-  height: 25%;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
+}
+
+.position .icon {
+  margin-top: 24rpx;
+  margin-left: 34rpx;
+  width: 48rpx;
+  height: 48rpx;
+  background-color: #45C7C9;
+}
+
+.position .address {
+  margin-top: 28rpx;
+  color: white;
+  font-size: smaller;
+  font-family: Arial;
+}
+
+.search {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 220rpx;
+}
+
+.search .input {
+  display: flex; 
+  flex-direction: row; 
+  height: 60rpx;
+  margin: 20rpx 0rpx 0rpx 30rpx;
+}
+
+.search .img {
+  margin: 8rpx 0rpx 16rpx 22rpx;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.search .tag {
+  display: flex;
+  flex-direction: row;
+  height: 46rpx;
+  margin-left: 70rpx;
+  font-size: smaller;
+}
+
+.nearby {
+  height: 46rpx; 
+  margin-top: 20rpx; 
+  display: flex; 
+  flex-direction: row; 
+  justify-content: center;
+}
+
+.nearby .line {
+  width: 210rpx;
+  margin-top: 22rpx;
+  border-top: 2rpx solid #ccc;
+}
+
+.nearby .txt {
+  color: rgba(16, 16, 16, 0.5);
+  vertical-align: middle;
+  margin-left: 34rpx;
+  margin-right: 34rpx;
+  font-size: smaller;
+}
+
+.merchant {
+  height: 154rpx;
+}
+
+.merchant .img {
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  margin-top: 16rpx;
+  margin-left: 30rpx;
+}
+
+.merchant .name {
+  position: absolute;
+  height: 46rpx;
+  width: 200rpx;
+  margin-top: 22rpx;
+  margin-left: 180rpx;
+  font-size: smaller;
+}
+
+.merchant .stage {
+  position: absolute;
+  height: 40rpx;
+  width: 106rpx;
+  margin-top: 28rpx;
+  margin-left: 604rpx;
+  line-height: 40rpx;
+  font-size: x-small;
+  text-align: center;
+  vertical-align: middle;
+  color: #259b24;
+  border: 3rpx solid;
+  border-radius: 10rpx;
+}
+
+.merchant .line {
+  position: absolute;
+  width: 538rpx;
+  height: 2rpx;
+  margin-top: 152rpx;
+  margin-left: 180rpx;
+  background-color: #ccc;
+}
+
+.bottom {
+  text-align: center; 
+  color: #ccc; 
+  margin-top: 40rpx;
+  font-size: 30rpx;
 }
 
 
-.nextPage {
-  margin-left: 70%;
-  margin-top: 20%;
-}
+

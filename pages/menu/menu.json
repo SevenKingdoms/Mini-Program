@@ -1,6 +1,3 @@
 {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "菜单",
-    "backgroundTextStyle": "dark",
-    "enablePullDownRefresh": true
+    "navigationBarTitleText": "兰州拉面"
 }

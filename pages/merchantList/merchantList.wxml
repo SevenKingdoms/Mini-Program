@@ -1,9 +1,49 @@
-<!--restaurantList.wxml-->
-<view class="container">
-  <view class="restaurant-list" >
-    <view class="restaurant-item" wx:for="{{[1, 2, 3, 4]}}" wx:for-item="idx">
-      <view class="choseRestaurant" bindtap="choseRestaurant">商家{{idx}}</view>
+<!--merchantList.wxml-->
+<view class="page">
+  <view class="position">
+    <image class="icon" src="../../assets/icon/nearby.png"/>
+    <view class="address">番禺区中山大学东校区西北100米</view>
+  </view>
+
+  <view class="search">
+    <view class="input">
+      <view style="background-color: #F7F7F7; width: 620rpx; display: flex; flex-direction: row">
+        <image class="img" src="../../assets/icon/search.png"></image>
+        <view style="font-size: 75%; margin: 8rpx 0rpx 0rpx 20rpx">搜索</view>
+      </view>
+      <image style="width: 50rpx; height: 50rpx; margin-top: 5rpx; margin-left: 22rpx" src="../../assets/icon/scan.png"></image>
+    </view>
+    <view class="tag" style="margin-top: 20rpx;">
+      <view style="margin-right: 96rpx;">美食</view>
+      <view style="margin-right: 96rpx">甜点</view>
+    </view>
+    <view class="tag" style="margin-top: 10rpx;">
+      <view style="margin-right: 96rpx;">自助餐</view>
+      <view style="margin-right: 96rpx;">日本料理</view>
     </view>
   </view>
-  <button class="nextPage">下一页</button>
-</view>
+
+  <view style="height: 20rpx; background-color: #F7F7F7"></view>
+
+  <view class="nearby">
+    <view class="line"></view>
+    <view class="txt">附近商家</view>
+    <view class="line"></view>
+  </view>
+  
+  <view class="merchant" style="margin-top: 14rpx">
+    <image class="img" src="../../assets/icon/merchant.jpeg"></image>
+    <view class="name">兰州拉面</view>
+    <view class="stage">营业中</view>
+    <view class="line"></view>
+  </view>
+
+  <view class="merchant" style="margin-top: 8rpx">
+      <image class="img" src="../../assets/icon/merchant.jpeg"></image>
+      <view class="name">兰州不拉面</view>
+      <view class="stage" style="color: #ccc">休息中</view>
+      <view class="line"></view>
+  </view>
+
+  <view class="bottom">暂无更多商家</view>
+</view> 
