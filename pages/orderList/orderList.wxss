@@ -119,7 +119,7 @@ page {
   border-bottom: dashed #ccc 1px;
 }
 
-tableViewCellStyle {
+.tableViewCellStyle {
   background-color: white;
 }
 
@@ -252,4 +252,13 @@ border-bottom: solid 3px #ed7321;
 
 .width20 {
   width: 20%;
+}
+
+.moneyInfo {
+  width: 100%;
+  height: 44px;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: dashed #ccc 1px;
 }

@@ -8,10 +8,10 @@ Page({
     orderNum: 123456789,
     dineNum: 5,
     tableNum: 3,
-    orderTime: '2017年1月16日  11:42',
+    orderTime: '2018年1月16日  11:42',
     hasData: true,
     navTab: ["全部", "已支付", "待支付", "已完成", "客户处理"],
-    moneyInfo: [,,,,,,,],
+    moneyInfo: [100,100,100,100,100,100,100,100],
     nickName: '薄凉竟是德',
     phoneNum: '18202801506',
     url: 'http://60.205.161.252//Public/uploads/app/2016-12-15/58523b031fa7b.png',
@@ -19,6 +19,7 @@ Page({
     currentNavtab:0,
     statusText: ['待支付'],
     startPoint:[0,0]
+    
   },
 
   catchtouchstart:function(e){

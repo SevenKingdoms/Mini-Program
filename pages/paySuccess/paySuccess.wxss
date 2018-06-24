@@ -1,0 +1,5 @@
+/* pages/paySuccess/paySuccess.wxss */
+.center{
+  display: flex;
+  justify-content: center;
+}
