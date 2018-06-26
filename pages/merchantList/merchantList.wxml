@@ -31,18 +31,12 @@
     <view class="line"></view>
   </view>
   
-  <view class="merchant" style="margin-top: 14rpx">
-    <image class="img" src="../../assets/icon/merchant.jpeg"></image>
-    <view class="name">兰州拉面</view>
-    <view class="stage">营业中</view>
+  <view class="merchant" wx:for="{{merchants}}" wx:key="merchant_id" bindtap="touchMerchant" data-merchant="{{merchants[index]}}" data-stage="{{stages[index]}}">
+    <image class="img" src="{{item.avatar}}"></image>
+    <view class="name">{{item.name}}</view>
+    <view class="stage" wx:if="{{stages[index] == '营业中'}}">{{stages[index]}}</view>
+    <view class="stage" wx:else style="color: #ccc">{{stages[index]}}</view>
     <view class="line"></view>
-  </view>
-
-  <view class="merchant" style="margin-top: 8rpx">
-      <image class="img" src="../../assets/icon/merchant.jpeg"></image>
-      <view class="name">兰州不拉面</view>
-      <view class="stage" style="color: #ccc">休息中</view>
-      <view class="line"></view>
   </view>
 
   <view class="bottom">暂无更多商家</view>

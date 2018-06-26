@@ -14,34 +14,32 @@ Page({
     chosenTag: {},
     merchants: [
       {
+        "merchant_id": 1,
         "avatar": "../../assets/icon/merchant.jpeg",
         "name": "兰州拉面",
         "address": "广州大学城",
         "opentime": "营业中",
-        "announcement": [
-          "xxx"
-        ],
-        "onsales": [
-          "xxx优惠十元"
-        ]
+        "announcement": ["xxx"],
+        "onsales": ["xxx优惠十元"]
       },{
+        "merchant_id": 2,
         "avatar": "../../assets/icon/merchant.jpeg",
         "name": "兰州不拉面",
         "address": "广州大学城",
         "opentime": "休息中",
-        "announcement": [
-          "xxx"
-        ],
-        "onsales": [
-          "xxx优惠十元"
-        ]
+        "announcement": ["xxx"],
+        "onsales": ["xxx优惠十元"]
       }
-    ]
+    ],
+    stages: ["营业中"]
   },
 
   onLoad: function () {
     var that = this;
     // 从数据库获取所有的商家
+    //初始化globaldata中的商家信息
+    app.globalData.merchantInfo = that.data.merchants[0];
+    app.globalData.stage = that.data.stages[0];
     // 实例化腾讯地图API核心类
     qqmapsdk = new QQMapWX({
       key: 'FO6BZ-RJXW4-L6DUL-DQ3HK-FLDQJ-A6BQK'
@@ -64,6 +62,10 @@ Page({
         })
       }
     })
+  },
+
+  onShow: function() {
+    this.confirmStage();
   },
 
   scanCode: function() {
@@ -89,5 +91,30 @@ Page({
       chosenTag: e.currentTarget.dataset.tag
     })
     console.log(this.data.chosenTag);
+  },
+
+  confirmStage: function() {
+    // console.log(this.data.merchants);
+    var tempStages = [];
+    for(var i = 0; i < this.data.merchants.length; i++) {
+      if(this.data.merchants[i].opentime === "营业中") {
+        tempStages[i] = "营业中"
+      }
+      else {
+        tempStages[i] = "休息中"
+      }
+    }
+    this.setData({
+      stages: tempStages
+    })
+    console.log(this.data.stages);
+  },
+
+  touchMerchant: function(e) {
+    app.globalData.merchantInfo = e.currentTarget.dataset.merchant;
+    app.globalData.stage = e.currentTarget.dataset.stage;
+    wx.switchTab({
+      url: '../menu/menu'
+    })
   }
 })
