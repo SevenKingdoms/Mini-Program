@@ -1,45 +1,146 @@
 /**merchantDetails.wxss**/
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    align-content: space-between;
-    padding: 50rpx 0;
-    box-sizing: border-box;
+page {
+    height: 100%;
+    overflow: hidden;
 }
 
-.merchantinfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20rpx;
+.page {
+    height: 100%;
+    overflow: hidden;
 }
 
-.merchantinfo-image {
-    width: 128rpx;
-    height: 128rpx;
-    margin: 20rpx;
+.merchantAvatar {
+    float: left;
+    width: 180rpx;
+    height: 180rpx;
+    margin-top: 16rpx;
+    margin-left: 275rpx;
     border-radius:50%;
 }
 
-.announcement {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100rpx;
+.upperhalf {
+    height: 156rpx;
+    background: #45c7c9;
 }
 
-.onsales {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100rpx;
+.lowerhalf {
+    height: 156rpx;
 }
 
-.enterMenu {
-    position: fixed;
-    right: 0rpx;
-    bottom: 100rpx;
+.lowerhalf .opentime {
+    padding-top: 50rpx;
+    margin-left: 40rpx;
+    height: 46rpx;
+    width: 100%;
+    font-size: 75%;
+}
+
+.lowerhalf .address {
+    margin-top: 5rpx;
+    margin-left: 40rpx;
+    height: 46rpx;
+    width: 100%;
+    font-size: 75%;
+}
+
+.title {
+    height: 100rpx;
+    width: 100%;
+    text-align: center;
+    line-height: 100rpx;
+    vertical-align: middle;
+    font-size: 90%;
+    border-bottom: 2rpx solid #f7f7f7;
+}
+
+.title .information {
+    position: absolute;
+    width: 50%;
+    height: 90rpx;
+}
+
+.title .remark {
+    position: absolute;
+    margin-left: 50%;
+    width: 50%;
+    height: 90rpx;
+}
+
+.title .underline {
+    position: absolute;
+    margin-top: 90rpx;
+    width: 60rpx;
+    height: 10rpx;
+    background: #45c7c9;
+}
+
+.info {
+    display: flex;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 40rpx;
+    padding-left: 30rpx;
+    padding-right: 24rpx;
+    font-size: 80%;
+}
+
+.remarkContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.remarkContainer .remark {
+    height: 200rpx;
+}
+
+.remarkContainer .remark .avatar {
+    position: absolute;
+    height: 90rpx;
+    width: 90rpx;
+    border-radius: 50%;
+    margin-top: 30rpx;
+    margin-left: 40rpx;
+}
+
+.remarkContainer .remark .name {
+    position: absolute;
+    height: 46rpx;
+    width: 200rpx;
+    margin-top: 30rpx;
+    margin-left: 160rpx;
+    font-size: 75%;
+}
+
+.remarkContainer .remark .time {
+    position: absolute;
+    height: 46rpx;
+    width: 160rpx;
+    margin-top: 30rpx;
+    margin-left: 560rpx;
+    font-size: 65%;
+    color: #757575;
+}
+
+.remarkContainer .remark .score {
+
+}
+
+.remarkContainer .remark .content {
+    position: absolute;
+    height: 80rpx;
+    width: 100%;
+    margin-top: 115rpx;
+    margin-left: 160rpx;
+    font-size: 75%;
+}
+
+.remarkContainer .remark .line {
+    position: absolute;
+    width: 100%;
+    height: 5rpx;
+    margin-top: 195rpx;
+    margin-left: 160rpx;
+    background-color: #f7f7f7;
 }

@@ -1,36 +1,54 @@
 //menu.js
 
+const app = getApp();
+
 Page({
     data: {
-        foods: [
-            {
-                name: "巨无霸",
-                image: "../../assets/icon/巨无霸.png",
-                price: 100,
-                introduction: "好吃"
-            }, 
-            {
-                name: "吉士蛋堡",
-                image: "../../assets/icon/吉士蛋堡.png",
-                price: 100,
-                introduction: "美味"
-            },
-            {
-                name: "麦香鸡",
-                image: "../../assets/icon/麦香鸡.png",
-                price: 100,
-                introduction: "香辣"
-            }
-        ],
-        tags: ["汉堡", "甜品", "饮料"],
-        basket: {
-            image: "../../assets/icon/basket.jpg"
-        }
+        merchantInfo: {},
+        stage: null,
+        searchFlag: false
     },
 
-    bindViewTap: function () {
+    onLoad: function() {
+        var that = this;
+        // if(!app.globalData.merchantInfo || !app.globalData.stage) {
+        //     wx.switchTab({
+        //         url: '../merchantList/merchantList'
+        //     })
+        // }
+    },
+
+    onShow: function() {
+        var that = this;
+        //获取选中的商家的信息
+        that.setData({
+            merchantInfo: app.globalData.merchantInfo,
+            stage: app.globalData.stage
+        })
+        wx.setNavigationBarTitle({
+            title: that.data.merchantInfo.name,
+            success: function(res) {
+                // success
+                console.log(that.data.merchantInfo.avatar);
+            }
+        })
+    },
+
+    navigateToDetail: function() {
         wx.navigateTo({
-            url: '../userCenter/userCenter'
+            url: '../merchantDetails/merchantDetails'
+        })
+    },
+
+    touchSearch: function() {
+        this.setData({
+            searchFlag: true
+        })
+    },
+
+    touchClose: function() {
+        this.setData({
+            searchFlag: false
         })
     }
 })

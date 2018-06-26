@@ -27,7 +27,7 @@ page {
     height: 40rpx;
     width: 106rpx;
     margin-top: 28rpx;
-    margin-left: 162rpx;
+    margin-left: 180rpx;
     line-height: 40rpx;
     font-size: x-small;
     text-align: center;
@@ -40,17 +40,48 @@ page {
 .header .opentime {
     position: absolute;
     height: 46rpx;
-    margin-left: 174rpx;
+    margin-left: 192rpx;
     margin-top: 90rpx;
     color: white;
     font-size: 30rpx;
 }
 
 .header .search {
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 690rpx;
+    margin-top: 30rpx;
+}
+
+.searchBox {
+    display: flex; 
+    flex-direction: row; 
+    height: 76rpx;
+    margin: 22rpx 12rpx 16rpx;
+    background: #f7f7f7;
+}
+
+.searchBox .img {
     width: 36rpx;
     height: 36rpx;
-    margin-left: 690rpx;
-    margin-top: 40rpx;
+    margin-top: 18rpx;
+    margin-left: 30rpx;
+}
+
+.searchBox .input {
+    height: 100%;
+    font-size: 75%;
+    margin-left: 20rpx;
+    vertical-align: middle;
+    width: 80%;
+}
+
+.searchBox .close {
+    height: 40rpx;
+    width: 40rpx;
+    margin-top: 18rpx;
+    margin-left: 10rpx;
 }
 
 .container {
@@ -104,6 +135,7 @@ page {
 .foods-container .foods .name {
     position: absolute;
     height: 46rpx;
+    width: 100%;
     margin-left: 200rpx;
     margin-top: 15rpx;
     font-size: smaller;
@@ -112,6 +144,7 @@ page {
 .foods-container .foods .introduction {
     position: absolute;
     height: 40rpx;
+    width: 100%;
     margin-left: 210rpx;
     margin-top: 66rpx;
     font-size: 25rpx;
@@ -147,9 +180,11 @@ page {
 }
 
 .foods-container .foods .addButton image {
+    position: absolute;
     pointer-events: none;
     width: 24rpx;
     height: 24rpx;
     margin-left: 18rpx;
+    margin-top: 18rpx;
 }
 

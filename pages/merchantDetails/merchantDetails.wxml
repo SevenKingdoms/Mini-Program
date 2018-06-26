@@ -1,25 +1,34 @@
 <!--merchantDetails.wxml-->
 
-<view class="container">
-    <view class="merchantinfo">
-        <image class="merchantinfo-image" src="{{merchant.icon}}" background-size="cover"></image>
-        <view style="font-weight: 900; font-size: larger">{{merchant.name}}</view>
-        <view style="font-size: x-small">地址：{{merchant.address}}</view>
+<view class="page">
+    <image class="merchantAvatar" src="{{merchantInfo.avatar}}"></image>
+    <view class="upperhalf"></view>
+    <view class="lowerhalf">
+        <view class="opentime">营业时间: 11:00-21:30</view>
+        <view class="address">地址: {{merchantInfo.address}}</view>
     </view>
-    <view class="announcement">
-        <view>--公告--</view>
-        <view style="font-size: x-small" wx:for="{{merchant.announcement}}" wx:for-item="item">
-            {{item}}
+    <view style="height: 20rpx; background: #f7f7f7"></view>
+
+    <view class="title">
+        <view class="information" bindtap="touchInformation">商家信息</view>
+        <view class="remark" bindtap="touchRemark">商家评论</view>
+        <view wx:if="{{isTouchInfo}}" class="underline" style="margin-left: 157rpx"></view>
+        <view wx:else class="underline" style="margin-left: 532rpx"></view>
+    </view>
+
+    <view wx:if="{{isTouchInfo}}">
+        <text class="info" selectable="true" space="true" decode="true">如果你无法简洁的表达你的想法，那只说明你还不够了解它。\n
+            &ensp;-- 阿尔伯特·爱因斯坦
+        </text>
+    </view>
+    <scroll-view wx:else class="remarkContainer" scroll-y="true">
+        <view class="remark" wx:for="{{remarks}}">
+            <image class="avatar" src="{{item.avatar}}"></image>
+            <view class="name">{{item.name}}</view>
+            <view class="time">{{item.publish_at}}</view>
+            <view class="content">{{item.remark}}</view>
+            <view class="line"></view>
         </view>
-    </view>
-    <view class="onsales">
-        <view>--特价--</view>
-        <view style="font-size: x-small" wx:for="{{merchant.onsales}}" wx:for-item="item">
-            {{item}}
-        </view>
-    </view>
-</view>
-<view class="enterMenu">
-    <button bindtap="bindViewTap" type="primary" size="mini" plain="true" >进入菜单</button>
+    </scroll-view>
 </view>
   

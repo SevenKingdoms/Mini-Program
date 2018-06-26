@@ -1,12 +1,21 @@
 <!--merchantDetails.wxml-->
 
-
 <view class="userinfo">
-    <image class="image" src="{{user.avatar}}" background-size="cover"></image>
-    <view class="information">
-        <view>昵称：{{user.nick_name}}</view>
-        <view style="margin-top: 30rpx">ID：{{user.id}}</view>
-        <view style="margin-top: 30rpx">电话：{{user.tel}}</view>
-    </view>
+    <block wx:if="{{!hasUserInfo && canIUse}}">
+        <button class="avatar" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+        <view class="warn">点击头像登录</view>
+    </block>
+    <block wx:else>
+        <image class="avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <view class="name">{{userInfo.nickName}}</view>
+        <!-- 暂时还不能获取手机号码 -->
+        <!-- <view class="tel">{{userInfo.tel}}</view> -->
+        <view class="tel">13719175479</view>
+    </block>
+</view>
+<view class="myOrder" bindtap="goOrderList">
+    <image class="img" src="../../assets/icon/order.png"></image>
+    <view class="txt">我的订单</view>
+    <image class="goto" src="../../assets/icon/goto.png"></image>
 </view>
   

@@ -33,20 +33,35 @@
   height: 220rpx;
 }
 
-.search .input {
+.search .searchBox {
   display: flex; 
   flex-direction: row; 
   height: 60rpx;
   margin: 20rpx 0rpx 0rpx 30rpx;
 }
 
-.search .img {
-  margin: 8rpx 0rpx 16rpx 22rpx;
+.search .icon {
+  margin-top: 8rpx;
+  margin-left: 22rpx;
   width: 36rpx;
   height: 36rpx;
 }
 
-.search .tag {
+.search .input {
+  height: 100%;
+  font-size: 75%; 
+  margin-left: 20rpx;
+  width: 100%;
+}
+
+.search .scan {
+  width: 50rpx; 
+  height: 50rpx; 
+  margin-top: 5rpx; 
+  margin-left: 22rpx;
+}
+
+.search .tagBox {
   display: flex;
   flex-direction: row;
   height: 46rpx;
@@ -54,9 +69,16 @@
   font-size: smaller;
 }
 
+/* .search .tag {
+  background: rgb(228, 227, 227);
+  border-radius: 10%;
+  padding: 0rpx 10rpx;
+} */
+
 .nearby {
   height: 46rpx; 
-  margin-top: 20rpx; 
+  padding-top: 20rpx; 
+  padding-bottom: 6rpx;
   display: flex; 
   flex-direction: row; 
   justify-content: center;
@@ -78,6 +100,7 @@
 
 .merchant {
   height: 154rpx;
+  margin-top: 8rpx;
 }
 
 .merchant .img {

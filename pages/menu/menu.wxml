@@ -1,10 +1,15 @@
 <!--menu.wxml-->
 <view class="page">
-    <view class="header">
-        <image class="img" src="../../assets/icon/merchant.jpeg"></image>
-        <view class="stage">营业中</view>
+    <view class="header" wx:if="{{!searchFlag}}" bindtap="navigateToDetail" hover-class="navigator-hover">
+        <image class="img" src="{{merchantInfo.avatar}}"></image>
+        <view class="stage">{{stage}}</view>
         <view class="opentime">营业时间: 11:00-21:30</view>
-        <image class="search" src="../../assets/icon/search.png"></image>
+        <image class="search" src="../../assets/icon/search.png" catchtap="touchSearch"></image>
+    </view>
+    <view class="searchBox" wx:else>
+        <image class="img" src="../../assets/icon/searchBlue.png"></image>
+        <input class="input" placeholder="搜索" bindconfirm="inputConfirm" confirm-type="search" maxlength="20"/>
+        <image class="close" src="../../assets/icon/close.png" catchtap="touchClose"></image>
     </view>
 
     <view class="container">

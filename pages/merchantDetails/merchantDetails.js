@@ -1,19 +1,44 @@
 //merchantDetails.js
 
+const app = getApp();
+
 Page({
     data: {
-        merchant: {
-            address: "大学城麦当劳",
-            announcement: ["尽量自助点餐"],
-            onsales: ["巨无霸买一送一"],
-            icon: "../../assets/icon/mcdonald.png",
-            name: "麦当劳"
-        }
+        merchantInfo: {},
+        isTouchInfo: true,
+        remarks: [
+            {
+                avatar: "../../assets/icon/avatar.jpeg",
+                name: "isanbel",
+                score: 4.2,
+                remark: "默认好评",
+                publish_at: "2018-06-22"
+            }, {
+                avatar: "../../assets/icon/avatar.jpeg",
+                name: "isanbel",
+                score: 4.2,
+                remark: "下午茶时间",
+                publish_at: "2018-06-22"
+            }
+        ]
     },
     
-    bindViewTap: function () {
-        wx.navigateTo({
-            url: '../menu/menu'
+    onShow: function() {
+        var that = this;
+        this.setData({
+            merchantInfo: app.globalData.merchantInfo
+        })
+    },
+
+    touchInformation: function() {
+        this.setData({
+            isTouchInfo: true
+        })
+    },
+
+    touchRemark: function() {
+        this.setData({
+            isTouchInfo: false
         })
     }
 })
