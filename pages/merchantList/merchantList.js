@@ -15,7 +15,7 @@ Page({
     merchants: [
       {
         "merchant_id": 1,
-        "avatar": "../../assets/icon/merchant.jpeg",
+        "avatar": "../../assets/images/merchant.jpeg",
         "name": "兰州拉面",
         "address": "广州大学城",
         "opentime": "营业中",
@@ -23,7 +23,7 @@ Page({
         "onsales": ["xxx优惠十元"]
       },{
         "merchant_id": 2,
-        "avatar": "../../assets/icon/merchant.jpeg",
+        "avatar": "../../assets/images/merchant.jpeg",
         "name": "兰州不拉面",
         "address": "广州大学城",
         "opentime": "休息中",

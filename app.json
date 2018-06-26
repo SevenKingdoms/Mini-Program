@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/userCenter/userCenter",
     "pages/menu/menu",
+    "pages/userCenter/userCenter",
     "pages/merchantDetails/merchantDetails",
     "pages/merchantList/merchantList",
     "pages/orderList/orderList",
@@ -20,18 +20,18 @@
       {
         "pagePath": "pages/merchantList/merchantList",
         "text": "附近",
-        "iconPath": "assets/icon/eye.png",
-        "selectedIconPath": "assets/icon/eye.png"
+        "iconPath": "assets/icons/eye.png",
+        "selectedIconPath": "assets/icons/eye.png"
       }, {
         "pagePath": "pages/menu/menu",
         "text": "菜单",
-        "iconPath": "assets/icon/menu.png",
-        "selectedIconPath": "assets/icon/menu.png"
+        "iconPath": "assets/icons/menu.png",
+        "selectedIconPath": "assets/icons/menu.png"
       }, {
         "pagePath": "pages/userCenter/userCenter",
         "text": "我",
-        "iconPath": "assets/icon/user.png",
-        "selectedIconPath": "assets/icon/user.png"
+        "iconPath": "assets/icons/user.png",
+        "selectedIconPath": "assets/icons/user.png"
       }
     ],
     "selectedColor": "#45C7C9"

@@ -4,12 +4,12 @@
         <image class="img" src="{{merchantInfo.avatar}}"></image>
         <view class="stage">{{stage}}</view>
         <view class="opentime">营业时间: 11:00-21:30</view>
-        <image class="search" src="../../assets/icon/search.png" catchtap="touchSearch"></image>
+        <image class="search" src="../../assets/icons/search.png" catchtap="touchSearch"></image>
     </view>
     <view class="searchBox" wx:else>
-        <image class="img" src="../../assets/icon/searchBlue.png"></image>
+        <image class="img" src="../../assets/icons/searchBlue.png"></image>
         <input class="input" placeholder="搜索" bindconfirm="inputConfirm" confirm-type="search" maxlength="20"/>
-        <image class="close" src="../../assets/icon/close.png" catchtap="touchClose"></image>
+        <image class="close" src="../../assets/icons/close.png" catchtap="touchClose"></image>
     </view>
 
     <view class="container">
@@ -25,23 +25,23 @@
                 推荐
             </view>
             <view class="foods">
-                <image class="img" src="../../assets/icon/merchant.jpeg"></image>
+                <image class="img" src="../../assets/images/merchant.jpeg"></image>
                 <view class="name">牛肉拉面</view>
                 <view class="introduction">正宗潮汕拉面，纯牛肉制作无添加</view>
                 <view class="sale">月售  10</view>
                 <view class="price">￥10/份</view>
                 <view class="addButton">
-                    <image src="../../assets/icon/plus.png"></image>
+                    <image src="../../assets/icons/plus.png"></image>
                 </view>
             </view>
             <view class="foods">
-                <image class="img" src="../../assets/icon/merchant.jpeg"></image>
+                <image class="img" src="../../assets/images/merchant.jpeg"></image>
                 <view class="name">牛肉拉面</view>
                 <view class="introduction">正宗潮汕拉面，纯牛肉制作无添加</view>
                 <view class="sale">月售  10</view>
                 <view class="price">￥10/份</view>
                 <view class="addButton">
-                    <image src="../../assets/icon/plus.png"></image>
+                    <image src="../../assets/icons/plus.png"></image>
                 </view>
             </view>
         </scroll-view>

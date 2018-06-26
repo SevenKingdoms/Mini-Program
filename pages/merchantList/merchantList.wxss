@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-.position .icon {
+.position .img {
   margin-top: 24rpx;
   margin-left: 34rpx;
   width: 48rpx;
@@ -40,7 +40,7 @@
   margin: 20rpx 0rpx 0rpx 30rpx;
 }
 
-.search .icon {
+.search .img {
   margin-top: 8rpx;
   margin-left: 22rpx;
   width: 36rpx;

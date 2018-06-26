@@ -8,13 +8,13 @@ Page({
         isTouchInfo: true,
         remarks: [
             {
-                avatar: "../../assets/icon/avatar.jpeg",
+                avatar: "../../assets/images/avatar.jpeg",
                 name: "isanbel",
                 score: 4.2,
                 remark: "默认好评",
                 publish_at: "2018-06-22"
             }, {
-                avatar: "../../assets/icon/avatar.jpeg",
+                avatar: "../../assets/images/avatar.jpeg",
                 name: "isanbel",
                 score: 4.2,
                 remark: "下午茶时间",

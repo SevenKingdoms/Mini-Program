@@ -45,7 +45,7 @@ App({
     merchantInfo: 
     {
       "merchant_id": 1,
-      "avatar": "../../assets/icon/merchant.jpeg",
+      "avatar": "../../assets/images/merchant.jpeg",
       "name": "兰州拉面",
       "address": "广州大学城",
       "opentime": "营业中",
