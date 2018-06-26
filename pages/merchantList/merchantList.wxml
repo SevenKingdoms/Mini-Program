@@ -1,25 +1,25 @@
 <!--merchantList.wxml-->
 <view class="page">
   <view class="position">
-    <image class="icon" src="../../assets/icon/nearby.png"/>
-    <view class="address">番禺区中山大学东校区西北100米</view>
+    <image class="icon" src="../../assets/icon/location.png"/>
+    <view class="address">{{address}}</view>
   </view>
 
   <view class="search">
-    <view class="input">
+    <view class="searchBox">
       <view style="background-color: #F7F7F7; width: 620rpx; display: flex; flex-direction: row">
-        <image class="img" src="../../assets/icon/search.png"></image>
-        <view style="font-size: 75%; margin: 8rpx 0rpx 0rpx 20rpx">搜索</view>
+        <image class="icon" src="../../assets/icon/search.png"></image>
+        <input class="input" placeholder="搜索" bindconfirm="inputConfirm" confirm-type="search" maxlength="20"/>
       </view>
-      <image style="width: 50rpx; height: 50rpx; margin-top: 5rpx; margin-left: 22rpx" src="../../assets/icon/scan.png"></image>
+      <image class="scan" src="../../assets/icon/scan.png" bindtap="scanCode"></image>
     </view>
-    <view class="tag" style="margin-top: 20rpx;">
-      <view style="margin-right: 96rpx;">美食</view>
-      <view style="margin-right: 96rpx">甜点</view>
+    <view class="tagBox" style="margin-top: 20rpx;">
+      <view class="tag" style="margin-right: 96rpx;" bindtap="touchTag" data-tag="{{tags[0]}}">{{tags[0]}}</view>
+      <view class="tag" style="margin-right: 96rpx" bindtap="touchTag" data-tag="{{tags[1]}}">{{tags[1]}}</view>
     </view>
-    <view class="tag" style="margin-top: 10rpx;">
-      <view style="margin-right: 96rpx;">自助餐</view>
-      <view style="margin-right: 96rpx;">日本料理</view>
+    <view class="tagBox" style="margin-top: 10rpx;">
+      <view style="margin-right: 96rpx;" bindtap="touchTag" data-tag="{{tags[2]}}">{{tags[2]}}</view>
+      <view style="margin-right: 96rpx;" bindtap="touchTag" data-tag="{{tags[3]}}">{{tags[3]}}</view>
     </view>
   </view>
 
