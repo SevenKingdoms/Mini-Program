@@ -1,17 +1,17 @@
 <!--merchantList.wxml-->
 <view class="page">
   <view class="position">
-    <image class="icon" src="../../assets/icon/location.png"/>
+    <image class="img" src="../../assets/icons/location.png"/>
     <view class="address">{{address}}</view>
   </view>
 
   <view class="search">
     <view class="searchBox">
       <view style="background-color: #F7F7F7; width: 620rpx; display: flex; flex-direction: row">
-        <image class="icon" src="../../assets/icon/search.png"></image>
+        <image class="img" src="../../assets/icons/search.png"></image>
         <input class="input" placeholder="搜索" bindconfirm="inputConfirm" confirm-type="search" maxlength="20"/>
       </view>
-      <image class="scan" src="../../assets/icon/scan.png" bindtap="scanCode"></image>
+      <image class="scan" src="../../assets/icons/scan.png" bindtap="scanCode"></image>
     </view>
     <view class="tagBox" style="margin-top: 20rpx;">
       <view class="tag" style="margin-right: 96rpx;" bindtap="touchTag" data-tag="{{tags[0]}}">{{tags[0]}}</view>
