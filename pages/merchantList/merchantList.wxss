@@ -120,7 +120,7 @@
   font-size: smaller;
 }
 
-.merchant .stage {
+.merchant .state {
   position: absolute;
   height: 40rpx;
   width: 106rpx;
@@ -133,6 +133,30 @@
   color: #259b24;
   border: 3rpx solid;
   border-radius: 10rpx;
+}
+
+.merchant .score {
+  position: absolute;
+  height: 40rpx;
+  width: 300rpx;
+  margin-top: 86rpx;
+  margin-left: 180rpx;
+}
+
+.merchant .score .star {
+  position: absolute;
+  margin-top: 5rpx;
+  height: 30rpx;
+  width: 30rpx;
+}
+
+.merchant .score .number {
+  position: absolute;
+  margin-left: 210rpx;
+  line-height: 40rpx;
+  vertical-align: middle;
+  font-size: 70%;
+  color: #ff9800;
 }
 
 .merchant .line {
