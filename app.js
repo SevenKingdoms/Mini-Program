@@ -1,7 +1,7 @@
 //app.js
 
 const base64 = require('./utils/base64.min.js').Base64
-console.log(base64)
+const network = require('./utils/network.js')
 
 App({
   onLaunch: function () {
@@ -45,33 +45,30 @@ App({
   },
   getOpenid: function(code) {
     const that = this;
-    wx.request({
-        url: this.globalData.apiPath + "/openid?code=" + code,
-        success: function(res) {
-          if (res.data) {
-            var data = JSON.parse(res.data.data)
-            that.globalData.userInfo.openid = data.openid
-            console.log("=> userInfo:");
-            console.log(that.globalData.userInfo)
-          } else {
-            console.log('获取OpenID失败！' + res.errMsg)
-          }
-          that.getToken();
+    network.GET({
+      url: "/openid?code=" + code,
+      success: function(res) {
+        if (res.data) {
+          var data = JSON.parse(res.data.data)
+          that.globalData.userInfo.openid = data.openid
+          console.log("=> userInfo:");
+          console.log(that.globalData.userInfo)
+        } else {
+          console.log('获取OpenID失败！' + res.errMsg)
         }
+        that.getToken();
+      }
     })
   },
   getToken: function() {
     let userInfo = this.globalData.userInfo
     const that = this;
-    wx.request({
-      url: this.globalData.apiPath + "/jwt",
-      data: {
+    network.GET({
+      url: "/jwt",
+      params: {
           username: userInfo.openid,
-          // password: "PASSWORD",
           type: 1
       },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
       success: function(res) {
         if (res.data.status === "OK") {
           let token = res.data.data.token
@@ -80,6 +77,7 @@ App({
           console.log("=> claims: ");
           console.log(claims);
           that.globalData.token = token;
+          network.setToken(token);
         } else {
           console.log(res)
         }
@@ -92,7 +90,6 @@ App({
   globalData: {
     userInfo: null,
     token: null,
-    apiPath: "https://ancestree.site/api",
     // merchantInfo: null,
     // stage: null
     merchantInfo:
