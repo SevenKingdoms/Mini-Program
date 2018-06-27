@@ -1,10 +1,10 @@
 //merchantList.js
 //const util = require('../../utils/util.js')
 const app = getApp();
-var QQMapWX = require('../../qqmap/qqmap-wx-jssdk.js');
+var QQMapWX = require('../../assets/qqmap/qqmap-wx-jssdk.js');
 var qqmapsdk;
 
-//标签，营业时间，事件处理未完成
+//标签，营业时间，事件处理未完成   api：评分，state， remark
 Page({
   data: {
     address: {},
@@ -19,6 +19,8 @@ Page({
         "name": "兰州拉面",
         "address": "广州大学城",
         "opentime": "营业中",
+        "state": true,
+        "score": 3.5,
         "announcement": ["xxx"],
         "onsales": ["xxx优惠十元"]
       },{
@@ -27,11 +29,17 @@ Page({
         "name": "兰州不拉面",
         "address": "广州大学城",
         "opentime": "休息中",
+        "state": false,
+        "score": 4.5,
         "announcement": ["xxx"],
         "onsales": ["xxx优惠十元"]
       }
     ],
-    stages: ["营业中"]
+    starPath: [
+      "../../assets/icons/normalStar.png",
+      "../../assets/icons/selectStar.png",
+      "../../assets/icons/halfStar.png"
+    ]
   },
 
   onLoad: function () {
@@ -39,7 +47,6 @@ Page({
     // 从数据库获取所有的商家
     //初始化globaldata中的商家信息
     app.globalData.merchantInfo = that.data.merchants[0];
-    app.globalData.stage = that.data.stages[0];
     // 实例化腾讯地图API核心类
     qqmapsdk = new QQMapWX({
       key: 'FO6BZ-RJXW4-L6DUL-DQ3HK-FLDQJ-A6BQK'
@@ -65,7 +72,6 @@ Page({
   },
 
   onShow: function() {
-    this.confirmStage();
   },
 
   scanCode: function() {
@@ -93,26 +99,25 @@ Page({
     console.log(this.data.chosenTag);
   },
 
-  confirmStage: function() {
-    // console.log(this.data.merchants);
-    var tempStages = [];
-    for(var i = 0; i < this.data.merchants.length; i++) {
-      if(this.data.merchants[i].opentime === "营业中") {
-        tempStages[i] = "营业中"
-      }
-      else {
-        tempStages[i] = "休息中"
-      }
-    }
-    this.setData({
-      stages: tempStages
-    })
-    console.log(this.data.stages);
-  },
+  // confirmStage: function() {
+  //   // console.log(this.data.merchants);
+  //   var tempStages = [];
+  //   for(var i = 0; i < this.data.merchants.length; i++) {
+  //     if(this.data.merchants[i].opentime === "营业中") {
+  //       tempStages[i] = "营业中"
+  //     }
+  //     else {
+  //       tempStages[i] = "休息中"
+  //     }
+  //   }
+  //   this.setData({
+  //     stages: tempStages
+  //   })
+  //   console.log(this.data.stages);
+  // },
 
   touchMerchant: function(e) {
     app.globalData.merchantInfo = e.currentTarget.dataset.merchant;
-    app.globalData.stage = e.currentTarget.dataset.stage;
     wx.switchTab({
       url: '../menu/menu'
     })

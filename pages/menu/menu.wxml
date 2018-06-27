@@ -2,9 +2,10 @@
 <view class="page">
     <view class="header" wx:if="{{!searchFlag}}" bindtap="navigateToDetail" hover-class="navigator-hover">
         <image class="img" src="{{merchantInfo.avatar}}"></image>
-        <view class="stage">{{stage}}</view>
-        <view class="opentime">营业时间: 11:00-21:30</view>
-        <image class="search" src="../../assets/icons/search.png" catchtap="touchSearch"></image>
+        <view class="name">{{merchantInfo.name}}</view>
+        <view class="stateAndOpentime" wx:if="{{merchantInfo.state}}">营业中 | 营业时间: 11:00-21:30</view>
+        <view class="stateAndOpentime" wx:else>休息中 | 营业时间: 11:00-21:30</view>
+        <image class="search" src="../../assets/icons/searchWhite.png" catchtap="touchSearch"></image>
     </view>
     <view class="searchBox" wx:else>
         <image class="img" src="../../assets/icons/searchBlue.png"></image>

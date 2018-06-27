@@ -22,7 +22,7 @@ page {
     margin-top: 16rpx;
 }
 
-.header .stage {
+/* .header .stage {
     position: absolute;
     height: 40rpx;
     width: 106rpx;
@@ -35,15 +35,24 @@ page {
     color: #259b24;
     border: 3rpx solid;
     border-radius: 10rpx;
+} */
+
+.header .name {
+    position: absolute;
+    width: 60%;
+    height: 46rpx;
+    margin-top: 20rpx;
+    margin-left: 180rpx;
+    color: white;
 }
 
-.header .opentime {
+.header .stateAndOpentime {
     position: absolute;
     height: 46rpx;
     margin-left: 192rpx;
     margin-top: 90rpx;
     color: white;
-    font-size: 30rpx;
+    font-size: 70%;
 }
 
 .header .search {

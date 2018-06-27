@@ -31,11 +31,17 @@
     <view class="line"></view>
   </view>
   
-  <view class="merchant" wx:for="{{merchants}}" wx:key="merchant_id" bindtap="touchMerchant" data-merchant="{{merchants[index]}}" data-stage="{{stages[index]}}">
+  <view class="merchant" wx:for="{{merchants}}" wx:key="merchant_id" bindtap="touchMerchant" data-merchant="{{merchants[index]}}">
     <image class="img" src="{{item.avatar}}"></image>
     <view class="name">{{item.name}}</view>
-    <view class="stage" wx:if="{{stages[index] == '营业中'}}">{{stages[index]}}</view>
-    <view class="stage" wx:else style="color: #ccc">{{stages[index]}}</view>
+    <view class="score">
+      <view wx:for="{{[0, 1, 2, 3, 4]}}" wx:for-item="number">
+        <image class="star" style="left: {{number*40}}rpx" src="{{item.score>=number?(item.score<number+1?starPath[2]:starPath[1]):starPath[0]}}"></image>
+      </view>
+      <view class="number">{{item.score}}</view>
+    </view>
+    <view class="state" wx:if="{{item.state}}">营业中</view>
+    <view class="state" wx:else style="color: #ccc">休息中</view>
     <view class="line"></view>
   </view>
 

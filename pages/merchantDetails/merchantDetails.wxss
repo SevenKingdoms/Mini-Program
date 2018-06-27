@@ -59,7 +59,7 @@ page {
     height: 90rpx;
 }
 
-.title .remark {
+.title .comment {
     position: absolute;
     margin-left: 50%;
     width: 50%;
@@ -84,18 +84,18 @@ page {
     font-size: 80%;
 }
 
-.remarkContainer {
+.commentContainer {
     display: flex;
     flex-direction: column;
     height: 100%;
     box-sizing: border-box;
 }
 
-.remarkContainer .remark {
+.commentContainer .comment {
     height: 200rpx;
 }
 
-.remarkContainer .remark .avatar {
+.commentContainer .comment .avatar {
     position: absolute;
     height: 90rpx;
     width: 90rpx;
@@ -104,7 +104,7 @@ page {
     margin-left: 40rpx;
 }
 
-.remarkContainer .remark .name {
+.commentContainer .comment .name {
     position: absolute;
     height: 46rpx;
     width: 200rpx;
@@ -113,7 +113,7 @@ page {
     font-size: 75%;
 }
 
-.remarkContainer .remark .time {
+.commentContainer .comment .time {
     position: absolute;
     height: 46rpx;
     width: 160rpx;
@@ -123,20 +123,31 @@ page {
     color: #757575;
 }
 
-.remarkContainer .remark .score {
-
+.commentContainer .comment .score {
+    position: absolute;
+    height: 40rpx;
+    width: 300rpx;
+    margin-top: 76rpx;
+    margin-left: 160rpx;
 }
 
-.remarkContainer .remark .content {
+.commentContainer .comment .score .star {
+    position: absolute;
+    margin-top: 5rpx;
+    height: 30rpx;
+    width: 30rpx;
+}
+
+.commentContainer .comment .content {
     position: absolute;
     height: 80rpx;
     width: 100%;
-    margin-top: 115rpx;
+    margin-top: 116rpx;
     margin-left: 160rpx;
     font-size: 75%;
 }
 
-.remarkContainer .remark .line {
+.commentContainer .comment .line {
     position: absolute;
     width: 100%;
     height: 5rpx;

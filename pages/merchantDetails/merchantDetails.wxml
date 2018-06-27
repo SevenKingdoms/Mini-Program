@@ -11,7 +11,7 @@
 
     <view class="title">
         <view class="information" bindtap="touchInformation">商家信息</view>
-        <view class="remark" bindtap="touchRemark">商家评论</view>
+        <view class="comment" bindtap="touchComment">商家评论</view>
         <view wx:if="{{isTouchInfo}}" class="underline" style="margin-left: 157rpx"></view>
         <view wx:else class="underline" style="margin-left: 532rpx"></view>
     </view>
@@ -21,12 +21,17 @@
             &ensp;-- 阿尔伯特·爱因斯坦
         </text>
     </view>
-    <scroll-view wx:else class="remarkContainer" scroll-y="true">
-        <view class="remark" wx:for="{{remarks}}">
+    <scroll-view wx:else class="commentContainer" scroll-y="true">
+        <view class="comment" wx:for="{{comments}}">
             <image class="avatar" src="{{item.avatar}}"></image>
             <view class="name">{{item.name}}</view>
             <view class="time">{{item.publish_at}}</view>
-            <view class="content">{{item.remark}}</view>
+            <view class="score">
+                <view wx:for="{{[0, 1, 2, 3, 4]}}" wx:for-item="number">
+                  <image class="star" style="left: {{number*40}}rpx" src="{{item.score>=number?(item.score<number+1?starPath[2]:starPath[1]):starPath[0]}}"></image>
+                </view>
+            </view>
+            <view class="content">{{item.comment}}</view>
             <view class="line"></view>
         </view>
     </scroll-view>

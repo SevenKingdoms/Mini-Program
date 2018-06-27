@@ -49,9 +49,9 @@ App({
       "name": "兰州拉面",
       "address": "广州大学城",
       "opentime": "营业中",
+      "state": true,
       "announcement": ["xxx"],
       "onsales": ["xxx优惠十元"]
-    },
-    stage: "营业中"
+    }
   }
 })
