@@ -79,6 +79,31 @@ App({
           that.globalData.token = token;
           network.setToken(token);
         } else {
+          that.register()
+          console.log(res)
+        }
+      },
+      fail: function(res) {
+        console.log(res)
+      }
+    })
+  },
+  register: function() {
+    let userInfo = this.globalData.userInfo
+    const that = this;
+    network.POST({
+      url: "/register",
+      params: {
+          open_id: userInfo.openid,
+          nick_name: userInfo.nickName,
+          avatar: userInfo.avatarUrl,
+          tel: "",
+      },
+      success: function(res) {
+        if (res.data.status === "OK") {
+          console.log(res)
+          that.getToken()
+        } else {
           console.log(res)
         }
       },

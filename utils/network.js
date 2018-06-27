@@ -37,8 +37,6 @@ function POST(requestHandler) {
 function request(method,requestHandler) {
   var params = requestHandler.params;
 
-  console.log(token);
-
   wx.request({
     url: API_PATH + requestHandler.url,
     data: params,
