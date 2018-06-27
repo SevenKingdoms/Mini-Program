@@ -14,8 +14,7 @@
     </block>
 </view>
 <view class="myOrder" bindtap="goOrderList">
-    <image class="img" src="../../assets/icon/order.png"></image>
+    <image class="img" src="../../assets/icons/order.png"></image>
     <view class="txt">我的订单</view>
-    <image class="goto" src="../../assets/icon/goto.png"></image>
+    <image class="goto" src="../../assets/icons/goto.png"></image>
 </view>
-  

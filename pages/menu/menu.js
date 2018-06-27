@@ -5,13 +5,12 @@ const app = getApp();
 Page({
     data: {
         merchantInfo: {},
-        stage: null,
         searchFlag: false
     },
 
     onLoad: function() {
         var that = this;
-        // if(!app.globalData.merchantInfo || !app.globalData.stage) {
+        // if(!app.globalData.merchantInfo) {
         //     wx.switchTab({
         //         url: '../merchantList/merchantList'
         //     })
@@ -22,15 +21,7 @@ Page({
         var that = this;
         //获取选中的商家的信息
         that.setData({
-            merchantInfo: app.globalData.merchantInfo,
-            stage: app.globalData.stage
-        })
-        wx.setNavigationBarTitle({
-            title: that.data.merchantInfo.name,
-            success: function(res) {
-                // success
-                console.log(that.data.merchantInfo.avatar);
-            }
+            merchantInfo: app.globalData.merchantInfo
         })
     },
 
