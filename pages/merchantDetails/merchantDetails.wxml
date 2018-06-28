@@ -7,13 +7,11 @@
         <view class="opentime">营业时间: 11:00-21:30</view>
         <view class="address">地址: {{merchantInfo.address}}</view>
     </view>
-    <view style="height: 20rpx; background: #f7f7f7"></view>
 
     <view class="title">
         <view class="information" bindtap="touchInformation">商家信息</view>
         <view class="comment" bindtap="touchComment">商家评论</view>
-        <view wx:if="{{isTouchInfo}}" class="underline" style="margin-left: 157rpx"></view>
-        <view wx:else class="underline" style="margin-left: 532rpx"></view>
+        <view class="underline {{isTouchInfo?'':'comment'}}"></view>
     </view>
 
     <view wx:if="{{isTouchInfo}}">

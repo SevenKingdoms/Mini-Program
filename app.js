@@ -125,6 +125,7 @@ App({
       "address": "广州大学城",
       "opentime": "营业中",
       "state": true,
+      "phone": "13719175479",
       "announcement": ["xxx"],
       "onsales": ["xxx优惠十元"]
     }

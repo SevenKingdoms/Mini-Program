@@ -17,6 +17,7 @@ page {
     margin-top: 40rpx;
     margin-left: 230rpx;
     font-size: 75%;
+    color: white;
 }
 
 .userinfo .avatar {
@@ -36,6 +37,7 @@ page {
     margin-top: 40rpx;
     margin-left: 230rpx;
     font-size: 75%;
+    color: white;
 }
 
 .userinfo .tel {
@@ -45,6 +47,7 @@ page {
     margin-top: 100rpx;
     margin-left: 230rpx;
     font-size: 75%;
+    color: white;
 }
 
 .myOrder {

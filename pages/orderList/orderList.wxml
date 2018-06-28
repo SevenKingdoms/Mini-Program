@@ -1,50 +1,58 @@
 <!--orderList.wxml-->
 <view class="top-tab flexItem flex-tab">
-  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
-    {{itemName}}
+  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchNavTab">
+    <view>{{itemName}}</view>
   </view>
 </view>
 
-<view class="tab_con flexItem rowStyle {{currentNavtab==0 ? 'list_active0' : ''}} {{currentNavtab==1 ? 'list_active1' : ''}} {{currentNavtab==2 ? 'list_active2' : ''}} {{currentNavtab==3 ? 'list_active3' : ''}} {{currentNavtab==4 ? 'list_active4' : ''}}">
-  <view class="view1 width20" bindtouchstart="catchtouchstart" bindtouchend="catchtouchend">
-    <scroll-view class="tableview" scroll-y="true" wx:if="{{hasData}}" wx:for="{{moneyInfo}}" wx:for-item="info">
-      <view class="flexItem rowStyle tableViewCellHeader marginTop10" catchtap="goDeatailEvent">
-        <image class="orderImage marginLeft12" src="../icon/dingdan.png"></image>
-        <label class="color54 fontSize12">订单编号：{{ orderNum }}-1</label>
+<view class="tab_con flexItem rowStyle {{currentNavtab==0 ? 'list_active0' : ''}} {{currentNavtab==1 ? 'list_active1' : ''}} {{currentNavtab==2 ? 'list_active2' : ''}}">
+  <view class="tablewidth" wx:for="{{navTab}}" wx:for-index="navIndex" bindtouchstart="catchtouchstart" bindtouchend="catchtouchend">
+    <scroll-view scroll-y="true" wx:if="{{hasData}}" wx:for="{{navIndex==0?allOrderIndex:(navIndex==1?paySuccess:payFail)}}" wx:for-item="idx"  catchtap="goDeatailEvent">
+      <view class="flexItem rowStyle tableViewCellHeader marginTop10">
+        <image class="orderImage marginLeft12" src="../../assets/icons/order.png"></image>
+        <label class="color54 fontSize12">订单编号：{{orders[idx].order_id}}-1</label>
       </view>
-      <view class="flexItem rowStyle personInfo" catchtap="goDeatailEvent">
+      <view class="flexItem rowStyle merchantInfo">
         <view class="flexItem rowStyle marginLeft12 centers">
-          <label class="color54 fontSize12">{{nickName}}</label>
+          <image class="merchantImg" src="{{merchants[idx].avatar}}" catchtap="touchMerchantAvatar" data-merchant-idx="{{idx}}"></image>
+          <label class="color54 fontSize12">{{merchants[idx].name}}</label>
         </view>
         <view class="flexItem rowStyle marginRight12 centers" catchtap="callEvent">
-            <image class="call" src="../icon/call.png"></image>
-          <label class="color54 fontSize12">{{ phoneNum}}</label>
+          <image class="call" src="../../assets/icons/call.png"></image>
+          <label class="color54 fontSize12">{{merchants[idx].phone}}</label>
         </view>
       </view>
-      <view class="flexItem columnStyle tableViewCell" catchtap="goDeatailEvent">
+      <view class="flexItem columnStyle tableViewCell">
         <view class="flexItem rowStyle marginBottom10 cellStyle">
           <label class="color54 fontSize12">桌号</label>
-          <label class="color54 fontSize14">{{tableNum}}</label>
+          <label class="color54 fontSize12">{{orders[idx].desk_id}}</label>
         </view>
         <view class="flexItem rowStyle marginBottom10 cellStyle">
           <label class="color54 fontSize12">用餐人数</label>
-          <label class="color54 fontSize12">{{dineNum}} 人</label>
+          <label class="color54 fontSize12">{{orders[idx].person_num}} 人</label>
         </view>
         <view class="flexItem rowStyle marginBottom10 cellStyle">
           <label class="color54 fontSize12">下单时间</label>
-          <label class="color54 fontSize12">{{orderTime}}</label>
+          <label class="color54 fontSize12">{{orders[idx].publish_at}}</label>
         </view>
       </view>
 
-      <view class="flexItem rowStyle moneyInfo" catchtap="goDeatailEvent">
+      <view class="flexItem rowStyle moneyInfo">
         <view class="flexItem rowStyle marginLeft12 centers">
             <label class="color54 fontSize12">订单金额: </label>
-            <label class="color7321 fontSize14">{{info}} 元</label>
+            <label class="color7321 fontSize12">{{orders[idx].total_price}} 元</label>
         </view>
       </view>
 
-      <view class="flexItem rowStyle orderStatus centers" catchtap="goDeatailEvent">
-        <label class="statusText fontSize14">{{ statusText[0] }}</label>
+      <view class="flexItem rowStyle orderStatus centers">
+        <block wx:if="{{orders[idx].pay_state}}">
+          <image class="statusImage" src="../../assets/icons/paySuccess.png"></image>
+          <view class="statusText fontSize14">已支付</view>
+        </block>
+        <block wx:else>
+          <image class="statusImage" src="../../assets/icons/payFail.png"></image>
+          <view class="statusText fontSize14">待支付</view>
+        </block>
       </view>
     </scroll-view>
   </view>

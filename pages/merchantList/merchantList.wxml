@@ -14,8 +14,8 @@
       <image class="scan" src="../../assets/icons/scan.png" bindtap="scanCode"></image>
     </view>
     <view class="tagBox" style="margin-top: 20rpx;">
-      <view class="tag" style="margin-right: 96rpx;" bindtap="touchTag" data-tag="{{tags[0]}}">{{tags[0]}}</view>
-      <view class="tag" style="margin-right: 96rpx" bindtap="touchTag" data-tag="{{tags[1]}}">{{tags[1]}}</view>
+      <view class="tag" bindtap="touchTag" data-tag="{{tags[0]}}">{{tags[0]}}</view>
+      <view class="tag" bindtap="touchTag" data-tag="{{tags[1]}}">{{tags[1]}}</view>
     </view>
     <view class="tagBox" style="margin-top: 10rpx;">
       <view style="margin-right: 96rpx;" bindtap="touchTag" data-tag="{{tags[2]}}">{{tags[2]}}</view>
@@ -23,15 +23,13 @@
     </view>
   </view>
 
-  <view style="height: 20rpx; background-color: #F7F7F7"></view>
-
   <view class="nearby">
     <view class="line"></view>
     <view class="txt">附近商家</view>
     <view class="line"></view>
   </view>
   
-  <view class="merchant" wx:for="{{merchants}}" wx:key="merchant_id" bindtap="touchMerchant" data-merchant="{{merchants[index]}}">
+  <view class="merchant" wx:for="{{merchants}}" wx:key="merchant_id" bindtap="touchMerchant" data-merchant-idx="{{index}}">
     <image class="img" src="{{item.avatar}}"></image>
     <view class="name">{{item.name}}</view>
     <view class="score">

@@ -25,6 +25,7 @@ page {
 
 .lowerhalf {
     height: 156rpx;
+    border-bottom: 20rpx solid #f7f7f7;
 }
 
 .lowerhalf .opentime {
@@ -69,9 +70,18 @@ page {
 .title .underline {
     position: absolute;
     margin-top: 90rpx;
+    margin-left: 157rpx;
     width: 60rpx;
     height: 10rpx;
     background: #45c7c9;
+    transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s  ease-in-out; /* Firefox 4 */
+    -webkit-transition: all 0.4s ease-in-out; /* Safari 和 Chrome */
+    -o-transition: all 0.4s  ease-in-out; /* Opera */
+}
+
+.title .underline.comment {
+    margin-left: 532rpx;
 }
 
 .info {
