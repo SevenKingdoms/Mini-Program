@@ -1,5 +1,7 @@
 //获取应用实例
 const app = getApp();
+const network = require("../../utils/network.js");
+
 
 Page({
   //订单创建时间具体，merchant_phone, user_phone, person_num

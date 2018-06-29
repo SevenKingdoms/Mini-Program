@@ -6,7 +6,7 @@ page {
 
 .page {
 	height: 100%;
-	overflow: hidden;
+  position: relative;
 }
 
 .header {
@@ -21,21 +21,6 @@ page {
 	margin-left: 20rpx;
 	margin-top: 16rpx;
 }
-
-/* .header .stage {
-	position: absolute;
-	height: 40rpx;
-	width: 106rpx;
-	margin-top: 28rpx;
-	margin-left: 180rpx;
-	line-height: 40rpx;
-	font-size: x-small;
-	text-align: center;
-	vertical-align: middle;
-	color: #259b24;
-	border: 3rpx solid;
-	border-radius: 10rpx;
-} */
 
 .header .name {
 	position: absolute;
@@ -94,23 +79,20 @@ page {
 }
 
 .container {
-	display: flex;
-	flex-direction: row;
-	height: 100%;
-	box-sizing: border-box;
-	padding-bottom: 100rpx;
+    height: 100%;
 }
 
 .classify-container {
-	width: 226rpx;
-	height: 100%;
-	background: rgba(247, 247, 247, 1);
+    display: inline-block;
+  	width: 200rpx;
+  	height: 100%;
+  	background: rgba(247, 247, 247, 1);
 }
 
 .classify-container .classify {
-	padding: 40rpx 0rpx;
-	text-align: center;
-	font-size: smaller;
+  	padding: 40rpx 0rpx;
+  	text-align: center;
+  	font-size: smaller;
 }
 
 .classify-container .classify.active {
@@ -119,7 +101,9 @@ page {
 }
 
 .foods-container {
+  display: inline-block;
 	height: 100%;
+  width: calc(100% - 200rpx);
 }
 
 .foods-container .title {
@@ -131,69 +115,182 @@ page {
 
 .foods-container .food {
     position: relative;
-    height: 200rpx;
+    /* height: 200rpx; */
 }
 
 .foods-container .food .img {
-    position: absolute;
+    float: left;
     width: 160rpx;
     height: 160rpx;
     margin-left: 20rpx;
     margin-top: 20rpx;
 }
 
-.foods-container .food .name {
-    position: absolute;
-    height: 46rpx;
-    width: 100%;
-    margin-left: 200rpx;
-    margin-top: 15rpx;
-    font-size: smaller;
+.foods-container .food .right {
+    display: inline-block;
+    min-height: 160rpx;
+    width: calc(100% - 220rpx);
+    padding: 10px;
 }
 
-.foods-container .food .introduction {
-    position: absolute;
-    height: 40rpx;
-    width: 100%;
-    margin-left: 210rpx;
-    margin-top: 66rpx;
-    font-size: 25rpx;
+.foods-container .food .right .name {
+    height: 23px;
+    line-height: 20px;
+    color: rgba(16, 16, 16, 1);
+    font-size: 14px;
+}
+
+.foods-container .food .right .introduction {
+    line-height: 16px;
+    color: rgba(117, 117, 117, 1);
+    font-size: 12px;
+    min-height: 60rpx;
+    margin-bottom: 3px;
+}
+
+.foods-container .food .right .sale {
     color: #757575;
+    font-size: 13px;
 }
 
-.foods-container .food .sale {
-    position: absolute;
-    height: 40rpx;
-    margin-left: 200rpx;
-    margin-top: 115rpx;
-    font-size: 25rpx;
-    color: #757575;
-}
-
-.foods-container .food .price {
-    position: absolute;
-    height: 45rpx;
-    margin-left: 200rpx;
-    margin-top: 155rpx;
-    font-size: 30rpx;
+.foods-container .food .right .price {
+    font-size: 13px;
     color: red;
 }
 
-.foods-container .food .addButton {
+.foods-container .food .right .minusButton {
     position: absolute;
     width: 60rpx;
     height: 60rpx;
-    margin-left: 480rpx;
-    margin-top: 140rpx;
+    right: 140rpx;
+    bottom: 6px;
     background: #45c7c9;
     border-radius: 50%;
+    text-align: center;
+    color: white;
 }
 
-.foods-container .food .addButton image {
+.foods-container .food .right .count {
     position: absolute;
-    pointer-events: none;
-    width: 24rpx;
-    height: 24rpx;
-    margin-left: 18rpx;
-    margin-top: 18rpx;
+    width: 60rpx;
+    height: 50rpx;
+    right: 80rpx;
+    bottom: 6px;
+    text-align: center;
+    color: black;
+    font-size: 14px;
+}
+
+.foods-container .food .right .addButton {
+    position: absolute;
+    width: 60rpx;
+    height: 60rpx;
+    right: 20rpx;
+    bottom: 6px;
+    background: #45c7c9;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+}
+
+/* cart */
+
+.cart {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background: white;
+}
+
+.cart .tool-bar {
+  padding: 5px;
+}
+
+.cart .commit-bar {
+  height: 40px;
+}
+
+.cart .cart-icon {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    left: 3px;
+    top: -15px;
+    border: 2px solid #FF9800;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.cart .cart-icon.up {
+    top: -60px;
+}
+
+.cart .cart-icon image {
+    width: 34px;
+    height: 34px;
+    position: relative;
+    top: 5px;
+}
+
+.cart .cart-foods {
+    padding: 5px 0;
+}
+
+.cart .cart-food {
+    height: 20px;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.cart .cart-food .left {
+    float: left;
+}
+
+.cart .cart-food .right {
+    float: right;
+}
+
+.cart .tool-bar {
+    text-align: right;
+    color: #FF9800;
+    font-size: 14px;
+}
+.cart .total {
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    right: 100px;
+    bottom: 0;
+    color: #FF9800;
+    font-size: 15px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.cart .total.left {
+    position: absolute;
+    left: 20px;
+}
+
+.cart .commit {
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: #45c7c9;
+    font-size: 15px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+}
+
+.mask {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.14;
 }

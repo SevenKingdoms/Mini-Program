@@ -6,8 +6,8 @@
 </view>
 
 <view class="tab_con flexItem rowStyle {{currentNavtab==0 ? 'list_active0' : ''}} {{currentNavtab==1 ? 'list_active1' : ''}} {{currentNavtab==2 ? 'list_active2' : ''}}">
-  <view class="tablewidth" wx:for="{{navTab}}" wx:for-index="navIndex" bindtouchstart="catchtouchstart" bindtouchend="catchtouchend">
-    <scroll-view scroll-y="true" wx:if="{{hasData}}" wx:for="{{navIndex==0?allOrderIndex:(navIndex==1?paySuccess:payFail)}}" wx:for-item="idx"  catchtap="goDeatailEvent">
+  <view class="tablewidth" wx:for="{{navTab}}" wx:for-index="navIndex" wx:key="*this" bindtouchstart="catchtouchstart" bindtouchend="catchtouchend">
+    <scroll-view scroll-y="true" wx:if="{{hasData}}" wx:for="{{navIndex==0?allOrderIndex:(navIndex==1?paySuccess:payFail)}}" wx:for-item="idx" wx:key="order_id" catchtap="goDeatailEvent">
       <view class="flexItem rowStyle tableViewCellHeader marginTop10">
         <image class="orderImage marginLeft12" src="../../assets/icons/order.png"></image>
         <label class="color54 fontSize12">订单编号：{{orders[idx].order_id}}-1</label>

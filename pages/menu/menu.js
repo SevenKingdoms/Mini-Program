@@ -6,7 +6,13 @@ Page({
   data: {
     merchantInfo: {},
     searchFlag: false,
-    filter: ""
+    filter: "",
+    cartDict: {
+      sum: 0,
+      total: 0.0
+    },
+    cartList: [],
+    cartUp: false
   },
   onLoad: function() {
   },
@@ -87,6 +93,80 @@ Page({
       typeActive: type
     })
     this.filterFoods()
+  },
+  rmCurrentFood: function(event) {
+    const index = event.currentTarget.dataset.index
+    const food = this.data.typeToFoodDictFiltered[this.data.typeActive][index]
+    const food_id = food.food_id
+    const cartDict = this.data.cartDict
+
+    if (cartDict[food_id].count > 0) {
+      cartDict[food_id].count -= 1
+      cartDict.sum--
+      cartDict.total -= food.price
+    }
+    console.log(cartDict);
+    this.setData({
+      cartDict
+    })
+    this.cartToCartList()
+  },
+  addCurrentFood: function(event) {
+    const index = event.currentTarget.dataset.index
+    const food = this.data.typeToFoodDictFiltered[this.data.typeActive][index]
+    const food_id = food.food_id
+    const cartDict = this.data.cartDict
+    const cartFoodIds = Object.keys(cartDict)
+
+    if (cartFoodIds.includes(food_id.toString())) {
+      cartDict[food_id].count += 1
+    } else {
+      cartDict[food_id] = {
+        food: food,
+        count: 1
+      }
+    }
+    cartDict.sum++
+    cartDict.total += food.price
+    console.log(cartDict);
+    this.setData({
+      cartDict
+    })
+    this.cartToCartList()
+  },
+  cartToCartList: function() {
+    const cartDict = this.data.cartDict
+    var cartList = []
+    for (var key in cartDict) {
+      if (key !== 'sum' && key !== 'total') {
+        cartList.push(cartDict[key])
+      }
+    }
+    this.setData({
+      cartList
+    })
+  },
+  toggleCart: function() {
+    const cartUp = this.data.cartUp
+    this.setData({
+      cartUp: !cartUp
+    })
+  },
+  cleanCart: function() {
+    this.setData({
+      cartDict: {
+        sum: 0,
+        total: 0.0
+      },
+      cartList: []
+    })
+    this.toggleCart()
+  },
+  gotoPayPage: function() {
+    app.globalData.cartList = this.data.cartList
+    wx.navigateTo({
+      url: '../payment/payment'
+    })
   }
 })
 
@@ -102,7 +182,7 @@ const ALLFoods = {
       "image": "https://api.kuaidian.com/a.png",
       "type": "汉堡,新品",
       "price": 100.5,
-      "introduction": "由牛肉组成"
+      "introduction": "由牛肉组成由牛肉组成由牛肉组成由牛肉组成由牛肉组成"
     }, {
       "food_id": 2,
       "merchant_id": 1,

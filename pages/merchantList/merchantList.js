@@ -114,22 +114,6 @@ Page({
     })
     this.filterMerchants(this.data.filter);
   },
-  // confirmStage: function() {
-  //   // console.log(this.data.merchants);
-  //   var tempStages = [];
-  //   for(var i = 0; i < this.data.merchants.length; i++) {
-  //     if(this.data.merchants[i].opentime === "营业中") {
-  //       tempStages[i] = "营业中"
-  //     }
-  //     else {
-  //       tempStages[i] = "休息中"
-  //     }
-  //   }
-  //   this.setData({
-  //     stages: tempStages
-  //   })
-  //   console.log(this.data.stages);
-  // },
   touchMerchant: function(e) {
     app.globalData.merchantInfo = this.data.merchants[e.currentTarget.dataset.merchantIdx];
     wx.switchTab({

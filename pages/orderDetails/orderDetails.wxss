@@ -1,16 +1,14 @@
-/*pages/orderList/orderDeatail/orderDeatail.wxss*/
-/*commomStyle*/
-
+/**orderList.wxss**/
 page {
-  background-color: #f5f5f5;
-}
-
-.blockItem {
-  display: block;
+  height: 100%;
 }
 
 .flexItem {
   display: flex;
+}
+
+.floatLeft {
+  float: left;
 }
 
 .floatRight {
@@ -25,10 +23,6 @@ page {
   flex-direction: row;
 }
 
-.heightAndWidth {
-  height: auto;
-  width: 100%;
-}
 
 .centers {
   justify-content: center;
@@ -36,7 +30,15 @@ page {
 }
 
 .color54 {
-  color: #545454;
+  color: #545454
+}
+
+.color7321 {
+  color: #ed7321;
+}
+
+.fontSize10 {
+  font-size: 10px;
 }
 
 .fontSize12 {
@@ -63,35 +65,13 @@ page {
   margin-bottom: 10px;
 }
 
-/*diffStyle*/
-.container {
-  padding: 0;
-  height: 100%;
-}
-
 .menu {
   background-color: white;
 }
 
-.orderMenu {
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
-}
-
-.line {
-  width: 36px;
-  height: 2px;
-  margin-bottom: 0;
-  margin-top: 10px;
-  margin-top: 10px;
-  margin-left: 6px;
-  background-color: #ed7321;
-}
-
 .orderImage {
   width: 10px;
-  height: 11px;
+  height: 10px;
   margin-right: 5px;
 }
 
@@ -110,7 +90,7 @@ page {
   border-bottom: dashed #ccc 1px;
 }
 
-tableViewCellStyle {
+.tableViewCellStyle {
   background-color: white;
 }
 
@@ -120,17 +100,33 @@ tableViewCellStyle {
   color: #ed7321;
 }
 
-.personInfo {
+.merchantInfo {
   width: 100%;
   height: 44px;
   background-color: white;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: dashed #ccc 1px;
+  /* align-items: center; */
+}
+
+.merchantImg {
+  height: 15px;
+  width: 15px;
+  margin-right: 8px;
+}
+
+.merchantInfo .goto {
+  height: 12px;
+  width: 12px;
+  margin-left: 20px;
+}
+
+.payImg {
+  height: 10px;
+  width: 10px;
 }
 
 .userHeader {
-  widows: 26px;
+  width: 26px;
   height: 26px;
   border-radius: 5px;
   margin-right: 5px;
@@ -152,7 +148,6 @@ tableViewCellStyle {
 .statusImage {
   width: 15px;
   height: 15px;
-  border-radius: 15px;
   margin-right: 5px;
 }
 
@@ -160,7 +155,62 @@ tableViewCellStyle {
   color: #999;
 }
 
-.tableViewX {
+.moneyInfo {
   width: 100%;
-  height: auto;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  border-bottom: dashed #ccc 1px;
+  font-size: 80%;
+}
+
+.moneyLeft {
+  margin-left: 530rpx;
+}
+
+.moneyColor {
+  color: red;
+}
+
+.food {
+  height: 120rpx;
+  width: 100%;
+  margin-bottom: 10rpx;
+  background-color: #f7f7f7;
+}
+
+.food .img {
+  position: absolute;
+  height: 90rpx;
+  width: 90rpx;
+  margin-top: 15rpx;
+  margin-left: 30rpx;
+}
+
+.food .name {
+  position: absolute;
+  height: 46rpx;
+  width: 200rpx;
+  margin-top: 20rpx;
+  margin-left: 140rpx;
+  font-size: 75%;
+}
+
+.food .number {
+  position: absolute;
+  height: 46rpx;
+  width: 100rpx;
+  margin-top: 70rpx;
+  margin-left: 140rpx;
+  font-size: 60%;
+  color: #999;
+}
+
+.food .price {
+  position: absolute;
+  height: 46rpx;
+  width: 100rpx;
+  margin-top: 25rpx;
+  margin-left: 650rpx;
+  font-size: 75%;
 }

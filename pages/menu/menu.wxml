@@ -33,15 +33,43 @@
       <view class="foods">
         <view class="food" wx:for="{{typeToFoodDictFiltered[typeActive]}}" wx:key="*this" wx:for-item="food">
           <image class="img" src="../../assets/images/merchant.jpeg"></image>
-          <view class="name">{{food.name}}</view>
-          <view class="introduction">{{food.introduction}}</view>
-          <view class="sale">月售  10</view>
-          <view class="price">￥{{food.price}}/份</view>
-          <view class="addButton">
-            <image src="../../assets/icons/plus.png"></image>
+          <view class="right">
+            <view class="name">{{food.name}}</view>
+            <view class="introduction">{{food.introduction}}</view>
+            <view class="sale">月售  10</view>
+            <view class="price">￥{{food.price}}/份</view>
+            <view class="minusButton" bindtap="rmCurrentFood" data-index="{{index}}" wx:if="{{cartDict[food.food_id].count > 0}}">-</view>
+            <view class="count" wx:if="{{cartDict[food.food_id].count > 0}}">{{cartDict[food.food_id].count}}</view>
+            <view class="addButton" bindtap="addCurrentFood" data-index="{{index}}">+</view>
           </view>
         </view>
       </view>
     </scroll-view>
+  </view>
+
+  <view class="mask" wx:if="{{cartUp}}" bindtap="toggleCart"></view>
+  <view class="cart" wx:if="{{cartDict.sum > 0}}" >
+    <view class="tool-bar" wx:if="{{cartUp}}" bindtap="cleanCart">全部清空</view>
+    <view class="cart-foods" wx:if="{{cartUp}}">
+      <view class="cart-food" wx:for="{{cartList}}" wx:key="*this" wx:for-item="item">
+        <view class="left">
+          {{item.food.name}}
+        </view>
+        <view class="right">
+          ¥{{item.food.price}} x {{item.count}}
+        </view>
+      </view>
+    </view>
+    <view class="commit-bar">
+      <view class="cart-icon {{cartUp ? 'up' : ''}}" bindtap="toggleCart">
+        <image class="img" src="../../assets/icons/cart.png"></image>
+      </view>
+      <view class="total {{cartUp ? 'left' : ''}}">
+        合计：¥{{cartDict.total}}
+      </view>
+      <view class="commit" bindtap="gotoPayPage">
+        去结算
+      </view>
+    </view>
   </view>
 </view>

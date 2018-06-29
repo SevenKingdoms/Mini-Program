@@ -1,10 +1,10 @@
 <!--merchantDetails.wxml-->
 
 <view class="page">
-  <image class="merchantAvatar" src="{{merchantInfo.avatar}}"></image>
+  <image class="merchantAvatar" src="{{merchantInfo.logo}}"></image>
   <view class="upperhalf"></view>
   <view class="lowerhalf">
-    <view class="opentime">营业时间: 11:00-21:30</view>
+    <view class="opentime">营业时间: {{merchantInfo.opentime}}</view>
     <view class="address">地址: {{merchantInfo.address}}</view>
   </view>
 
