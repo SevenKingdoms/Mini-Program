@@ -1,42 +1,20 @@
 //merchantList.js
 //const util = require('../../utils/util.js')
 const app = getApp();
-var QQMapWX = require('../../assets/qqmap/qqmap-wx-jssdk.js');
+const QQMapWX = require('../../assets/qqmap/qqmap-wx-jssdk.js');
+const network = require('../../utils/network.js')
 var qqmapsdk;
 
 //标签，营业时间，事件处理未完成   api：评分，state， remark，phone
 Page({
   data: {
-    address: {},
-    scanResult: {},
-    input: {},
+    address: null,
+    scanResult: null,
+    filter: "",
+    score: [],
     tags: ['美食', '甜点', '自助餐', '日本料理'],
-    chosenTag: {},
-    merchants: [
-      {
-        "merchant_id": 1,
-        "avatar": "../../assets/images/merchant.jpeg",
-        "name": "兰州拉面",
-        "address": "广州大学城",
-        "opentime": "营业中",
-        "state": true,
-        "phone": "13719175479",
-        "score": 3.5,
-        "announcement": ["xxx"],
-        "onsales": ["xxx优惠十元"]
-      },{
-        "merchant_id": 2,
-        "avatar": "../../assets/images/merchant.jpeg",
-        "name": "兰州不拉面",
-        "address": "广州大学城",
-        "opentime": "休息中",
-        "state": false,
-        "phone": "13719175479",
-        "score": 4.5,
-        "announcement": ["xxx"],
-        "onsales": ["xxx优惠十元"]
-      }
-    ],
+    merchants: [],
+    merchantsFiltered: [],
     starPath: [
       "../../assets/icons/normalStar.png",
       "../../assets/icons/selectStar.png",
@@ -46,8 +24,9 @@ Page({
   onLoad: function () {
     var that = this;
     // 从数据库获取所有的商家
-    //初始化globaldata中的商家信息
+    //初始化globaldata中的商家信息,和token
     app.globalData.merchantInfo = that.data.merchants[0];
+    network.setToken(app.globalData.token);
     // 实例化腾讯地图API核心类
     qqmapsdk = new QQMapWX({
       key: 'FO6BZ-RJXW4-L6DUL-DQ3HK-FLDQJ-A6BQK'
@@ -72,6 +51,36 @@ Page({
     })
   },
   onShow: function() {
+    this.getMerchants();
+    this.setScore();
+  },
+  getMerchants: function() {
+    var that = this;
+    network.GET({
+      url: "/merchants",
+      success: function(res) {
+        if(res.data.status == "OK") {
+          console.log("=> merchantsInfo:");
+          console.log(res.data.data);
+          that.setData({
+            merchants: res.data.data,
+            merchantsFiltered: res.data.data
+          })
+        } else {
+          console.log("请刷新一次");
+        }
+      }
+    })
+  },
+  setScore: function() {
+    let tempscore = [];
+    for(let i = 0; i < 2; i++) {
+      tempscore.push(Math.ceil(Math.random() * 10) / 2);
+    }
+    console.log(tempscore);
+    this.setData({
+      score: tempscore
+    })
   },
   scanCode: function() {
     wx.scanCode({
@@ -83,17 +92,27 @@ Page({
       }
     })
   },
-  inputConfirm: function(e) {
+  bindFilterInput: function(e) {
     this.setData({
-      input: e.detail.value
+      filter: e.detail.value
     })
-    console.log(this.data.input);
+    this.filterMerchants(this.data.filter);
+  },
+  filterMerchants: function(filter) {
+    let filterMerchants = this.data.merchants
+
+    filterMerchants = filterMerchants.filter(merchant => {
+      return merchant.name.includes(filter);
+    })
+    this.setData({
+      merchantsFiltered: filterMerchants
+    })
   },
   touchTag: function(e) {
     this.setData({
-      chosenTag: e.currentTarget.dataset.tag
+      filter: e.currentTarget.dataset.tag
     })
-    console.log(this.data.chosenTag);
+    this.filterMerchants(this.data.filter);
   },
   // confirmStage: function() {
   //   // console.log(this.data.merchants);

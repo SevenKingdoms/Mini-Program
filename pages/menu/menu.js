@@ -61,8 +61,8 @@ Page({
     var typeToFoodDict = {}
 
     foods.map(food => {
-      const typesOfDict = Object.keys(typeToFoodDict)
-      const typesNew = food.type.split(',')
+      const typesOfDict = Object.keys(typeToFoodDict);
+      const typesNew = food.type.split(',');
 
       typesNew.map(type => {
         if (typesOfDict.includes(type)) {
