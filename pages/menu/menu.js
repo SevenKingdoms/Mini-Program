@@ -7,7 +7,10 @@ Page({
     merchantInfo: {},
     searchFlag: false,
     filter: "",
-    cart: {}
+    cart: {
+      sum: 0,
+      total: 0.0
+    }
   },
   onLoad: function() {
   },
@@ -91,27 +94,38 @@ Page({
   },
   rmCurrentFood: function(event) {
     const index = event.currentTarget.dataset.index
-    const food_id = this.data.typeToFoodDictFiltered[this.data.typeActive][index].food_id
+    const food = this.data.typeToFoodDictFiltered[this.data.typeActive][index]
+    const food_id = food.food_id
     const cart = this.data.cart
 
-    if (cart[food_id] > 0) {
-      cart[food_id] -= 1
+    if (cart[food_id].count > 0) {
+      cart[food_id].count -= 1
+      cart.sum--
+      cart.total -= food.price
     }
+    console.log(cart);
     this.setData({
       cart
     })
   },
   addCurrentFood: function(event) {
     const index = event.currentTarget.dataset.index
-    const food_id = this.data.typeToFoodDictFiltered[this.data.typeActive][index].food_id
+    const food = this.data.typeToFoodDictFiltered[this.data.typeActive][index]
+    const food_id = food.food_id
     const cart = this.data.cart
     const cartFoodIds = Object.keys(cart)
 
     if (cartFoodIds.includes(food_id.toString())) {
-      cart[food_id] += 1
+      cart[food_id].count += 1
     } else {
-      cart[food_id] = 1
+      cart[food_id] = {
+        food: food,
+        count: 1
+      }
     }
+    cart.sum++
+    cart.total += food.price
+    console.log(cart);
     this.setData({
       cart
     })

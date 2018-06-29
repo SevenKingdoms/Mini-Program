@@ -6,7 +6,7 @@ page {
 
 .page {
 	height: 100%;
-	overflow: hidden;
+  position: relative;
 }
 
 .header {
@@ -21,21 +21,6 @@ page {
 	margin-left: 20rpx;
 	margin-top: 16rpx;
 }
-
-/* .header .stage {
-	position: absolute;
-	height: 40rpx;
-	width: 106rpx;
-	margin-top: 28rpx;
-	margin-left: 180rpx;
-	line-height: 40rpx;
-	font-size: x-small;
-	text-align: center;
-	vertical-align: middle;
-	color: #259b24;
-	border: 3rpx solid;
-	border-radius: 10rpx;
-} */
 
 .header .name {
 	position: absolute;
@@ -94,23 +79,20 @@ page {
 }
 
 .container {
-	display: flex;
-	flex-direction: row;
-	height: 100%;
-	box-sizing: border-box;
-	padding-bottom: 100rpx;
+    height: 100%;
 }
 
 .classify-container {
-	width: 226rpx;
-	height: 100%;
-	background: rgba(247, 247, 247, 1);
+    display: inline-block;
+  	width: 200rpx;
+  	height: 100%;
+  	background: rgba(247, 247, 247, 1);
 }
 
 .classify-container .classify {
-	padding: 40rpx 0rpx;
-	text-align: center;
-	font-size: smaller;
+  	padding: 40rpx 0rpx;
+  	text-align: center;
+  	font-size: smaller;
 }
 
 .classify-container .classify.active {
@@ -119,7 +101,9 @@ page {
 }
 
 .foods-container {
+  display: inline-block;
 	height: 100%;
+  width: calc(100% - 200rpx);
 }
 
 .foods-container .title {
@@ -205,6 +189,29 @@ page {
     bottom: 6px;
     background: #45c7c9;
     border-radius: 50%;
+    text-align: center;
+    color: white;
+}
+
+/* cart */
+
+.cart {
+    position: absolute;
+    bottom: 0px;
+    height: 40px;
+    width: 100%;
+    background: white;
+}
+
+.cart .commit {
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: #45c7c9;
+    font-size: 15px;
+    line-height: 40px;
     text-align: center;
     color: white;
 }

@@ -38,12 +38,21 @@
             <view class="introduction">{{food.introduction}}</view>
             <view class="sale">月售  10</view>
             <view class="price">￥{{food.price}}/份</view>
-            <view class="minusButton" bindtap="rmCurrentFood" data-index="{{index}}" wx-if="{{cart[food.food_id] > 0}}">-</view>
-            <view class="count" wx-if="{{cart[food.food_id] > 0}}">{{cart[food.food_id]}}</view>
+            <view class="minusButton" bindtap="rmCurrentFood" data-index="{{index}}" wx-if="{{cart[food.food_id].count > 0}}">-</view>
+            <view class="count" wx-if="{{cart[food.food_id].count > 0}}">{{cart[food.food_id].count}}</view>
             <view class="addButton" bindtap="addCurrentFood" data-index="{{index}}">+</view>
           </view>
         </view>
       </view>
     </scroll-view>
+  </view>
+
+  <view class="cart" wx-if="{{cart.sum > 0}}" >
+    <view class="total">
+      合计：¥{{cart.total}}
+    </view>
+    <view class="commit">
+      去结算
+    </view>
   </view>
 </view>
