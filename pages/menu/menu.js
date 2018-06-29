@@ -6,7 +6,8 @@ Page({
   data: {
     merchantInfo: {},
     searchFlag: false,
-    filter: ""
+    filter: "",
+    cart: {}
   },
   onLoad: function() {
   },
@@ -87,6 +88,33 @@ Page({
       typeActive: type
     })
     this.filterFoods()
+  },
+  rmCurrentFood: function(event) {
+    const index = event.currentTarget.dataset.index
+    const food_id = this.data.typeToFoodDictFiltered[this.data.typeActive][index].food_id
+    const cart = this.data.cart
+
+    if (cart[food_id] > 0) {
+      cart[food_id] -= 1
+    }
+    this.setData({
+      cart
+    })
+  },
+  addCurrentFood: function(event) {
+    const index = event.currentTarget.dataset.index
+    const food_id = this.data.typeToFoodDictFiltered[this.data.typeActive][index].food_id
+    const cart = this.data.cart
+    const cartFoodIds = Object.keys(cart)
+
+    if (cartFoodIds.includes(food_id.toString())) {
+      cart[food_id] += 1
+    } else {
+      cart[food_id] = 1
+    }
+    this.setData({
+      cart
+    })
   }
 })
 
@@ -102,7 +130,7 @@ const ALLFoods = {
       "image": "https://api.kuaidian.com/a.png",
       "type": "汉堡,新品",
       "price": 100.5,
-      "introduction": "由牛肉组成"
+      "introduction": "由牛肉组成由牛肉组成由牛肉组成由牛肉组成由牛肉组成"
     }, {
       "food_id": 2,
       "merchant_id": 1,

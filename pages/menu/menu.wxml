@@ -33,12 +33,14 @@
       <view class="foods">
         <view class="food" wx:for="{{typeToFoodDictFiltered[typeActive]}}" wx:key="*this" wx:for-item="food">
           <image class="img" src="../../assets/images/merchant.jpeg"></image>
-          <view class="name">{{food.name}}</view>
-          <view class="introduction">{{food.introduction}}</view>
-          <view class="sale">月售  10</view>
-          <view class="price">￥{{food.price}}/份</view>
-          <view class="addButton">
-            <image src="../../assets/icons/plus.png"></image>
+          <view class="right">
+            <view class="name">{{food.name}}</view>
+            <view class="introduction">{{food.introduction}}</view>
+            <view class="sale">月售  10</view>
+            <view class="price">￥{{food.price}}/份</view>
+            <view class="minusButton" bindtap="rmCurrentFood" data-index="{{index}}" wx-if="{{cart[food.food_id] > 0}}">-</view>
+            <view class="count" wx-if="{{cart[food.food_id] > 0}}">{{cart[food.food_id]}}</view>
+            <view class="addButton" bindtap="addCurrentFood" data-index="{{index}}">+</view>
           </view>
         </view>
       </view>
