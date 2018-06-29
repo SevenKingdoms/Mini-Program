@@ -1,20 +1,20 @@
 <!--merchantDetails.wxml-->
 
 <view class="userinfo">
-    <block wx:if="{{!hasUserInfo && canIUse}}">
-        <button class="avatar" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
-        <view class="warn">点击头像登录</view>
-    </block>
-    <block wx:else>
-        <image class="avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-        <view class="name">{{userInfo.nickName}}</view>
-        <!-- 暂时还不能获取手机号码 -->
-        <!-- <view class="tel">{{userInfo.tel}}</view> -->
-        <view class="tel">13719175479</view>
-    </block>
+  <block wx:if="{{!hasUserInfo && canIUse}}">
+    <button class="avatar" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+    <view class="warn">点击头像登录</view>
+  </block>
+  <block wx:else>
+    <image class="avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <view class="name">{{userInfo.nickName}}</view>
+    <!-- 暂时还不能获取手机号码 -->
+    <!-- <view class="tel">{{userInfo.tel}}</view> -->
+    <view class="tel">13719175479</view>
+  </block>
 </view>
 <view class="myOrder" bindtap="goOrderList">
-    <image class="img" src="../../assets/icons/order.png"></image>
-    <view class="txt">我的订单</view>
-    <image class="goto" src="../../assets/icons/goto.png"></image>
+  <image class="img" src="../../assets/icons/order.png"></image>
+  <view class="txt">我的订单</view>
+  <image class="goto" src="../../assets/icons/goto.png"></image>
 </view>

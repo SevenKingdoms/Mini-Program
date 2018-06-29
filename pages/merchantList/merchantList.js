@@ -4,7 +4,7 @@ const app = getApp();
 var QQMapWX = require('../../assets/qqmap/qqmap-wx-jssdk.js');
 var qqmapsdk;
 
-//标签，营业时间，事件处理未完成   api：评分，state， remark
+//标签，营业时间，事件处理未完成   api：评分，state， remark，phone
 Page({
   data: {
     address: {},
@@ -20,6 +20,7 @@ Page({
         "address": "广州大学城",
         "opentime": "营业中",
         "state": true,
+        "phone": "13719175479",
         "score": 3.5,
         "announcement": ["xxx"],
         "onsales": ["xxx优惠十元"]
@@ -30,6 +31,7 @@ Page({
         "address": "广州大学城",
         "opentime": "休息中",
         "state": false,
+        "phone": "13719175479",
         "score": 4.5,
         "announcement": ["xxx"],
         "onsales": ["xxx优惠十元"]
@@ -41,7 +43,6 @@ Page({
       "../../assets/icons/halfStar.png"
     ]
   },
-
   onLoad: function () {
     var that = this;
     // 从数据库获取所有的商家
@@ -70,10 +71,8 @@ Page({
       }
     })
   },
-
   onShow: function() {
   },
-
   scanCode: function() {
     wx.scanCode({
       success: res => {
@@ -84,21 +83,18 @@ Page({
       }
     })
   },
-
   inputConfirm: function(e) {
     this.setData({
       input: e.detail.value
     })
     console.log(this.data.input);
   },
-  
   touchTag: function(e) {
     this.setData({
       chosenTag: e.currentTarget.dataset.tag
     })
     console.log(this.data.chosenTag);
   },
-
   // confirmStage: function() {
   //   // console.log(this.data.merchants);
   //   var tempStages = [];
@@ -115,9 +111,8 @@ Page({
   //   })
   //   console.log(this.data.stages);
   // },
-
   touchMerchant: function(e) {
-    app.globalData.merchantInfo = e.currentTarget.dataset.merchant;
+    app.globalData.merchantInfo = this.data.merchants[e.currentTarget.dataset.merchantIdx];
     wx.switchTab({
       url: '../menu/menu'
     })

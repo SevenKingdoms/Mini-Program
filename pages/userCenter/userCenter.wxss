@@ -1,78 +1,81 @@
 /**merchantDetails.wxss**/
 
 page {
-    height: 100%;
-    background-color: #f7f7f7;
+  height: 100%;
+  background-color: #f7f7f7;
 }
 
 .userinfo {
-    height: 180rpx;
-    background: #45c7c9;
+  height: 180rpx;
+  background: #45c7c9;
 }
 
 .userinfo .warn {
-    position: absolute;
-    height: 46rpx;
-    width: 100%;
-    margin-top: 40rpx;
-    margin-left: 230rpx;
-    font-size: 75%;
+  position: absolute;
+  height: 46rpx;
+  width: 100%;
+  margin-top: 40rpx;
+  margin-left: 230rpx;
+  font-size: 75%;
+  color: white;
 }
 
 .userinfo .avatar {
-    position: absolute;
-    width: 140rpx;
-    height: 140rpx;
-    margin-top: 20rpx;
-    margin-left: 40rpx;
-    border: 3rpx solid white;
-    border-radius:50%;
+  position: absolute;
+  width: 140rpx;
+  height: 140rpx;
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+  border: 3rpx solid white;
+  border-radius:50%;
 }
 
 .userinfo .name {
-    position: absolute;
-    height: 46rpx;
-    width: 100%;
-    margin-top: 40rpx;
-    margin-left: 230rpx;
-    font-size: 75%;
+  position: absolute;
+  height: 46rpx;
+  width: 100%;
+  margin-top: 40rpx;
+  margin-left: 230rpx;
+  font-size: 75%;
+  color: white;
 }
 
 .userinfo .tel {
-    position: absolute;
-    height: 46rpx;
-    width: 100%;
-    margin-top: 100rpx;
-    margin-left: 230rpx;
-    font-size: 75%;
+  position: absolute;
+  height: 46rpx;
+  width: 100%;
+  margin-top: 100rpx;
+  margin-left: 230rpx;
+  font-size: 75%;
+  color: white;
 }
 
 .myOrder {
-    display: flex;
-    flex-direction: row;
-    height: 100rpx;
-    margin-top: 20rpx;
-    background: white;
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  margin-top: 20rpx;
+  background: white;
 }
 
 .myOrder .img {
-    width: 50rpx;
-    height: 50rpx;
-    margin-top: 25rpx;
-    margin-left: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 25rpx;
+  margin-left: 40rpx;
 }
 
 .myOrder .txt {
-    width: 70%;
-    margin-left: 20rpx;
-    line-height: 100rpx;
-    vertical-align: middle;
-    font-size: 80%;
+  width: 70%;
+  margin-left: 20rpx;
+  line-height: 100rpx;
+  vertical-align: middle;
+  font-size: 80%;
 }
 
 .myOrder .goto {
-    width: 40rpx;
-    height: 40rpx;
-    margin-top: 30rpx;
-    margin-left: 50rpx;
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 30rpx;
+  margin-left: 50rpx;
 }

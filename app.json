@@ -1,11 +1,11 @@
 {
   "pages":[
     "pages/merchantList/merchantList",
+    "pages/orderList/orderList",
     "pages/merchantDetails/merchantDetails",
     "pages/userCenter/userCenter",
     "pages/menu/menu",
-    "pages/orderList/orderList",
-    "pages/orderList/orderDeatail/orderDeatail"
+    "pages/orderDetails/orderDetails"
   ],
   "window":{
     "navigationStyle":"default",

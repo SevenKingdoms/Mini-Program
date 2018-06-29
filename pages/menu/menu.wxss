@@ -1,66 +1,66 @@
 /**menu.wxss**/
 page {
-    height: 100%;
-    overflow: hidden;
+	height: 100%;
+	overflow: hidden;
 }
 
 .page {
-    height: 100%;
-    overflow: hidden;
+	height: 100%;
+	overflow: hidden;
 }
 
 .header {
-    height: 156rpx;
-    background-color: #45c7c9;
+	height: 156rpx;
+	background-color: #45c7c9;
 }
 
 .header .img {
-    position: absolute;
-    width: 124rpx;
-    height: 124rpx;
-    margin-left: 20rpx;
-    margin-top: 16rpx;
+	position: absolute;
+	width: 124rpx;
+	height: 124rpx;
+	margin-left: 20rpx;
+	margin-top: 16rpx;
 }
 
 /* .header .stage {
-    position: absolute;
-    height: 40rpx;
-    width: 106rpx;
-    margin-top: 28rpx;
-    margin-left: 180rpx;
-    line-height: 40rpx;
-    font-size: x-small;
-    text-align: center;
-    vertical-align: middle;
-    color: #259b24;
-    border: 3rpx solid;
-    border-radius: 10rpx;
+	position: absolute;
+	height: 40rpx;
+	width: 106rpx;
+	margin-top: 28rpx;
+	margin-left: 180rpx;
+	line-height: 40rpx;
+	font-size: x-small;
+	text-align: center;
+	vertical-align: middle;
+	color: #259b24;
+	border: 3rpx solid;
+	border-radius: 10rpx;
 } */
 
 .header .name {
-    position: absolute;
-    width: 60%;
-    height: 46rpx;
-    margin-top: 20rpx;
-    margin-left: 180rpx;
-    color: white;
+	position: absolute;
+	width: 60%;
+	height: 46rpx;
+	margin-top: 20rpx;
+	margin-left: 180rpx;
+	color: white;
 }
 
 .header .stateAndOpentime {
-    position: absolute;
-    height: 46rpx;
-    margin-left: 192rpx;
-    margin-top: 90rpx;
-    color: white;
-    font-size: 70%;
+	position: absolute;
+	height: 46rpx;
+	margin-left: 192rpx;
+	margin-top: 90rpx;
+	color: white;
+	font-size: 70%;
 }
 
 .header .search {
-    position: absolute;
-    width: 40rpx;
-    height: 40rpx;
-    margin-left: 690rpx;
-    margin-top: 30rpx;
+	position: absolute;
+	width: 40rpx;
+	height: 40rpx;
+	margin-left: 690rpx;
+	margin-top: 30rpx;
 }
 
 .searchBox {
@@ -72,61 +72,61 @@ page {
 }
 
 .searchBox .img {
-    width: 36rpx;
-    height: 36rpx;
-    margin-top: 18rpx;
-    margin-left: 30rpx;
+	width: 36rpx;
+	height: 36rpx;
+	margin-top: 18rpx;
+	margin-left: 30rpx;
 }
 
 .searchBox .input {
-    height: 100%;
-    font-size: 75%;
-    margin-left: 20rpx;
-    vertical-align: middle;
-    width: 80%;
+	height: 100%;
+	font-size: 75%;
+	margin-left: 20rpx;
+	vertical-align: middle;
+	width: 80%;
 }
 
 .searchBox .close {
-    height: 40rpx;
-    width: 40rpx;
-    margin-top: 18rpx;
-    margin-left: 10rpx;
+	height: 40rpx;
+	width: 40rpx;
+	margin-top: 18rpx;
+	margin-left: 10rpx;
 }
 
 .container {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    box-sizing: border-box;
-    padding-bottom: 100rpx;
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	box-sizing: border-box;
+	padding-bottom: 100rpx;
 }
 
 .classify-container {
-    width: 226rpx;
-    height: 100%;
-    background: rgba(247, 247, 247, 1);
+	width: 226rpx;
+	height: 100%;
+	background: rgba(247, 247, 247, 1);
 }
 
 .classify-container .classify {
-    padding: 40rpx 0rpx;
-    text-align: center;
-    font-size: smaller;
+	padding: 40rpx 0rpx;
+	text-align: center;
+	font-size: smaller;
 }
 
 .classify-container .classify.active {
-    background: rgba(230, 230, 230, 1);
-    color: #45c7c9;
+	background: rgba(230, 230, 230, 1);
+	color: #45c7c9;
 }
 
 .foods-container {
-    height: 100%;
+	height: 100%;
 }
 
 .foods-container .title {
-    color: #646464;
-    font-size: 30rpx;
-    padding: 10rpx 25rpx;
-    background: #f7f7f7;
+	color: #646464;
+	font-size: 30rpx;
+	padding: 10rpx 25rpx;
+	background: #f7f7f7;
 }
 
 .foods-container .food {
