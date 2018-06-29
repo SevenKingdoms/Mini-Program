@@ -198,9 +198,78 @@ page {
 .cart {
     position: absolute;
     bottom: 0px;
-    height: 40px;
     width: 100%;
     background: white;
+}
+
+.cart .tool-bar {
+  padding: 5px;
+}
+
+.cart .commit-bar {
+  height: 40px;
+}
+
+.cart .cart-icon {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    left: 3px;
+    top: -15px;
+    border: 2px solid #FF9800;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.cart .cart-icon.up {
+    top: -60px;
+}
+
+.cart .cart-icon image {
+    width: 34px;
+    height: 34px;
+    position: relative;
+    top: 5px;
+}
+
+.cart .cart-foods {
+    padding: 5px 0;
+}
+
+.cart .cart-food {
+    height: 20px;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.cart .cart-food .left {
+    float: left;
+}
+
+.cart .cart-food .right {
+    float: right;
+}
+
+.cart .tool-bar {
+    text-align: right;
+    color: #FF9800;
+    font-size: 14px;
+}
+.cart .total {
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    right: 100px;
+    bottom: 0;
+    color: #FF9800;
+    font-size: 15px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.cart .total.left {
+    position: absolute;
+    left: 20px;
 }
 
 .cart .commit {
@@ -214,4 +283,14 @@ page {
     line-height: 40px;
     text-align: center;
     color: white;
+}
+
+.mask {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.14;
 }

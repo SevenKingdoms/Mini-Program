@@ -7,10 +7,12 @@ Page({
     merchantInfo: {},
     searchFlag: false,
     filter: "",
-    cart: {
+    cartDict: {
       sum: 0,
       total: 0.0
-    }
+    },
+    cartList: [],
+    cartUp: false
   },
   onLoad: function() {
   },
@@ -96,38 +98,74 @@ Page({
     const index = event.currentTarget.dataset.index
     const food = this.data.typeToFoodDictFiltered[this.data.typeActive][index]
     const food_id = food.food_id
-    const cart = this.data.cart
+    const cartDict = this.data.cartDict
 
-    if (cart[food_id].count > 0) {
-      cart[food_id].count -= 1
-      cart.sum--
-      cart.total -= food.price
+    if (cartDict[food_id].count > 0) {
+      cartDict[food_id].count -= 1
+      cartDict.sum--
+      cartDict.total -= food.price
     }
-    console.log(cart);
+    console.log(cartDict);
     this.setData({
-      cart
+      cartDict
     })
+    this.cartToCartList()
   },
   addCurrentFood: function(event) {
     const index = event.currentTarget.dataset.index
     const food = this.data.typeToFoodDictFiltered[this.data.typeActive][index]
     const food_id = food.food_id
-    const cart = this.data.cart
-    const cartFoodIds = Object.keys(cart)
+    const cartDict = this.data.cartDict
+    const cartFoodIds = Object.keys(cartDict)
 
     if (cartFoodIds.includes(food_id.toString())) {
-      cart[food_id].count += 1
+      cartDict[food_id].count += 1
     } else {
-      cart[food_id] = {
+      cartDict[food_id] = {
         food: food,
         count: 1
       }
     }
-    cart.sum++
-    cart.total += food.price
-    console.log(cart);
+    cartDict.sum++
+    cartDict.total += food.price
+    console.log(cartDict);
     this.setData({
-      cart
+      cartDict
+    })
+    this.cartToCartList()
+  },
+  cartToCartList: function() {
+    const cartDict = this.data.cartDict
+    var cartList = []
+    for (var key in cartDict) {
+      if (key !== 'sum' && key !== 'total') {
+        cartList.push(cartDict[key])
+      }
+    }
+    this.setData({
+      cartList
+    })
+  },
+  toggleCart: function() {
+    const cartUp = this.data.cartUp
+    this.setData({
+      cartUp: !cartUp
+    })
+  },
+  cleanCart: function() {
+    this.setData({
+      cartDict: {
+        sum: 0,
+        total: 0.0
+      },
+      cartList: []
+    })
+    this.toggleCart()
+  },
+  gotoPayPage: function() {
+    app.globalData.cartList = this.data.cartList
+    wx.navigateTo({
+      url: '../payment/payment'
     })
   }
 })

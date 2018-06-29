@@ -5,7 +5,8 @@
     "pages/merchantDetails/merchantDetails",
     "pages/userCenter/userCenter",
     "pages/menu/menu",
-    "pages/orderDetails/orderDetails"
+    "pages/orderDetails/orderDetails",
+    "pages/payment/payment"
   ],
   "window":{
     "navigationStyle":"default",
