@@ -15,6 +15,7 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
+          const code = res.code;
           // 获取用户信息
           wx.getSetting({
             success: res => {
@@ -33,7 +34,7 @@ App({
                   }
                 })
               }
-              this.getOpenid(res.code); 
+              this.getOpenid(code); 
             }
           })
         } else {
