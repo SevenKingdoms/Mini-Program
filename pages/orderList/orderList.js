@@ -140,6 +140,6 @@ Page({
   goDeatailEvent: function () {
     wx.navigateTo({
         url: '../orderDetails/orderDetails'
-      })
+    })
   }
 })
