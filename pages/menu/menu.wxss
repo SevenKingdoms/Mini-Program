@@ -64,8 +64,8 @@ page {
 }
 
 .searchBox {
-    display: flex; 
-    flex-direction: row; 
+    display: flex;
+    flex-direction: row;
     height: 76rpx;
     margin: 22rpx 12rpx 16rpx;
     background: #f7f7f7;
@@ -129,11 +129,12 @@ page {
     background: #f7f7f7;
 }
 
-.foods-container .foods {
+.foods-container .food {
+    position: relative;
     height: 200rpx;
 }
 
-.foods-container .foods .img {
+.foods-container .food .img {
     position: absolute;
     width: 160rpx;
     height: 160rpx;
@@ -141,7 +142,7 @@ page {
     margin-top: 20rpx;
 }
 
-.foods-container .foods .name {
+.foods-container .food .name {
     position: absolute;
     height: 46rpx;
     width: 100%;
@@ -150,7 +151,7 @@ page {
     font-size: smaller;
 }
 
-.foods-container .foods .introduction {
+.foods-container .food .introduction {
     position: absolute;
     height: 40rpx;
     width: 100%;
@@ -160,7 +161,7 @@ page {
     color: #757575;
 }
 
-.foods-container .foods .sale {
+.foods-container .food .sale {
     position: absolute;
     height: 40rpx;
     margin-left: 200rpx;
@@ -169,7 +170,7 @@ page {
     color: #757575;
 }
 
-.foods-container .foods .price {
+.foods-container .food .price {
     position: absolute;
     height: 45rpx;
     margin-left: 200rpx;
@@ -178,7 +179,7 @@ page {
     color: red;
 }
 
-.foods-container .foods .addButton {
+.foods-container .food .addButton {
     position: absolute;
     width: 60rpx;
     height: 60rpx;
@@ -188,7 +189,7 @@ page {
     border-radius: 50%;
 }
 
-.foods-container .foods .addButton image {
+.foods-container .food .addButton image {
     position: absolute;
     pointer-events: none;
     width: 24rpx;
@@ -196,4 +197,3 @@ page {
     margin-left: 18rpx;
     margin-top: 18rpx;
 }
-

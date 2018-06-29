@@ -3,43 +3,114 @@
 const app = getApp();
 
 Page({
-    data: {
-        merchantInfo: {},
-        searchFlag: false
-    },
+  data: {
+    merchantInfo: {},
+    searchFlag: false,
+    filter: ""
+  },
+  onLoad: function() {
+  },
+  onShow: function() {
+    //获取选中的商家的信息
+    this.setData({
+      merchantInfo: app.globalData.merchantInfo
+    })
+    this.getData();
+  },
+  getData: function() {
+    this.getFoodsDict()
+  },
+  // bind search input
+  bindFilterInput: function(e) {
+    const filter = e.detail.value
+    this.setData({
+      filter: filter
+    })
+    this.filterFoods()
+  },
+  // filter
+  filterFoods: function() {
+    const filter = this.data.filter
+    const typeToFoodDictFiltered = Object.assign({}, this.data.typeToFoodDict)
+    const typeActive = this.data.typeActive
 
-    onLoad: function() {
-        var that = this;
-        // if(!app.globalData.merchantInfo) {
-        //     wx.switchTab({
-        //         url: '../merchantList/merchantList'
-        //     })
-        // }
-    },
+    typeToFoodDictFiltered[typeActive] = typeToFoodDictFiltered[typeActive].filter(food => {
+      return food.name.includes(filter) || food.introduction.includes(filter)
+    })
+    this.setData({
+      typeToFoodDictFiltered
+    })
+  },
+  navigateToDetail: function() {
+    wx.navigateTo({
+      url: '../merchantDetails/merchantDetails'
+    })
+  },
+  touchSearch: function() {
+    this.setData({
+      searchFlag: true
+    })
+  },
+  touchClose: function() {
+    this.setData({
+      searchFlag: false
+    })
+  },
+  getFoodsDict: function() {
+    const foods = ALLFoods.data;
+    var typeToFoodDict = {}
 
-    onShow: function() {
-        var that = this;
-        //获取选中的商家的信息
-        that.setData({
-            merchantInfo: app.globalData.merchantInfo
-        })
-    },
+    foods.map(food => {
+      const typesOfDict = Object.keys(typeToFoodDict)
+      const typesNew = food.type.split(',')
 
-    navigateToDetail: function() {
-        wx.navigateTo({
-            url: '../merchantDetails/merchantDetails'
-        })
-    },
-
-    touchSearch: function() {
-        this.setData({
-            searchFlag: true
-        })
-    },
-
-    touchClose: function() {
-        this.setData({
-            searchFlag: false
-        })
-    }
+      typesNew.map(type => {
+        if (typesOfDict.includes(type)) {
+          typeToFoodDict[type].push(food)
+        } else {
+          typeToFoodDict[type] = [food]
+        }
+      })
+    })
+    console.log("=> typeToFoodDict:");
+    console.log(typeToFoodDict);
+    this.setData({
+      typeToFoodDict,
+      typeToFoodDictFiltered: typeToFoodDict,
+      typeList: Object.keys(typeToFoodDict),
+      typeActive: Object.keys(typeToFoodDict)[0]
+    })
+  },
+  tapType: function(event) {
+    const type = event.currentTarget.dataset.type
+    this.setData({
+      typeActive: type
+    })
+    this.filterFoods()
+  }
 })
+
+// GEThttps://ancestree.site/api/foods?merchant_id=?
+const ALLFoods = {
+  "status": "OK",
+  "message": "成功获取",
+  "data": [
+    {
+      "food_id": 1,
+      "merchant_id": 1,
+      "name": "巨无霸",
+      "image": "https://api.kuaidian.com/a.png",
+      "type": "汉堡,新品",
+      "price": 100.5,
+      "introduction": "由牛肉组成"
+    }, {
+      "food_id": 2,
+      "merchant_id": 1,
+      "name": "巨无霸1",
+      "image": "https://api.kuaidian.com/a.png",
+      "type": "汉堡",
+      "price": 20,
+      "introduction": "由青菜组成"
+    }
+  ]
+}
