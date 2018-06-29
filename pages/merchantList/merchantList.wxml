@@ -9,7 +9,7 @@
     <view class="searchBox">
       <view style="background-color: #F7F7F7; width: 620rpx; display: flex; flex-direction: row">
         <image class="img" src="../../assets/icons/search.png"></image>
-        <input class="input" placeholder="搜索" bindconfirm="inputConfirm" confirm-type="search" maxlength="20"/>
+        <input class="input" placeholder="搜索" value="{{filter}}" bindinput="bindFilterInput" confirm-type="search" maxlength="20"/>
       </view>
       <image class="scan" src="../../assets/icons/scan.png" bindtap="scanCode"></image>
     </view>
@@ -29,16 +29,16 @@
     <view class="line"></view>
   </view>
   
-  <view class="merchant" wx:for="{{merchants}}" wx:key="merchant_id" bindtap="touchMerchant" data-merchant-idx="{{index}}">
-    <image class="img" src="{{item.avatar}}"></image>
+  <view class="merchant" wx:for="{{merchantsFiltered}}" wx:key="id" bindtap="touchMerchant" data-merchant-idx="{{index}}">
+    <image class="img" src="{{item.logo}}"></image>
     <view class="name">{{item.name}}</view>
     <view class="score">
-      <view wx:for="{{[0, 1, 2, 3, 4]}}" wx:for-item="number">
-        <image class="star" style="left: {{number*40}}rpx" src="{{item.score>=number?(item.score<number+1?starPath[2]:starPath[1]):starPath[0]}}"></image>
+      <view wx:for="{{[0, 1, 2, 3, 4]}}" wx:for-item="number" wx:key="*this">
+        <image class="star" style="left: {{number*40}}rpx" src="{{score[index]>=number?(score[index]<number+0.5?starPath[2]:starPath[1]):starPath[0]}}"></image>
       </view>
-      <view class="number">{{item.score}}</view>
+      <view class="number">{{score[index]}}</view>
     </view>
-    <view class="state" wx:if="{{item.state}}">营业中</view>
+    <view class="state" wx:if="{{item.open}}">营业中</view>
     <view class="state" wx:else style="color: #ccc">休息中</view>
     <view class="line"></view>
   </view>
