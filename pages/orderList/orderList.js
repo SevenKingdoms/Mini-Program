@@ -66,13 +66,10 @@ Page({
     paySuccess: [],
     payFail: []
   },
-
   onShow: function() {
-    var that = this;
-    that.sortByTime();
-    that.classifyOrder();
+    this.sortByTime();
+    this.classifyOrder();
   },
-
   sortByTime: function() {
     var all = [];
     for(var i = 0; i < this.data.orders.length; i++) {
@@ -82,7 +79,6 @@ Page({
       allOrderIndex: all
     })
   },
-
   classifyOrder: function() {
     var success = [];
     var fail = [];
@@ -99,13 +95,11 @@ Page({
       payFail: fail
     })
   },
-
   catchtouchstart:function(e){
     this.setData({
       startPoint: [e.changedTouches[0].clientX,e.changedTouches[0].clientY]
     })
   },
-
   catchtouchend:function(e){
     // var currentNum = parseInt(this.data.currentNavtab);
     var currentNum = this.data.currentNavtab;
@@ -113,26 +107,22 @@ Page({
     var startPoint = this.data.startPoint;
     if(endPoint[0] < startPoint[0]) {
       if(Math.abs(endPoint[0] - startPoint[0]) >= Math.abs(endPoint[1] - startPoint[1]) && currentNum< this.data.navTab.length -1) {
-         currentNum=currentNum + 1;  
+        currentNum=currentNum + 1;  
       }
-    }else {
+    } else {
       if(Math.abs(endPoint[0] - startPoint[0]) >= Math.abs(endPoint[1] - startPoint[1]) && currentNum > 0) {
-          currentNum -= 1;
+        currentNum -= 1;
       }
     }
-
     this.setData({
       currentNavtab: currentNum
     });
   },
-
   switchNavTab: function(e){
     this.setData({
       currentNavtab: e.currentTarget.dataset.idx
     });
   },
-
-
   // //打电话 可以去掉
   // callEvent: function (e) {
   //   console.log(e)
@@ -140,7 +130,6 @@ Page({
   //       phoneNumber: this.data.phoneNum
   //     })
   // },
-
   touchMerchantAvatar: function(e) {
     console.log(e.currentTarget.dataset.merchantIdx);
     app.globalData.merchantInfo = this.data.merchants[e.currentTarget.dataset.merchantIdx];
@@ -148,10 +137,9 @@ Page({
       url: "../merchantDetails/merchantDetails"
     })
   },
-
   goDeatailEvent: function () {
     wx.navigateTo({
-        url: '../orderList/orderDeatail/orderDeatail'
+        url: '../orderDetails/orderDetails'
       })
   }
 })

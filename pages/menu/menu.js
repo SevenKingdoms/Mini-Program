@@ -4,42 +4,35 @@ const app = getApp();
 
 Page({
     data: {
-        merchantInfo: {},
-        searchFlag: false
+			merchantInfo: {},
+			searchFlag: false
     },
-
     onLoad: function() {
-        var that = this;
-        // if(!app.globalData.merchantInfo) {
-        //     wx.switchTab({
-        //         url: '../merchantList/merchantList'
-        //     })
-        // }
+      // if(!app.globalData.merchantInfo) {
+      //     wx.switchTab({
+      //         url: '../merchantList/merchantList'
+      //     })
+      // }
     },
-
     onShow: function() {
-        var that = this;
-        //获取选中的商家的信息
-        that.setData({
-            merchantInfo: app.globalData.merchantInfo
-        })
+      //获取选中的商家的信息
+      this.setData({
+        merchantInfo: app.globalData.merchantInfo
+      })
     },
-
     navigateToDetail: function() {
-        wx.navigateTo({
-            url: '../merchantDetails/merchantDetails'
-        })
+      wx.navigateTo({
+        url: '../merchantDetails/merchantDetails'
+      })
     },
-
     touchSearch: function() {
-        this.setData({
-            searchFlag: true
-        })
+      this.setData({
+        searchFlag: true
+      })
     },
-
     touchClose: function() {
-        this.setData({
-            searchFlag: false
-        })
+			this.setData({
+					searchFlag: false
+      })
     }
 })

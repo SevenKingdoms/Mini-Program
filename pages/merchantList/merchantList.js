@@ -43,7 +43,6 @@ Page({
       "../../assets/icons/halfStar.png"
     ]
   },
-
   onLoad: function () {
     var that = this;
     // 从数据库获取所有的商家
@@ -72,10 +71,8 @@ Page({
       }
     })
   },
-
   onShow: function() {
   },
-
   scanCode: function() {
     wx.scanCode({
       success: res => {
@@ -86,21 +83,18 @@ Page({
       }
     })
   },
-
   inputConfirm: function(e) {
     this.setData({
       input: e.detail.value
     })
     console.log(this.data.input);
   },
-  
   touchTag: function(e) {
     this.setData({
       chosenTag: e.currentTarget.dataset.tag
     })
     console.log(this.data.chosenTag);
   },
-
   // confirmStage: function() {
   //   // console.log(this.data.merchants);
   //   var tempStages = [];
@@ -117,7 +111,6 @@ Page({
   //   })
   //   console.log(this.data.stages);
   // },
-
   touchMerchant: function(e) {
     app.globalData.merchantInfo = this.data.merchants[e.currentTarget.dataset.merchantIdx];
     wx.switchTab({

@@ -1,50 +1,50 @@
 <!--menu.wxml-->
 <view class="page">
-    <view class="header" wx:if="{{!searchFlag}}" bindtap="navigateToDetail" hover-class="navigator-hover">
-        <image class="img" src="{{merchantInfo.avatar}}"></image>
-        <view class="name">{{merchantInfo.name}}</view>
-        <view class="stateAndOpentime" wx:if="{{merchantInfo.state}}">营业中 | 营业时间: 11:00-21:30</view>
-        <view class="stateAndOpentime" wx:else>休息中 | 营业时间: 11:00-21:30</view>
-        <image class="search" src="../../assets/icons/searchWhite.png" catchtap="touchSearch"></image>
-    </view>
-    <view class="searchBox" wx:else>
-        <image class="img" src="../../assets/icons/searchBlue.png"></image>
-        <input class="input" placeholder="搜索" bindconfirm="inputConfirm" confirm-type="search" maxlength="20"/>
-        <image class="close" src="../../assets/icons/close.png" catchtap="touchClose"></image>
-    </view>
+	<view class="header" wx:if="{{!searchFlag}}" bindtap="navigateToDetail" hover-class="navigator-hover">
+		<image class="img" src="{{merchantInfo.avatar}}"></image>
+		<view class="name">{{merchantInfo.name}}</view>
+		<view class="stateAndOpentime" wx:if="{{merchantInfo.state}}">营业中 | 营业时间: 11:00-21:30</view>
+		<view class="stateAndOpentime" wx:else>休息中 | 营业时间: 11:00-21:30</view>
+		<image class="search" src="../../assets/icons/searchWhite.png" catchtap="touchSearch"></image>
+	</view>
+	<view class="searchBox" wx:else>
+		<image class="img" src="../../assets/icons/searchBlue.png"></image>
+		<input class="input" placeholder="搜索" bindconfirm="inputConfirm" confirm-type="search" maxlength="20"/>
+		<image class="close" src="../../assets/icons/close.png" catchtap="touchClose"></image>
+	</view>
 
-    <view class="container">
-        <scroll-view class="classify-container" scroll-y="true">
-            <view class="classify active">推荐</view>
-            <view class="classify">上新</view>
-            <view class="classify">汤面</view>
-            <view class="classify">河粉</view>
-        </scroll-view>
+	<view class="container">
+		<scroll-view class="classify-container" scroll-y="true">
+			<view class="classify active">推荐</view>
+			<view class="classify">上新</view>
+			<view class="classify">汤面</view>
+			<view class="classify">河粉</view>
+		</scroll-view>
 
-        <scroll-view class="foods-container" scroll-y="true">
-            <view class="title">
-                推荐
-            </view>
-            <view class="foods">
-                <image class="img" src="../../assets/images/merchant.jpeg"></image>
-                <view class="name">牛肉拉面</view>
-                <view class="introduction">正宗潮汕拉面，纯牛肉制作无添加</view>
-                <view class="sale">月售  10</view>
-                <view class="price">￥10/份</view>
-                <view class="addButton">
-                    <image src="../../assets/icons/plus.png"></image>
-                </view>
-            </view>
-            <view class="foods">
-                <image class="img" src="../../assets/images/merchant.jpeg"></image>
-                <view class="name">牛肉拉面</view>
-                <view class="introduction">正宗潮汕拉面，纯牛肉制作无添加</view>
-                <view class="sale">月售  10</view>
-                <view class="price">￥10/份</view>
-                <view class="addButton">
-                    <image src="../../assets/icons/plus.png"></image>
-                </view>
-            </view>
-        </scroll-view>
-    </view>
+		<scroll-view class="foods-container" scroll-y="true">
+			<view class="title">
+				推荐
+			</view>
+			<view class="foods">
+				<image class="img" src="../../assets/images/merchant.jpeg"></image>
+				<view class="name">牛肉拉面</view>
+				<view class="introduction">正宗潮汕拉面，纯牛肉制作无添加</view>
+				<view class="sale">月售  10</view>
+				<view class="price">￥10/份</view>
+				<view class="addButton">
+					<image src="../../assets/icons/plus.png"></image>
+				</view>
+			</view>
+			<view class="foods">
+				<image class="img" src="../../assets/images/merchant.jpeg"></image>
+				<view class="name">牛肉拉面</view>
+				<view class="introduction">正宗潮汕拉面，纯牛肉制作无添加</view>
+				<view class="sale">月售  10</view>
+				<view class="price">￥10/份</view>
+				<view class="addButton">
+					<image src="../../assets/icons/plus.png"></image>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
 </view>

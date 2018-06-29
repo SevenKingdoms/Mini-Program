@@ -39,8 +39,8 @@
 
       <view class="flexItem rowStyle moneyInfo">
         <view class="flexItem rowStyle marginLeft12 centers">
-            <label class="color54 fontSize12">订单金额: </label>
-            <label class="color7321 fontSize12">{{orders[idx].total_price}} 元</label>
+          <label class="color54 fontSize12">订单金额: </label>
+          <label class="color7321 fontSize12">{{orders[idx].total_price}} 元</label>
         </view>
       </view>
 
