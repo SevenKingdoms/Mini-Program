@@ -151,7 +151,7 @@ Page({
 
   goDeatailEvent: function () {
     wx.navigateTo({
-        url: '../orderList/orderDeatail/orderDeatail'
+        url: '../../assets/orderDeatail/orderDeatail'
       })
   }
 })

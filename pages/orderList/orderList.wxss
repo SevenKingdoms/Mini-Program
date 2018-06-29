@@ -1,6 +1,5 @@
 /**orderList.wxss**/
 page {
-  /* background-color: red; */
   height: 100%;
 }
 
@@ -28,10 +27,6 @@ page {
   flex-direction: row;
 }
 
-.heightAndWidth {
-  height: auto;
-  width: 100%;
-}
 
 .centers {
   justify-content: center;
@@ -180,12 +175,6 @@ page {
 .statusText {
   color: #999;
 }
-
-.tableViewX {
-  width: 100%;
-  height: auto;
-}
-
 
 
 
