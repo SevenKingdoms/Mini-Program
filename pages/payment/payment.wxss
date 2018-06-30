@@ -1,5 +1,0 @@
-/* pages/payment/payment.wxss */
-.center{
-  display: flex;
-  justify-content: center;
-}
