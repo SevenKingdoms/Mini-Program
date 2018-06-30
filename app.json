@@ -1,12 +1,13 @@
 {
   "pages":[
-    "pages/merchantList/merchantList",
     "pages/orderList/orderList",
+    "pages/merchantList/merchantList",
     "pages/merchantDetails/merchantDetails",
     "pages/userCenter/userCenter",
     "pages/menu/menu",
     "pages/orderDetails/orderDetails",
-    "pages/payment/payment"
+    "pages/payment/payment",
+    "pages/paystate/paystate"
   ],
   "window":{
     "navigationStyle":"default",

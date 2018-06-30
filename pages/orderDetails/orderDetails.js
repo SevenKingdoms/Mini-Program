@@ -61,10 +61,10 @@ Page({
       network.POST({
         url: "/orders",
         params: {
-          "merchant_id": app.globalData.merchantInfo.id,
-          "merchant_name": app.globalData.merchantInfo.name,
-          "merchant_tel": app.globalData.tel,
-          "open_id": app.globalData.userInfo.openid,
+          "merchant_id": this.data.orderInfo.order.merchant_id,
+          "merchant_name": this.data.orderInfo.order.merchant_name,
+          "merchant_tel": this.data.orderInfo.order.merchant_tel,
+          "open_id": this.data.orderInfo.order.open_id,
           "desk_id": this.data.orderInfo.order.desk_id,
           "num_of_people": this.data.orderInfo.order.num_of_people,
           "paid": this.data.paid,
@@ -74,7 +74,6 @@ Page({
         success: function(res) {
           if (res.data.status === "OK") {
             console.log(res)
-            that.getToken()
           } else {
             console.log(res)
           }
@@ -84,7 +83,7 @@ Page({
         }
       })
       wx.navigateTo({
-        url: '../payment/payment'
+        url: '../paystate/paystate?paid=' + this.data.paid
       })
     }
   }

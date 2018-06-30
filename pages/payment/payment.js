@@ -103,7 +103,8 @@ Page({
           "汉堡, 12.5, 1, https://api.kuaidian.com/a.png",
           "芝士蛋糕, 22.5, 2, https://api.kuaidian.com/a.png"
         ],
-        "remark": "不要辣"}
+        "remark": "不要辣"
+      },
       success: function(res) {
         
       }

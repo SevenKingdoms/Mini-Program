@@ -125,8 +125,8 @@ Page({
   //     })
   // },
   touchMerchant: function(e) {
-    console.log(e.currentTarget.dataset.merchantIdx);
-    app.globalData.merchantInfo = this.data.merchants[e.currentTarget.dataset.merchantIdx];
+    console.log(e.currentTarget.dataset.tel);
+    // app.globalData.merchantInfo = this.data.merchants[e.currentTarget.dataset.merchantIdx];
     wx.navigateTo({
       url: "../merchantDetails/merchantDetails"
     })

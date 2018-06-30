@@ -51,7 +51,6 @@
       <view class="statusText fontSize14">已支付</view>
     </block>
     <block wx:else>
-      <image class="statusImage" src="../../assets/icons/payBlue.png"></image>
-      <view class="statusText fontSize14">微信支付</view>
+      <button class="statusText fontSize14" type="primary">微信支付</button>
     </block>
   </view>
