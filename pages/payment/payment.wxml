@@ -33,7 +33,7 @@
   </view>
 </view>
 
-<button class='payButton' type='primary' bind:tap="navigateToPayResult">微信支付</button>
+<button class='payButton' type='primary' bindtap="navigateToPayResult">微信支付</button>
 
 
 
