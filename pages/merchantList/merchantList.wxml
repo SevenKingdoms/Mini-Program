@@ -34,9 +34,9 @@
     <view class="name">{{item.name}}</view>
     <view class="score">
       <view wx:for="{{[0, 1, 2, 3, 4]}}" wx:for-item="number" wx:for-index="idx" wx:key="*this">
-        <image class="star" style="left: {{number*40}}rpx" src="{{score[index]>number?(score[index]<=number+0.5?starPath[2]:starPath[1]):starPath[0]}}"></image>
+        <image class="star" style="left: {{number*40}}rpx" src="{{item.score>number?(item.score<=number+0.5?starPath[2]:starPath[1]):starPath[0]}}"></image>
       </view>
-      <view class="number">{{score[index]}}</view>
+      <view class="number">{{item.score}}</view>
     </view>
     <view class="state" wx:if="{{item.open}}">营业中</view>
     <view class="state" wx:else style="color: #ccc">休息中</view>

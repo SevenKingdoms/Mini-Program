@@ -3,8 +3,8 @@
   <view class="header" wx:if="{{!searchFlag}}" bindtap="navigateToDetail" hover-class="navigator-hover">
     <image class="img" src="{{merchantInfo.logo}}"></image>
     <view class="name">{{merchantInfo.name}}</view>
-    <view class="stateAndOpentime" wx:if="{{merchantInfo.state}}">营业中 | 营业时间: {{merchantInfo.openTime[0]}}:{{merchantInfo.openTime[1]}}-{{merchantInfo.openTime[2]}}:{{merchantInfo.openTime[3]}}</view>
-    <view class="stateAndOpentime" wx:else>休息中 | 营业时间: {{merchantInfo.openTime[0]}}:{{merchantInfo.openTime[1]}}-{{merchantInfo.openTime[2]}}:{{merchantInfo.openTime[3]}}</view>
+    <view class="stateAndOpentime" wx:if="{{merchantInfo.state}}">营业中 | 营业时间: {{merchantInfo.open_time}}</view>
+    <view class="stateAndOpentime" wx:else>休息中 | 营业时间: {{merchantInfo.open_time}}</view>
     <image class="search" src="../../assets/icons/searchWhite.png" catchtap="touchSearch"></image>
   </view>
   <view class="searchBox" wx:else>

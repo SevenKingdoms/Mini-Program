@@ -82,7 +82,7 @@ Page({
           console.log(res)
         }
       })
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../paystate/paystate?paid=' + this.data.paid
       })
     }

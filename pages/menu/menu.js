@@ -21,6 +21,7 @@ Page({
     this.setData({
       merchantInfo: app.globalData.merchantInfo
     })
+    console.log(app.globalData.merchantInfo)
     this.getData();
   },
   getData: function() {
@@ -95,44 +96,49 @@ Page({
     this.filterFoods()
   },
   rmCurrentFood: function(event) {
-    const index = event.currentTarget.dataset.index
-    const food = this.data.typeToFoodDictFiltered[this.data.typeActive][index]
-    const food_id = food.food_id
-    const cartDict = this.data.cartDict
-
-    if (cartDict[food_id].count > 0) {
-      cartDict[food_id].count -= 1
-      cartDict.sum--
-      cartDict.total -= food.price
+    if(this.data.merchantInfo.open) {
+      const index = event.currentTarget.dataset.index
+      const food = this.data.typeToFoodDictFiltered[this.data.typeActive][index]
+      const food_id = food.food_id
+      const cartDict = this.data.cartDict
+  
+      if (cartDict[food_id].count > 0) {
+        cartDict[food_id].count -= 1
+        cartDict.sum--
+        cartDict.total -= food.price
+      }
+      console.log(cartDict);
+      this.setData({
+        cartDict
+      })
+      this.cartToCartList()
     }
-    console.log(cartDict);
-    this.setData({
-      cartDict
-    })
-    this.cartToCartList()
   },
   addCurrentFood: function(event) {
-    const index = event.currentTarget.dataset.index
-    const food = this.data.typeToFoodDictFiltered[this.data.typeActive][index]
-    const food_id = food.food_id
-    const cartDict = this.data.cartDict
-    const cartFoodIds = Object.keys(cartDict)
-
-    if (cartFoodIds.includes(food_id.toString())) {
-      cartDict[food_id].count += 1
-    } else {
-      cartDict[food_id] = {
-        food: food,
-        count: 1
+    if(this.data.merchantInfo.open) {
+      const index = event.currentTarget.dataset.index
+      const food = this.data.typeToFoodDictFiltered[this.data.typeActive][index]
+      const food_id = food.food_id
+      const cartDict = this.data.cartDict
+      const cartFoodIds = Object.keys(cartDict)
+  
+      if (cartFoodIds.includes(food_id.toString())) {
+        cartDict[food_id].count += 1
+      } else {
+        cartDict[food_id] = {
+          food: food,
+          count: 1
+        }
       }
+      cartDict.sum++
+      cartDict.total += food.price
+      console.log(cartDict);
+      this.setData({
+        cartDict
+      })
+      this.cartToCartList()
     }
-    cartDict.sum++
-    cartDict.total += food.price
-    console.log(cartDict);
-    this.setData({
-      cartDict
-    })
-    this.cartToCartList()
+    
   },
   cartToCartList: function() {
     const cartDict = this.data.cartDict

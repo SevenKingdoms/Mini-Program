@@ -10,7 +10,6 @@ Page({
   data: {
     address: null,
     filter: "",
-    score: [],
     tags: ['美食', '甜点', '自助餐', '日本料理'],
     merchants: [],
     merchantsFiltered: [],
@@ -51,7 +50,6 @@ Page({
   },
   onShow: function() {
     this.getMerchants();
-    this.setScore();
   },
   getMerchants: function() {
     var that = this;
@@ -73,31 +71,21 @@ Page({
     })
   },
   preProcessMerchants: function() {
-    const tmpMerchants = this.data.merchants;
+    const tmpMerchants = this.data.merchantsFiltered;
     const date = new Date();
     const hour = date.getHours();
     const minute = date.getMinutes();
     tmpMerchants.map(merchant => {
-      const time = merchant.openTime.split("|").map(x=>x.split(":"));
-      if(time[0][0] > hour || (time[0][0] == hour && time[0][1] > minute)) {
+      const time = merchant.open_time.split("-").map(x=>x.split(":"));
+      if(parseInt(time[0][0]) > hour || (parseInt(time[0][0]) == hour && parseInt(time[0][1]) > minute)) {
         merchant.open = false;
       }
-      else if(time[1][0] < hour || (time[1][0] == hour && time[1][1] < minute)) {
+      else if(parseInt(time[1][0]) < hour || (parseInt(time[1][0]) == hour && parseInt(time[1][1]) < minute)) {
         merchant.open = false;
       }
     })
     this.setData({
-      merchants: tmpMerchants
-    })
-  },
-  setScore: function() {
-    let tempscore = [];
-    for(let i = 0; i < 2; i++) {
-      tempscore.push(Math.ceil(Math.random() * 10) / 2);
-    }
-    console.log(tempscore);
-    this.setData({
-      score: tempscore
+      merchantsFiltered: tmpMerchants
     })
   },
   scanCode: function() {
@@ -146,7 +134,7 @@ Page({
     this.filterMerchants(this.data.filter);
   },
   touchMerchant: function(e) {
-    app.globalData.merchantInfo = this.data.merchants[e.currentTarget.dataset.merchantIdx];
+    app.globalData.merchantInfo = this.data.merchantsFiltered[e.currentTarget.dataset.merchantIdx];
     wx.switchTab({
       url: '../menu/menu'
     })
