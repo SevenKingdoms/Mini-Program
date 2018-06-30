@@ -45,7 +45,13 @@
   </view>
 </view>
 
-<view class="flexItem rowStyle centers orderStatus">
-  <image class="statusImage" src="{{statusImage[0]}}"></image>
-  <label class="statusText fontSize14">{{statusText[0]}}</label>
-</view>
+<view class="flexItem rowStyle orderStatus centers">
+    <block wx:if="{{true}}">
+      <image class="statusImage" src="../../assets/icons/paySuccess.png"></image>
+      <view class="statusText fontSize14">已支付</view>
+    </block>
+    <block wx:else>
+      <image class="statusImage" src="../../assets/icons/payFail.png"></image>
+      <view class="statusText fontSize14">待支付</view>
+    </block>
+  </view>
