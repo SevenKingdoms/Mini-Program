@@ -1,9 +1,11 @@
 //menu.js
 
 const app = getApp();
+const network = require('../../utils/network.js')
 
 Page({
   data: {
+    ALLFoods: null,
     merchantInfo: {},
     searchFlag: false,
     filter: "",
@@ -15,17 +17,38 @@ Page({
     cartUp: false
   },
   onLoad: function() {
+    network.setToken(app.globalData.token);
   },
   onShow: function() {
+    if(!app.globalData.merchantInfo) {
+      wx.switchTab({
+        url: '../merchantList/merchantList'
+      })
+    }
     //获取选中的商家的信息
     this.setData({
       merchantInfo: app.globalData.merchantInfo
     })
     console.log(app.globalData.merchantInfo)
-    this.getData();
+    if(this.data.merchantInfo) {
+      this.getData();
+    }
   },
   getData: function() {
-    this.getFoodsDict()
+    var that = this;
+    const path = '/foods?merchant_id=' + this.data.merchantInfo.id;
+    network.GET({
+      url: path,
+      success: function(res) {
+        if(res.data.status === "OK") {
+          console.log(res.data.data);
+          that.setData({
+            ALLFoods: res.data.data
+          })
+          that.getFoodsDict()
+        }
+      }
+    })
   },
   // bind search input
   bindFilterInput: function(e) {
@@ -64,7 +87,7 @@ Page({
     })
   },
   getFoodsDict: function() {
-    const foods = ALLFoods.data;
+    const foods = this.data.ALLFoods;
     var typeToFoodDict = {}
 
     foods.map(food => {
@@ -112,6 +135,11 @@ Page({
         cartDict
       })
       this.cartToCartList()
+    } else {
+      wx.showToast({
+        title: '本店铺已打烊，请明天再来',
+        icon: 'none',
+      })
     }
   },
   addCurrentFood: function(event) {
@@ -137,6 +165,11 @@ Page({
         cartDict
       })
       this.cartToCartList()
+    } else {
+      wx.showToast({
+        title: '本店铺已打烊，请明天再来',
+        icon: 'none',
+      })
     }
     
   },
@@ -176,27 +209,27 @@ Page({
   }
 })
 
-// GEThttps://ancestree.site/api/foods?merchant_id=?
-const ALLFoods = {
-  "status": "OK",
-  "message": "成功获取",
-  "data": [
-    {
-      "food_id": 1,
-      "merchant_id": 1,
-      "name": "巨无霸",
-      "image": "https://api.kuaidian.com/a.png",
-      "type": "汉堡,新品",
-      "price": 100.5,
-      "introduction": "由牛肉组成由牛肉组成由牛肉组成由牛肉组成由牛肉组成"
-    }, {
-      "food_id": 2,
-      "merchant_id": 1,
-      "name": "巨无霸1",
-      "image": "https://api.kuaidian.com/a.png",
-      "type": "汉堡",
-      "price": 20,
-      "introduction": "由青菜组成"
-    }
-  ]
-}
+// // GEThttps://ancestree.site/api/foods?merchant_id=?
+// const ALLFoods = {
+//   "status": "OK",
+//   "message": "成功获取",
+//   "data": [
+//     {
+//       "food_id": 1,
+//       "merchant_id": 1,
+//       "name": "巨无霸",
+//       "image": "https://api.kuaidian.com/a.png",
+//       "type": "汉堡,新品",
+//       "price": 100.5,
+//       "introduction": "由牛肉组成由牛肉组成由牛肉组成由牛肉组成由牛肉组成"
+//     }, {
+//       "food_id": 2,
+//       "merchant_id": 1,
+//       "name": "巨无霸1",
+//       "image": "https://api.kuaidian.com/a.png",
+//       "type": "汉堡",
+//       "price": 20,
+//       "introduction": "由青菜组成"
+//     }
+//   ]
+// }

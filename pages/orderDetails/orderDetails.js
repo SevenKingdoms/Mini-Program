@@ -7,7 +7,9 @@ Page({
     orderInfo: null,
     foods: [],
     cartDict: [],
-    paid: true
+    paid: true,
+    price: null,
+    time: ""
   },
   onLoad: function(options) {
     network.setToken(app.globalData.token)
@@ -16,16 +18,57 @@ Page({
 
   },
   onShow:function() {
-    this.setData({
-      orderInfo: app.globalData.detailOrderInfo
-    })
+    if(!app.globalData.detailOrderInfo) {
+      this.getOrder();
+    } else {
+      this.setData({
+        orderInfo: app.globalData.detailOrderInfo
+      })
+      this.preProcessOrder()
+    }
     this.splitFood();
+    console.log("=> aaa")
     console.log(this.data.orderInfo);
+  },
+  getOrder: function() {
+    var that = this;
+    const path = '/orders/' + app.globalData.order_id;
+    network.GET({
+      url: path,
+      success: function(res) {
+        if(res.data.status == "OK") {
+          console.log("=> orderInfo:");
+          console.log(res.data.data);
+          that.setData({
+            orderInfo: res.data.data
+          })
+          that.preProcessOrder();
+        } else {
+          console.log("请刷新一次");
+        }
+      }
+    })
+  },
+  preProcessOrder: function() {
+    const date = new Date(this.data.orderInfo.create_at);
+    let sum = 0;
+    let time = date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()
+    const ourfood = this.data.orderInfo.foods.split("|"); 
+    ourfood.pop();
+    ourfood.map(x => {
+      let food = x.split(", ");
+      sum += food[1] * food[2];
+    })
+    this.setData({
+      price: sum,
+      time: time
+    })
   },
   splitFood: function() {
     let foods = [];
     let cartDict = [];
-    const originFood = this.data.orderInfo.order.foods;
+    const originFood = this.data.orderInfo.foods.split("|");
+    originFood.pop();
     originFood.map(x => {
       const temp = x.split(", ");
       foods.push(temp);
@@ -45,34 +88,37 @@ Page({
     console.log(cartDict);
   },
   touchMerchant: function(e) {
-    console.log(e.currentTarget.dataset.merchantIdx);
-    app.globalData.merchantInfo = this.data.merchants[e.currentTarget.dataset.merchantIdx];
+    var that = this;
+    const path = '/merchants/' + e.currentTarget.dataset.tel
+    network.GET({
+      url: path,
+      success: function(res) {
+        if(res.data.status === "OK") {
+          app.globalData.merchantInfo = res.data.data;
+        }
+      }
+    })
     wx.navigateTo({
       url: "../merchantDetails/merchantDetails"
     })
   },
   touchUnpay: function(e) {
+    console.log(e.currentTarget.dataset.state);
     if(!e.currentTarget.dataset.state) {
-      if(Math.random() <= 0.5) {
-        this.setData({
-          paid: false
-        })
-      }
+      // if(Math.random() <= 0.5) {
+      //   this.setData({
+      //     paid: false
+      //   })
+      // }
+      const path = '/orders/' + this.data.orderInfo.order_id;
       network.POST({
-        url: "/orders",
+        url: path,
         params: {
-          "merchant_id": this.data.orderInfo.order.merchant_id,
-          "merchant_name": this.data.orderInfo.order.merchant_name,
-          "merchant_tel": this.data.orderInfo.order.merchant_tel,
-          "open_id": this.data.orderInfo.order.open_id,
-          "desk_id": this.data.orderInfo.order.desk_id,
-          "num_of_people": this.data.orderInfo.order.num_of_people,
-          "paid": this.data.paid,
-          "foods": this.data.orderInfo.order.foods,
-          "remark": "不要辣"
+          "paid": this.data.paid
         },
         success: function(res) {
           if (res.data.status === "OK") {
+            app.globalData.order_id = res.data.data.order_id;
             console.log(res)
           } else {
             console.log(res)

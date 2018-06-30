@@ -2,17 +2,17 @@
 
 <view class="flexItem rowStyle tableViewCellHeader marginTop10">
   <image class="orderImage marginLeft12" src="../../assets/icons/order.png"></image>
-  <label class="color54 fontSize12">订单编号: {{orderInfo.order.id}}</label>
+  <label class="color54 fontSize12">订单编号: {{orderInfo.id}}</label>
 </view>
 <view class="flexItem rowStyle merchantInfo">
-  <view class="flexItem rowStyle marginLeft12 centers" catchtap="touchMerchant" data-merchant-idx="{{orderInfo.order.merchant_id}}">
+  <view class="flexItem rowStyle marginLeft12 centers" catchtap="touchMerchant" data-tel="{{orderInfo.merchant_tel}}">
     <image class="merchantImg" src="../../assets/icons/merchant.png"></image>
-    <label class="color54 fontSize12">{{orderInfo.order.merchant_name}}</label>
+    <label class="color54 fontSize12">{{orderInfo.merchant_name}}</label>
     <image class="goto" src="../../assets/icons/gotoGray.png"></image>
   </view>
   <view class="flexItem rowStyle marginRight12 centers" catchtap="callEvent">
     <image class="call" src="../../assets/icons/call.png"></image>
-    <label class="color54 fontSize12">{{orderInfo.order.merchant_tel}}</label>
+    <label class="color54 fontSize12">{{orderInfo.merchant_tel}}</label>
   </view>
 </view>
 
@@ -26,27 +26,28 @@
 <view class="flexItem columnStyle tableViewCell">
   <view class="flexItem rowStyle marginBottom10 cellStyle">
     <label class="color54 fontSize12">桌号</label>
-    <label class="color54 fontSize12">{{orderInfo.order.desk_id}}</label>
+    <label class="color54 fontSize12">{{orderInfo.desk_id}}</label>
   </view>
   <view class="flexItem rowStyle marginBottom10 cellStyle">
     <label class="color54 fontSize12">用餐人数</label>
-    <label class="color54 fontSize12">{{orderInfo.order.num_of_people}} 人</label>
+    <label class="color54 fontSize12">{{orderInfo.num_of_people}} 人</label>
   </view>
   <view class="flexItem rowStyle marginBottom10 cellStyle">
     <label class="color54 fontSize12">下单时间</label>
-    <label class="color54 fontSize12">{{orderInfo.createTime}}</label>
+    <!-- <label class="color54 fontSize12">{{time}}</label> -->
+    <label class="color54 fontSize12">2018-06-30 11:02:03</label>
   </view>
 </view>
 
 <view class="flexItem rowStyle moneyInfo">
   <view class="moneyLeft">
     <label class="color54">合计 </label>
-    <label class="moneyColor">￥{{orderInfo.totalPrice}}</label>
+    <label class="moneyColor">￥{{price}}</label>
   </view>
 </view>
 
-<view class="flexItem rowStyle orderStatus centers" bindtap="touchUnpay" data-state="{{orderInfo.order.paid}}">
-    <block wx:if="{{orderInfo.order.paid}}">
+<view class="flexItem rowStyle orderStatus centers" bindtap="touchUnpay" data-state="{{orderInfo.paid}}">
+    <block wx:if="{{orderInfo.paid}}">
       <image class="statusImage" src="../../assets/icons/paySuccess.png"></image>
       <view class="statusText fontSize14">已支付</view>
     </block>

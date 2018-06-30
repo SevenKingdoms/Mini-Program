@@ -1,12 +1,19 @@
 
 
+.payImage {
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 325rpx;
+  margin-top: 50rpx;
+}
+
 .payResult{
   display: flex;
   flex-direction: row;
   justify-content: center;
   height: 46rpx;
   font-size: 80%;
-  margin: 170rpx auto auto auto;
+  margin: 20rpx auto auto auto;
   color: #101010;
   font-family: Arial, Helvetica, sans-serif;
 
@@ -17,13 +24,12 @@
 }
 
 .back, .view{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  position: absolute;
+  left: 275rpx;
+  bottom: 50rpx;
   font-size: 80%;
   width: 200rpx;
   height: 60rpx;
-  margin-bottom: 40rpx;
   line-height: 60rpx;
   vertical-align: middle;
 }

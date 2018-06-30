@@ -34,7 +34,8 @@
         </view>
         <view class="flexItem rowStyle marginBottom10 cellStyle">
           <label class="color54 fontSize12">下单时间</label>
-          <label class="color54 fontSize12">{{createTime[idx]}}</label>
+          <!-- <label class="color54 fontSize12">{{createTime[idx]}}</label> -->
+          <label class="color54 fontSize12">2018-06-30 11:02:03</label>
         </view>
       </view>
 

@@ -25,25 +25,25 @@ Page({
   },
   getOrders: function() {
     var that = this;
-    // const orderUrl = "/orders?open_id=" + app.globalData.userInfo.openid;
-    // network.GET({
-    //   url: orderUrl,
-    //   success: function(res) {
-    //     if(res.data.status == "OK") {
-    //       console.log("=> ordersInfo:");
-    //       console.log(res.data.data);
-    //       that.setData({
-    //         orders: res.data.data
-    //       })
-    //       that.preProcessOrders();
-    //     } else {
-    //       console.log("请刷新一次");
-    //     }
-    //   }
-    // })
-    that.setData({
-      orders: allOrders.data
+    const orderUrl = "/orders?open_id=" + app.globalData.userInfo.openid;
+    network.GET({
+      url: orderUrl,
+      success: function(res) {
+        if(res.data.status == "OK") {
+          console.log("=> ordersInfo:");
+          console.log(res.data.data);
+          that.setData({
+            orders: res.data.data
+          })
+          that.preProcessOrders();
+        } else {
+          console.log("请刷新一次");
+        }
+      }
     })
+    // that.setData({
+    //   orders: allOrders.data
+    // })
     that.preProcessOrders();
     console.log("=> ordersInfo:");
     console.log(that.data.orders);
@@ -75,7 +75,9 @@ Page({
       time.push(
         date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() 
       )
-      order.foods.map(x => {
+      const ourfood = order.foods.split("|");
+      ourfood.pop();
+      ourfood.map(x => {
         let food = x.split(", ");
         eachOrderPrice += food[1] * food[2];
       })
@@ -125,8 +127,16 @@ Page({
   //     })
   // },
   touchMerchant: function(e) {
-    console.log(e.currentTarget.dataset.tel);
-    // app.globalData.merchantInfo = this.data.merchants[e.currentTarget.dataset.merchantIdx];
+    var that = this;
+    const path = '/merchants/' + e.currentTarget.dataset.tel
+    network.GET({
+      url: path,
+      success: function(res) {
+        if(res.data.status === "OK") {
+          app.globalData.merchantInfo = res.data.data;
+        }
+      }
+    })
     wx.navigateTo({
       url: "../merchantDetails/merchantDetails"
     })
@@ -141,11 +151,8 @@ Page({
     } else {
       detailOrder = this.data.payFail[index];
     }
-    app.globalData.detailOrderInfo = {
-      order: detailOrder,
-      createTime: this.data.createTime[index],
-      totalPrice: this.data.totalPrice[index]
-    }
+    app.globalData.detailOrderInfo = detailOrder;
+    app.globalData.order_id = detailOrder.order_id;
     wx.navigateTo({
         url: '../orderDetails/orderDetails'
     })

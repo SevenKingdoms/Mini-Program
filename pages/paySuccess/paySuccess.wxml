@@ -1,6 +1,0 @@
-<!--pages/paySuccess/paySuccess.wxml-->
-<view>
-  <image src='./../icon/paySuccess.png'></image>
-  <view class='center'>支付成功</view>
-  <button style='background-color:green'>返回</button>
-</view>

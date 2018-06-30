@@ -32,7 +32,7 @@
       </view>
       <view class="foods">
         <view class="food" wx:for="{{typeToFoodDictFiltered[typeActive]}}" wx:key="*this" wx:for-item="food">
-          <image class="img" src="../../assets/images/merchant.jpeg"></image>
+          <image class="img" src="{{food.image}}"></image>
           <view class="right">
             <view class="name">{{food.name}}</view>
             <view class="introduction">{{food.introduction}}</view>

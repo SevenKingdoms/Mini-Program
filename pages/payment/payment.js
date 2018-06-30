@@ -92,22 +92,25 @@ Page({
     /*wx.navigateTo({
       url: '../paystate/paystate',
     })*/
-    var food = [];
-    for(var i = 0; i < this.data.acturalCartList.length; i++) {
-      food[i] = this.data.acturalCartList[i].food.name;
-      food[i] += ", ";
-      food[i] += this.data.acturalCartList[i].food.price;
-      food[i] += ", ";
-      food[i] += this.data.acturalCartList[i].count;
-      food[i] += ", ";
-      food[i] += this.data.acturalCartList[i].food.image;
+    var that = this;
+    var food = "";
+    for(var i = 0; i < that.data.acturalCartList.length; i++) {
+      food += that.data.acturalCartList[i].food.name;
+      food += ", ";
+      food += that.data.acturalCartList[i].food.price;
+      food += ", ";
+      food += that.data.acturalCartList[i].count;
+      food += ", ";
+      food += that.data.acturalCartList[i].food.image;
+      food += "|"
     }
-    this.setData({
+    console.log(food);
+    that.setData({
       food: food,
     })
-    var phone = this.data.phone;
-    var deskId = this.data.deskId;
-    var member = this.data.member;
+    var phone = that.data.phone;
+    var deskId = that.data.deskId;
+    var member = that.data.member;
     if(phone === null || deskId == null || member === null) {
       wx.showToast({
         title: '手机号或桌号或人数不能为空',
@@ -115,7 +118,18 @@ Page({
       });
       console.log('toastshown')
     } else{
-      var paystatus = Math.round(Math.random());
+      // if(Math.random() <= 0.5) {
+      //   that.setData({
+      //     paystatus: false
+      //   })
+      // } else {
+      //   that.setData({
+      //     paystatus: true
+      //   })
+      // }
+      that.setData({
+        paystatus: false
+      })
       network.POST({
         url: '/orders',
         params: {
@@ -123,16 +137,18 @@ Page({
           "merchant_name": app.globalData.merchantInfo.name,
           "merchant_tel": app.globalData.merchantInfo.tel,
           "open_id": app.globalData.userInfo.openid,
-          "desk_id": parseInt(deskId),
-          "num_of_people": parseInt(member),
-          "paid": paystatus,
-          "foods": food,
-          "remark": this.data.remark
+          "desk_id": parseInt(that.data.deskId),
+          "num_of_people": parseInt(that.data.member),
+          "paid": that.data.paystatus,
+          "foods": that.data.food,
+          "remark": that.data.remark
         },
         success: function (res) {
           if (res.data.status === 'OK') {
+            console.log(res.data.data);
+            app.globalData.order_id = res.data.data.id;
             wx.redirectTo({
-              url: '../paystate/paystate?paid=' + paystatus,
+              url: '../paystate/paystate?paid=' + that.data.paystatus,
             })
           }
         },

@@ -28,7 +28,7 @@ Page({
     })
   },
   overview: function() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../orderDetails/orderDetails'
     })
   }
