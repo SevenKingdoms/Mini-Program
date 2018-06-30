@@ -9,7 +9,6 @@ var qqmapsdk;
 Page({
   data: {
     address: null,
-    scanResult: null,
     filter: "",
     score: [],
     tags: ['美食', '甜点', '自助餐', '日本料理'],
@@ -66,10 +65,29 @@ Page({
             merchants: res.data.data,
             merchantsFiltered: res.data.data
           })
+          that.preProcessMerchants();
         } else {
           console.log("请刷新一次");
         }
       }
+    })
+  },
+  preProcessMerchants: function() {
+    const tmpMerchants = this.data.merchants;
+    const date = new Date();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    tmpMerchants.map(merchant => {
+      const time = merchant.openTime.split("|").map(x=>x.split(":"));
+      if(time[0][0] > hour || (time[0][0] == hour && time[0][1] > minute)) {
+        merchant.open = false;
+      }
+      else if(time[1][0] < hour || (time[1][0] == hour && time[1][1] < minute)) {
+        merchant.open = false;
+      }
+    })
+    this.setData({
+      merchants: tmpMerchants
     })
   },
   setScore: function() {
@@ -85,10 +103,23 @@ Page({
   scanCode: function() {
     wx.scanCode({
       success: res => {
-        this.setData({
-          scanResult: res
+        const scanResult = "/merchants/" + res.result;
+        console.log(scanResult);
+        network.GET({
+          url: scanResult,
+          success: function(res) {
+            if(res.data.status == "OK") {
+              console.log("=> merchantsInfo:");
+              console.log(res.data.data);
+              app.globalData.merchantInfo = res.data.data;
+              wx.switchTab({
+                url: '../menu/menu'
+              })
+            } else {
+              console.log("请刷新一次");
+            }
+          }
         })
-        console.log(res);
       }
     })
   },

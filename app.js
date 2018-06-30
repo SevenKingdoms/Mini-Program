@@ -117,17 +117,7 @@ App({
     token: null,
     // merchantInfo: null,
     // stage: null
-    merchantInfo:
-    {
-      "merchant_id": 1,
-      "avatar": "../../assets/images/merchant.jpeg",
-      "name": "兰州拉面",
-      "address": "广州大学城",
-      "opentime": "营业中",
-      "state": true,
-      "phone": "13719175479",
-      "announcement": ["xxx"],
-      "onsales": ["xxx优惠十元"]
-    }
+    merchantInfo: null,
+    detailOrderInfo: null
   }
 })

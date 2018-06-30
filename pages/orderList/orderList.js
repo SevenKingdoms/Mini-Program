@@ -10,91 +10,83 @@ Page({
     navTab: ["全部", "已支付", "待支付"],
     currentNavtab: 0,
     startPoint: [],
-    orders: [
-      {
-        "publish_at": "2018-08-10 13:00:00",
-        "order_id": 109,
-        "desk_id": 2,
-        "merchant_id": 1,
-        "merchant_phone": 13719175479,
-        "open_id": "abc",
-        "person_num": 2,
-        "user_phone": 13719175479,
-        "food_id": [1, 2, 10],
-        "total_price": 180,
-        "pay_state": true,
-        "remark": "不要辣"
-      }, {
-        "publish_at": "2018-08-10 13:00:00",
-        "order_id": 109,
-        "desk_id": 2,
-        "merchant_id": 1,
-        "merchant_phone": 13719175479,
-        "open_id": "abc",
-        "person_num": 3,
-        "user_phone": 13719175479,
-        "food_id": [1, 2, 10],
-        "total_price": 180,
-        "pay_state": false,
-        "remark": "不要辣"
-      }
-    ],
-    merchants: [
-      {
-        "merchant_id": 2,
-        "avatar": "../../assets/images/merchant.jpeg",
-        "name": "兰州不拉面",
-        "address": "广州大学城",
-        "opentime": "休息中",
-        "state": false,
-        "phone": "13719175479",
-        "score": 4.5,
-        "announcement": ["xxx"],
-        "onsales": ["xxx优惠十元"]
-      },{
-        "merchant_id": 2,
-        "avatar": "../../assets/images/merchant.jpeg",
-        "name": "兰州不拉面",
-        "address": "广州大学城",
-        "opentime": "休息中",
-        "state": false,
-        "phone": "13719175479",
-        "score": 4.5,
-        "announcement": ["xxx"],
-        "onsales": ["xxx优惠十元"]
-      }
-    ],
-    allOrderIndex: [],
+    orders: [],
+    createTime: [],
+    totalPrice: [],
     paySuccess: [],
-    payFail: []
+    payFail: [],
+    DetailOrdertInfo: []
+  },
+  onLoad: function() {
+    network.setToken(app.globalData.token);
   },
   onShow: function() {
-    this.sortByTime();
-    this.classifyOrder();
+    this.getOrders();
   },
-  sortByTime: function() {
-    var all = [];
-    for(var i = 0; i < this.data.orders.length; i++) {
-      all.push(i);
-    }
-    this.setData({
-      allOrderIndex: all
+  getOrders: function() {
+    var that = this;
+    // const orderUrl = "/orders?open_id=" + app.globalData.userInfo.openid;
+    // network.GET({
+    //   url: orderUrl,
+    //   success: function(res) {
+    //     if(res.data.status == "OK") {
+    //       console.log("=> ordersInfo:");
+    //       console.log(res.data.data);
+    //       that.setData({
+    //         orders: res.data.data
+    //       })
+    //       that.preProcessOrders();
+    //     } else {
+    //       console.log("请刷新一次");
+    //     }
+    //   }
+    // })
+    that.setData({
+      orders: allOrders.data
     })
+    that.preProcessOrders();
+    console.log("=> ordersInfo:");
+    console.log(that.data.orders);
   },
-  classifyOrder: function() {
-    var success = [];
-    var fail = [];
-    for(var i = 0; i < this.data.orders.length; i++) {
-      if(this.data.orders[i].pay_state) {
-        success.push(i);
+  //按时间顺序排序和找出成功支付和待支付的订单
+  preProcessOrders: function() {
+    let success = [];
+    let fail = [];
+    let time = [];
+    let sum = [];
+    let tmpOrders = this.data.orders;
+    tmpOrders.sort(function (x, y) {
+      const xDate = new Date(x.create_at);
+      const yDate = new Date(y.create_at);
+      if(xDate < yDate) {
+        return 1;
+      } else {
+        return -1;
       }
-      else {
-        fail.push(i);
+    })
+    tmpOrders.map(order => {
+      const date = new Date(order.create_at);
+      let eachOrderPrice = 0;
+      if(order.paid) {
+        success.push(order);
+      } else {
+        fail.push(order);
       }
-    }
+      time.push(
+        date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() 
+      )
+      order.foods.map(x => {
+        let food = x.split(", ");
+        eachOrderPrice += food[1] * food[2];
+      })
+      sum.push(eachOrderPrice);
+    })
     this.setData({
+      orders: tmpOrders,
+      createTime: time,
       paySuccess: success,
-      payFail: fail
+      payFail: fail,
+      totalPrice: sum
     })
   },
   catchtouchstart:function(e){
@@ -111,7 +103,7 @@ Page({
       if(Math.abs(endPoint[0] - startPoint[0]) >= Math.abs(endPoint[1] - startPoint[1]) && currentNum< this.data.navTab.length -1) {
         currentNum=currentNum + 1;  
       }
-    } else {
+    } else if(endPoint[0] > startPoint[0]){
       if(Math.abs(endPoint[0] - startPoint[0]) >= Math.abs(endPoint[1] - startPoint[1]) && currentNum > 0) {
         currentNum -= 1;
       }
@@ -132,16 +124,63 @@ Page({
   //       phoneNumber: this.data.phoneNum
   //     })
   // },
-  touchMerchantAvatar: function(e) {
+  touchMerchant: function(e) {
     console.log(e.currentTarget.dataset.merchantIdx);
     app.globalData.merchantInfo = this.data.merchants[e.currentTarget.dataset.merchantIdx];
     wx.navigateTo({
       url: "../merchantDetails/merchantDetails"
     })
   },
-  goDeatailEvent: function () {
+  goDeatailEvent: function (e) {
+    const index = e.currentTarget.dataset.idx;
+    let detailOrder = null;
+    if(this.data.currentNavtab == 0) {
+      detailOrder = this.data.orders[index];
+    } else if(this.data.currentNavtab == 1) {
+      detailOrder = this.data.paySuccess[index];
+    } else {
+      detailOrder = this.data.payFail[index];
+    }
+    app.globalData.detailOrderInfo = {
+      order: detailOrder,
+      createTime: this.data.createTime[index],
+      totalPrice: this.data.totalPrice[index]
+    }
     wx.navigateTo({
         url: '../orderDetails/orderDetails'
     })
   }
 })
+
+const allOrders = {
+  "status": "OK",
+  "message": "成功获取",
+  "data": [
+      {
+          "id": 23,
+          "merchant_id": 1,
+          "merchant_name": "兰州牛肉",
+          "merchant_tel": "12341234123",
+          "open_id": "abc",
+          "desk_id": 2,
+          "num_of_people": 3,
+          "paid": true,
+          "foods": ["汉堡, 12.5, 1, https://api.kuaidian.com/a.png", "芝士蛋糕, 22.5, 2, https://api.kuaidian.com/a.png"],
+          // "foods": "汉堡,12.5,1,芝士蛋糕,22.5,2",
+          "remark": "不要辣",
+          "create_at": "Thu Jun 28 2018 23:52:21 GMT+0800 (CST)"
+      }, {
+          "id": 33,
+          "merchant_id": 1,
+          "merchant_name": "兰州不牛肉",
+          "merchant_tel": "12341234123",
+          "open_id": "abc",
+          "desk_id": 2,
+          "num_of_people": 3,
+          "paid": false,
+          "foods": ["汉堡, 12.5, 1, https://api.kuaidian.com/a.png", "芝士蛋糕, 22.5, 2, https://api.kuaidian.com/a.png"],
+          "remark": "不要辣",
+          "create_at": "Thu Jun 28 2018 23:52:21 GMT+0800 (CST)"
+      }
+  ]
+}
