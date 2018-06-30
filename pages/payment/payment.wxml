@@ -1,15 +1,39 @@
-<!--pages/payment/payment.wxml-->
-<view>
-  <text class='center'>结算确认</text>
+  <!--pages/payment/payment.wxml-->
+<view class='top-view'>
+  <view class='parent-view'>
+    <view class='fix-text'>联系电话</view>
+    <input class='input-text' placeholder='请输入联系电话' type="number" maxlength='11'></input>
+  </view>
+
+  <view class='parent-view'>
+    <view class='fix-text'>桌号</view>
+    <input class='input-text' maxlength='4' placeholder='请输入桌号' type="number"></input>
+  </view>
+
+  <view class='parent-view'>
+    <view class='fix-text'>人数</view>
+    <input class='input-text' maxlength='2' placeholder='请输入人数' type="number"></input>
+  </view>
 </view>
 
-<view style='margin-top:10px'>
-    <view>桌号：3</view>
-    <view>鸡排1份</view>
-    <view>汉堡1份</view>
-    <view>总额：56元</view>
+
+<view class='orderDetail'>订单详情</view>
+
+<view class='orderList' >
+  <textarea class='remark' placeholder='备注：写下你的备注'></textarea>
+  <view class='foodList' wx:for="{{acturalCartList}}" wx:key="length">
+    <image class='foodImage' src='{{item.food.image}}'></image>
+    <view class='foodName'>{{item.food.name}}</view>
+    <view class='price'>￥{{item.food.price}}</view>
+    <view class='quantity'>×{{item.count}}</view>
+  </view>
+  <view class='totalPrice'>
+    <view class='sumText'>实际需付</view>
+    <view class='money'>￥{{sum}}</view>
+  </view>
 </view>
 
-<view style='margin-top:10px'>
-  <button>提交订单</button>
-</view>
+<button class='payButton' type='primary' bind:tap="navigateToPayResult">微信支付</button>
+
+
+

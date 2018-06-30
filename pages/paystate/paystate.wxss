@@ -1,0 +1,23 @@
+.payResult{
+  height: 46rpx;
+  width: 200rpx;
+  font-size: 80%;
+  margin: 170rpx auto auto auto;
+  color: #101010;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.buttonSet{
+  margin: 100rpx auto auto auto;
+}
+
+.back, .view{
+  font-size: 80%;
+  width: 200rpx;
+  height: 60rpx;
+  color: #101010;
+  font-family: Microsoft Yahei;
+  margin-bottom: 40rpx;
+  line-height: 60rpx;
+  vertical-align: middle;
+}

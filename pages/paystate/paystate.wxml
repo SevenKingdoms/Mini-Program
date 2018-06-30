@@ -1,0 +1,5 @@
+<view class='payResult'>支付成功/失败</view>
+<view class='buttonSet'>
+  <button bind:tap="returnFront" class='back'>回到首页</button>
+  <button bind:tap="overview" class='view'>查看订单</button>
+</view>
