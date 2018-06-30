@@ -2,56 +2,56 @@
 
 <view class="flexItem rowStyle tableViewCellHeader marginTop10">
   <image class="orderImage marginLeft12" src="../../assets/icons/order.png"></image>
-  <label class="color54 fontSize12">订单编号：{{orderNum}}-1</label>
+  <label class="color54 fontSize12">订单编号: {{orderInfo.order.id}}</label>
 </view>
 <view class="flexItem rowStyle merchantInfo">
-  <view class="flexItem rowStyle marginLeft12 centers">
+  <view class="flexItem rowStyle marginLeft12 centers" catchtap="touchMerchant" data-merchant-idx="{{orderInfo.order.merchant_id}}">
     <image class="merchantImg" src="../../assets/icons/merchant.png"></image>
-    <label class="color54 fontSize12">{{nickName}}</label>
+    <label class="color54 fontSize12">{{orderInfo.order.merchant_name}}</label>
     <image class="goto" src="../../assets/icons/gotoGray.png"></image>
   </view>
   <view class="flexItem rowStyle marginRight12 centers" catchtap="callEvent">
     <image class="call" src="../../assets/icons/call.png"></image>
-    <label class="color54 fontSize12">{{phoneNum}}</label>
+    <label class="color54 fontSize12">{{orderInfo.order.merchant_tel}}</label>
   </view>
 </view>
 
-<view class="food" wx:for="{{[0,1]}}">
-  <image class="img" src="../../assets/images/merchant.jpeg"></image>
-  <view class="name">拌面</view>
-  <view class="number">×2</view>
-  <view class="price">￥10</view>
+<view class="food" wx:for="{{foods}}" wx:key="*this">
+  <image class="img" src="{{item[3]}}"></image>
+  <view class="name">{{item[0]}}</view>
+  <view class="number">×{{item[2]}}</view>
+  <view class="price">￥{{item[1] * item[2]}}</view>
 </view>
 
 <view class="flexItem columnStyle tableViewCell">
   <view class="flexItem rowStyle marginBottom10 cellStyle">
     <label class="color54 fontSize12">桌号</label>
-    <label class="color54 fontSize12">{{tableNum}}</label>
+    <label class="color54 fontSize12">{{orderInfo.order.desk_id}}</label>
   </view>
   <view class="flexItem rowStyle marginBottom10 cellStyle">
     <label class="color54 fontSize12">用餐人数</label>
-    <label class="color54 fontSize12">{{dineNum}} 人</label>
+    <label class="color54 fontSize12">{{orderInfo.order.num_of_people}} 人</label>
   </view>
   <view class="flexItem rowStyle marginBottom10 cellStyle">
     <label class="color54 fontSize12">下单时间</label>
-    <label class="color54 fontSize12">{{orderTime}}</label>
+    <label class="color54 fontSize12">{{orderInfo.createTime}}</label>
   </view>
 </view>
 
 <view class="flexItem rowStyle moneyInfo">
   <view class="moneyLeft">
     <label class="color54">合计 </label>
-    <label class="moneyColor">￥20</label>
+    <label class="moneyColor">￥{{orderInfo.totalPrice}}</label>
   </view>
 </view>
 
-<view class="flexItem rowStyle orderStatus centers">
-    <block wx:if="{{true}}">
+<view class="flexItem rowStyle orderStatus centers" bindtap="touchUnpay" data-state="{{orderInfo.order.paid}}">
+    <block wx:if="{{orderInfo.order.paid}}">
       <image class="statusImage" src="../../assets/icons/paySuccess.png"></image>
       <view class="statusText fontSize14">已支付</view>
     </block>
     <block wx:else>
-      <image class="statusImage" src="../../assets/icons/payFail.png"></image>
-      <view class="statusText fontSize14">待支付</view>
+      <image class="statusImage" src="../../assets/icons/payBlue.png"></image>
+      <view class="statusText fontSize14">微信支付</view>
     </block>
   </view>
