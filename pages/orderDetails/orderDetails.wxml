@@ -2,7 +2,7 @@
 
 <view class="flexItem rowStyle tableViewCellHeader marginTop10">
   <image class="orderImage marginLeft12" src="../../assets/icons/order.png"></image>
-  <label class="color54 fontSize12">订单编号: {{orderInfo.id}}</label>
+  <label class="color54 fontSize12">订单编号: {{orderInfo.order_id}}</label>
 </view>
 <view class="flexItem rowStyle merchantInfo">
   <view class="flexItem rowStyle marginLeft12 centers" catchtap="touchMerchant" data-tel="{{orderInfo.merchant_tel}}">

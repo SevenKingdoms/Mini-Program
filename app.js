@@ -118,6 +118,7 @@ App({
     // merchantInfo: null,
     // stage: null
     merchantInfo: null,
-    detailOrderInfo: null
+    detailOrderInfo: null,
+    order_id: null
   }
 })

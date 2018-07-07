@@ -19,16 +19,13 @@ Page({
   },
   onShow:function() {
     if(!app.globalData.detailOrderInfo) {
-      this.getOrder();
+    this.getOrder();
     } else {
       this.setData({
         orderInfo: app.globalData.detailOrderInfo
       })
       this.preProcessOrder()
     }
-    this.splitFood();
-    console.log("=> aaa")
-    console.log(this.data.orderInfo);
   },
   getOrder: function() {
     var that = this;
@@ -53,12 +50,8 @@ Page({
     const date = new Date(this.data.orderInfo.create_at);
     let sum = 0;
     let time = date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()
-    const ourfood = this.data.orderInfo.foods.split("|"); 
-    ourfood.pop();
-    ourfood.map(x => {
-      let food = x.split(", ");
-      sum += food[1] * food[2];
-    })
+    this.splitFood();
+    this.data.foods.map(food => sum += food[1] * food[2])
     this.setData({
       price: sum,
       time: time
@@ -85,6 +78,7 @@ Page({
       foods: foods,
       cartDict: cartDict
     })
+    console.log("=> cartDict");
     console.log(cartDict);
   },
   touchMerchant: function(e) {
@@ -103,23 +97,24 @@ Page({
     })
   },
   touchUnpay: function(e) {
-    console.log(e.currentTarget.dataset.state);
     if(!e.currentTarget.dataset.state) {
       // if(Math.random() <= 0.5) {
       //   this.setData({
       //     paid: false
       //   })
       // }
-      const path = '/orders/' + this.data.orderInfo.order_id;
+      this.setData({
+        'orderInfo.paid': this.data.paid,
+        'orderInfo.open_id': app.globalData.userInfo.openid
+      })
       network.POST({
-        url: path,
-        params: {
-          "paid": this.data.paid
-        },
+        url: '/orders',
+        params: this.data.orderInfo,
         success: function(res) {
           if (res.data.status === "OK") {
             app.globalData.order_id = res.data.data.order_id;
-            console.log(res)
+            console.log("=> orderInfo");
+            console.log(res.data.data);
           } else {
             console.log(res)
           }

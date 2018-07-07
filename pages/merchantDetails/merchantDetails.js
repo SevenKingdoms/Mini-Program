@@ -33,11 +33,11 @@ Page({
     that.setData({
       merchantInfo: app.globalData.merchantInfo
     })
+    console.log(that.data.merchantInfo);
     wx.setNavigationBarTitle({
       title: that.data.merchantInfo.name,
       success: function(res) {
           // success
-          console.log(that.data.merchantInfo.avatar);
       }
     })
   },

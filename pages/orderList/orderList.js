@@ -25,9 +25,11 @@ Page({
   },
   getOrders: function() {
     var that = this;
-    const orderUrl = "/orders?open_id=" + app.globalData.userInfo.openid;
     network.GET({
-      url: orderUrl,
+      url: "/orders?",
+      params: {
+        open_id: app.globalData.userInfo.openid
+      },
       success: function(res) {
         if(res.data.status == "OK") {
           console.log("=> ordersInfo:");
@@ -44,9 +46,9 @@ Page({
     // that.setData({
     //   orders: allOrders.data
     // })
-    that.preProcessOrders();
-    console.log("=> ordersInfo:");
-    console.log(that.data.orders);
+    // that.preProcessOrders();
+    // console.log("=> ordersInfo:");
+    // console.log(that.data.orders);
   },
   //按时间顺序排序和找出成功支付和待支付的订单
   preProcessOrders: function() {
@@ -67,6 +69,7 @@ Page({
     tmpOrders.map(order => {
       const date = new Date(order.create_at);
       let eachOrderPrice = 0;
+      // order.open_id = app.globalData.userInfo.openid;
       if(order.paid) {
         success.push(order);
       } else {
@@ -134,11 +137,11 @@ Page({
       success: function(res) {
         if(res.data.status === "OK") {
           app.globalData.merchantInfo = res.data.data;
+          wx.navigateTo({
+            url: "../merchantDetails/merchantDetails"
+          })
         }
       }
-    })
-    wx.navigateTo({
-      url: "../merchantDetails/merchantDetails"
     })
   },
   goDeatailEvent: function (e) {
@@ -159,35 +162,35 @@ Page({
   }
 })
 
-const allOrders = {
-  "status": "OK",
-  "message": "成功获取",
-  "data": [
-      {
-          "id": 23,
-          "merchant_id": 1,
-          "merchant_name": "兰州牛肉",
-          "merchant_tel": "12341234123",
-          "open_id": "abc",
-          "desk_id": 2,
-          "num_of_people": 3,
-          "paid": true,
-          "foods": ["汉堡, 12.5, 1, https://api.kuaidian.com/a.png", "芝士蛋糕, 22.5, 2, https://api.kuaidian.com/a.png"],
-          // "foods": "汉堡,12.5,1,芝士蛋糕,22.5,2",
-          "remark": "不要辣",
-          "create_at": "Thu Jun 28 2018 23:52:21 GMT+0800 (CST)"
-      }, {
-          "id": 33,
-          "merchant_id": 1,
-          "merchant_name": "兰州不牛肉",
-          "merchant_tel": "12341234123",
-          "open_id": "abc",
-          "desk_id": 2,
-          "num_of_people": 3,
-          "paid": false,
-          "foods": ["汉堡, 12.5, 1, https://api.kuaidian.com/a.png", "芝士蛋糕, 22.5, 2, https://api.kuaidian.com/a.png"],
-          "remark": "不要辣",
-          "create_at": "Thu Jun 28 2018 23:52:21 GMT+0800 (CST)"
-      }
-  ]
-}
+// const allOrders = {
+//   "status": "OK",
+//   "message": "成功获取",
+//   "data": [
+//       {
+//           "id": 23,
+//           "merchant_id": 1,
+//           "merchant_name": "兰州牛肉",
+//           "merchant_tel": "12341234123",
+//           "open_id": "abc",
+//           "desk_id": 2,
+//           "num_of_people": 3,
+//           "paid": true,
+//           "foods": ["汉堡, 12.5, 1, https://api.kuaidian.com/a.png", "芝士蛋糕, 22.5, 2, https://api.kuaidian.com/a.png"],
+//           // "foods": "汉堡,12.5,1,芝士蛋糕,22.5,2",
+//           "remark": "不要辣",
+//           "create_at": "Thu Jun 28 2018 23:52:21 GMT+0800 (CST)"
+//       }, {
+//           "id": 33,
+//           "merchant_id": 1,
+//           "merchant_name": "兰州不牛肉",
+//           "merchant_tel": "12341234123",
+//           "open_id": "abc",
+//           "desk_id": 2,
+//           "num_of_people": 3,
+//           "paid": false,
+//           "foods": ["汉堡, 12.5, 1, https://api.kuaidian.com/a.png", "芝士蛋糕, 22.5, 2, https://api.kuaidian.com/a.png"],
+//           "remark": "不要辣",
+//           "create_at": "Thu Jun 28 2018 23:52:21 GMT+0800 (CST)"
+//       }
+//   ]
+// }

@@ -24,13 +24,19 @@ Page({
       wx.switchTab({
         url: '../merchantList/merchantList'
       })
+      return;
     }
     //获取选中的商家的信息
-    this.setData({
-      merchantInfo: app.globalData.merchantInfo
-    })
-    console.log(app.globalData.merchantInfo)
-    if(this.data.merchantInfo) {
+    // this.setData({
+    //   merchantInfo: app.globalData.merchantInfo
+    // })
+    if(this.data.merchantInfo.id != app.globalData.merchantInfo.id) {
+      this.setData({
+        merchantInfo: app.globalData.merchantInfo,
+        typeToFoodDictFiltered: null,
+        typeList: null,
+        typeActive: ""
+      })
       this.getData();
     }
   },
@@ -41,7 +47,6 @@ Page({
       url: path,
       success: function(res) {
         if(res.data.status === "OK") {
-          console.log(res.data.data);
           that.setData({
             ALLFoods: res.data.data
           })

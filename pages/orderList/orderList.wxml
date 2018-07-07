@@ -10,10 +10,10 @@
     <scroll-view scroll-y="true" wx:if="{{hasData}}" wx:for="{{navIndex==0?orders:(navIndex==1?paySuccess:payFail)}}" wx:for-item="order" wx:for-index="idx" wx:key="id" catchtap="goDeatailEvent" data-idx="{{idx}}">
       <view class="flexItem rowStyle tableViewCellHeader marginTop10">
         <image class="orderImage marginLeft12" src="../../assets/icons/order.png"></image>
-        <label class="color54 fontSize12">订单编号：{{order.id}}</label>
+        <view class="color54 fontSize12">订单编号：{{order.order_id}}</view>
       </view>
       <view class="flexItem rowStyle merchantInfo">
-        <view class="flexItem rowStyle marginLeft12 centers" catchtap="touchMerchant" data-tel="{{order.merchant_id}}">
+        <view class="flexItem rowStyle marginLeft12 centers" catchtap="touchMerchant" data-tel="{{order.merchant_tel}}">
             <image class="merchantImg" src="../../assets/icons/merchant.png"></image>
             <label class="color54 fontSize12">{{order.merchant_name}}</label>
             <image class="goto" src="../../assets/icons/gotoGray.png"></image>

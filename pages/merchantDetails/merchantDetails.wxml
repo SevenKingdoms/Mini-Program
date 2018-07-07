@@ -4,7 +4,7 @@
   <image class="merchantAvatar" src="{{merchantInfo.logo}}"></image>
   <view class="upperhalf"></view>
   <view class="lowerhalf">
-    <view class="opentime">营业时间: {{merchantInfo.opentime}}</view>
+    <view class="opentime">营业时间: {{merchantInfo.open_time}}</view>
     <view class="address">地址: {{merchantInfo.address}}</view>
   </view>
 
@@ -25,7 +25,7 @@
       <view class="name">{{item.name}}</view>
       <view class="time">{{item.publish_at}}</view>
       <view class="score">
-        <view wx:for="{{[0, 1, 2, 3, 4]}}" wx:for-item="number">
+        <view wx:for="{{[0, 1, 2, 3, 4]}}" wx:for-item="number" wx:key="*this">
           <image class="star" style="left: {{number*40}}rpx" src="{{item.score>=number?(item.score<number+1?starPath[2]:starPath[1]):starPath[0]}}"></image>
         </view>
       </view>

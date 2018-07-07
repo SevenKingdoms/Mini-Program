@@ -73,15 +73,29 @@ Page({
   preProcessMerchants: function() {
     const tmpMerchants = this.data.merchantsFiltered;
     const date = new Date();
-    const hour = date.getHours();
+    let hour = date.getHours();
     const minute = date.getMinutes();
     tmpMerchants.map(merchant => {
-      const time = merchant.open_time.split("-").map(x=>x.split(":"));
-      if(parseInt(time[0][0]) > hour || (parseInt(time[0][0]) == hour && parseInt(time[0][1]) > minute)) {
-        merchant.open = false;
-      }
-      else if(parseInt(time[1][0]) < hour || (parseInt(time[1][0]) == hour && parseInt(time[1][1]) < minute)) {
-        merchant.open = false;
+      let time = merchant.open_time.split("-").map(x=>x.split(":"));
+      time = time.map(x => x.map(y => parseInt(y)));
+      if(time[0][0] < time[1][0]) {
+        if(time[0][0] > hour || (time[0][0] == hour && time[0][1] > minute)) {
+          merchant.open = false;
+        }
+        else if(time[1][0] < hour || (time[1][0] == hour && time[1][1] < minute)) {
+          merchant.open = false;
+        }
+      } else {
+        time[1][0] += 24;
+        if(hour < time[0][0]) {
+          hour += 24;
+        }
+        if(time[0][0] > hour || (time[0][0] == hour && time[0][1] > minute)) {
+          merchant.open = false;
+        }
+        else if(time[1][0] < hour || (time[1][0] == hour && time[1][1] < minute)) {
+          merchant.open = false;
+        }
       }
     })
     this.setData({
