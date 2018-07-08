@@ -14,7 +14,9 @@ Page({
     createTime: [],
     totalPrice: [],
     paySuccess: [],
+    successId: [],
     payFail: [],
+    failId: [],
     DetailOrdertInfo: []
   },
   onLoad: function() {
@@ -54,6 +56,9 @@ Page({
   preProcessOrders: function() {
     let success = [];
     let fail = [];
+    let successId = [];
+    let failId = [];
+    let count = -1;
     let time = [];
     let sum = [];
     let tmpOrders = this.data.orders;
@@ -67,13 +72,16 @@ Page({
       }
     })
     tmpOrders.map(order => {
+      count++;
       const date = new Date(order.create_at);
       let eachOrderPrice = 0;
       // order.open_id = app.globalData.userInfo.openid;
       if(order.paid) {
         success.push(order);
+        successId.push(count);
       } else {
         fail.push(order);
+        failId.push(count);
       }
       time.push(
         date.getFullYear()+'-'+date.getMonth()+'-'+date.getDay()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() 
@@ -90,7 +98,9 @@ Page({
       orders: tmpOrders,
       createTime: time,
       paySuccess: success,
+      successId: successId,
       payFail: fail,
+      failId: failId,
       totalPrice: sum
     })
   },

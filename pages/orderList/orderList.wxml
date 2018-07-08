@@ -7,7 +7,7 @@
 
 <view class="tab_con flexItem rowStyle {{currentNavtab==0 ? 'list_active0' : ''}} {{currentNavtab==1 ? 'list_active1' : ''}} {{currentNavtab==2 ? 'list_active2' : ''}}">
   <view class="tablewidth" wx:for="{{navTab}}" wx:for-index="navIndex" wx:key="*this" bindtouchstart="catchtouchstart" bindtouchend="catchtouchend">
-    <scroll-view scroll-y="true" wx:if="{{hasData}}" wx:for="{{navIndex==0?orders:(navIndex==1?paySuccess:payFail)}}" wx:for-item="order" wx:for-index="idx" wx:key="id" catchtap="goDeatailEvent" data-idx="{{idx}}">
+    <scroll-view scroll-y="true" wx:if="{{hasData}}" wx:for="{{navIndex==0?orders:(navIndex==1?paySuccess:payFail)}}" wx:for-item="order" wx:for-index="idx" wx:key="order_id" catchtap="goDeatailEvent" data-idx="{{idx}}">
       <view class="flexItem rowStyle tableViewCellHeader marginTop10">
         <image class="orderImage marginLeft12" src="../../assets/icons/order.png"></image>
         <view class="color54 fontSize12">订单编号：{{order.order_id}}</view>
@@ -42,7 +42,7 @@
       <view class="flexItem rowStyle moneyInfo">
         <view class="flexItem rowStyle marginLeft12 centers">
           <label class="color54 fontSize12">订单金额: </label>
-          <label class="color7321 fontSize12">{{totalPrice[idx]}} 元</label>
+          <label class="color7321 fontSize12">{{totalPrice[(navIndex==0?idx:(navIndex==1?successId[idx]:failId[idx]))]}} 元</label>
         </view>
       </view>
 
