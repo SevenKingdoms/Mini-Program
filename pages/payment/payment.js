@@ -69,14 +69,13 @@ Page({
       food += that.data.acturalCartList[i].food.image;
       food += "|"
     }
-    console.log(food);
     that.setData({
       food: food,
     })
     var phone = that.data.phone;
     var deskId = that.data.deskId;
     var member = that.data.member;
-    if(phone === null || deskId == null || member === null) {
+    if(phone === "" || deskId === "" || member === "") {
       wx.showToast({
         title: '手机号或桌号或人数不能为空',
         icon: 'none',
@@ -98,6 +97,7 @@ Page({
       network.POST({
         url: '/orders',
         params: {
+          'order_id': 10,
           "merchant_id": app.globalData.merchantInfo.id,
           "merchant_name": app.globalData.merchantInfo.name,
           "merchant_tel": app.globalData.merchantInfo.tel,
@@ -106,7 +106,8 @@ Page({
           "num_of_people": parseInt(that.data.member),
           "paid": that.data.paystatus,
           "foods": that.data.food,
-          "remark": that.data.remark
+          "remark": that.data.remark,
+          "create_at": new Date()
         },
         success: function (res) {
           if (res.data.status === 'OK') {

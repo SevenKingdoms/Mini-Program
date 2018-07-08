@@ -105,7 +105,8 @@ Page({
       // }
       this.setData({
         'orderInfo.paid': this.data.paid,
-        'orderInfo.open_id': app.globalData.userInfo.openid
+        'orderInfo.open_id': app.globalData.userInfo.openid,
+        'orderInfo.create_at': new Date()
       })
       network.POST({
         url: '/orders',

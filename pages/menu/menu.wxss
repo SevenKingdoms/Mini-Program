@@ -223,7 +223,7 @@ page {
 }
 
 .cart .cart-icon.up {
-    top: -60px;
+    top: -120rpx;
 }
 
 .cart .cart-icon image {
