@@ -241,11 +241,11 @@ page {
 }
 
 .list_active1{
-  margin-left:-100%;
+  margin-left:-750rpx;
 }
 
 .list_active2{
-  margin-left:-200%;
+  margin-left:-1500rpx;
 }
 
 .list_active3{
@@ -257,7 +257,7 @@ page {
 }
 
 .tablewidth {
-  width: 33.4%;
+  width: 100%;
 }
 
 .moneyInfo {
